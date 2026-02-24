@@ -1,0 +1,436 @@
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#f5c619",
+            "background-light": "#f8f8f5",
+            "background-dark": "#221e10",
+          },
+          fontFamily: {
+            "display": ["Manrope", "sans-serif"]
+          },
+          borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+        },
+      },
+    }
+  </script>
+</head>
+
+<body
+  class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 transition-colors duration-300">
+  <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+    <header
+      class="sticky top-0 z-50 w-full bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+      <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <span class="material-symbols-outlined text-primary text-3xl">landscape</span>
+          <h2 class="text-xl font-extrabold tracking-tight">La Granja <span class="text-primary">Residencial</span></h2>
+        </div>
+        <nav class="hidden md:flex items-center gap-10">
+          <a class="text-sm font-semibold hover:text-primary transition-colors" href="#propiedad">Propiedad</a>
+          <a class="text-sm font-semibold hover:text-primary transition-colors" href="#galeria">Galería</a>
+          <a class="text-sm font-semibold hover:text-primary transition-colors" href="#detalles">Detalles</a>
+          <a class="text-sm font-semibold hover:text-primary transition-colors" href="#contacto">Contacto</a>
+        </nav>
+        <div class="flex items-center gap-4">
+          <a href="#contacto"
+            class="inline-flex items-center justify-center bg-primary hover:bg-primary/90 text-slate-900 px-6 py-2.5 rounded-lg font-bold text-sm transition-all shadow-sm">
+            Contactar
+          </a>
+        </div>
+      </div>
+    </header>
+    <main class="flex-1">
+      <section class="relative h-[85vh] w-full flex items-end">
+        <div class="absolute inset-0 z-0">
+          <img alt="Modern stone and wood house exterior" class="w-full h-full object-cover"
+            data-alt="Modern luxury stone and wood house exterior in mountain landscape"
+            src="imagenes/propiedad-01.jpg" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+        </div>
+        <div class="relative z-10 max-w-7xl mx-auto px-6 pb-20 w-full">
+          <div class="max-w-3xl">
+            <span
+              class="inline-block bg-primary text-slate-900 px-3 py-1 rounded text-xs font-bold uppercase tracking-widest mb-4">Oportunidad
+              Única</span>
+            <h1 class="text-white text-5xl md:text-7xl font-extrabold leading-tight mb-6">
+              Cómoda casa familiar en el corazón de las Sierras
+            </h1>
+            <div class="flex flex-wrap items-center gap-6 text-white/90 mb-8">
+              <span class="flex items-center gap-2"><span
+                  class="material-symbols-outlined text-primary">location_on</span> La Granja, Córdoba</span>
+              <span class="flex items-center gap-2 font-bold text-2xl text-primary">USD 220.000</span>
+            </div>
+            <div class="flex gap-4">
+              <a href="#detalles"
+                class="inline-flex items-center justify-center bg-primary text-slate-900 px-8 py-4 rounded-lg font-bold text-lg hover:scale-105 transition-transform">
+                Ver Detalles
+              </a>
+              <a href="#galeria"
+                class="inline-flex items-center justify-center bg-white/10 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white/20 transition-all">
+                Galería Virtual
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="py-20 bg-white dark:bg-background-dark" id="propiedad">
+        <div class="max-w-7xl mx-auto px-6">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
+            <div
+              class="p-6 rounded-xl bg-background-light dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700 flex flex-col items-center text-center group hover:border-primary transition-colors">
+              <span
+                class="material-symbols-outlined text-4xl text-primary mb-4 group-hover:scale-110 transition-transform">straighten</span>
+              <h3 class="text-2xl font-bold">240m²</h3>
+              <p class="text-slate-500 dark:text-slate-400">Edificados</p>
+            </div>
+            <div
+              class="p-6 rounded-xl bg-background-light dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700 flex flex-col items-center text-center group hover:border-primary transition-colors">
+              <span
+                class="material-symbols-outlined text-4xl text-primary mb-4 group-hover:scale-110 transition-transform">bed</span>
+              <h3 class="text-2xl font-bold">5 Dormitorios</h3>
+              <p class="text-slate-500 dark:text-slate-400">Espaciosos</p>
+            </div>
+            <div
+              class="p-6 rounded-xl bg-background-light dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700 flex flex-col items-center text-center group hover:border-primary transition-colors">
+              <span
+                class="material-symbols-outlined text-4xl text-primary mb-4 group-hover:scale-110 transition-transform">bathtub</span>
+              <h3 class="text-2xl font-bold">3 Baños</h3>
+              <p class="text-slate-500 dark:text-slate-400">Completos</p>
+            </div>
+            <div
+              class="p-6 rounded-xl bg-background-light dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700 flex flex-col items-center text-center group hover:border-primary transition-colors">
+              <span
+                class="material-symbols-outlined text-4xl text-primary mb-4 group-hover:scale-110 transition-transform">terrain</span>
+              <h3 class="text-2xl font-bold">2.831m²</h3>
+              <p class="text-slate-500 dark:text-slate-400">Terreno Total</p>
+            </div>
+          </div>
+          <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-extrabold mb-6">Un refugio exclusivo en la naturaleza</h2>
+            <p class="text-lg leading-relaxed text-slate-600 dark:text-slate-400">
+              Esta exclusiva propiedad cuenta con 240m² de construcción sólida sobre 4 lotes unificados, ofreciendo un
+              entorno natural inigualable y privacidad absoluta en las Sierras de Córdoba. Diseñada para integrarse
+              armónicamente con el paisaje, cada rincón de la casa ha sido pensado para el confort familiar y el
+              disfrute del aire libre.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="py-20 bg-background-light dark:bg-slate-900" id="galeria">
+        <div class="max-w-7xl mx-auto px-6">
+          <h2 class="text-3xl font-extrabold mb-12 flex items-center gap-3">
+            <span class="w-12 h-1 bg-primary rounded-full"></span>
+            Galería de Imágenes
+          </h2>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px] md:auto-rows-[300px]">
+            <div class="col-span-2 row-span-2 overflow-hidden rounded-xl">
+              <img alt="Living room interior"
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                data-alt="Spacious luxury living room with large windows" src="imagenes/propiedad-02.jpg" />
+            </div>
+            <div class="overflow-hidden rounded-xl">
+              <img alt="Bathroom" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                data-alt="Modern minimalist bathroom with marble finishes" src="imagenes/propiedad-03.jpg" />
+            </div>
+            <div class="overflow-hidden rounded-xl">
+              <img alt="Bedroom" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                data-alt="Cozy master bedroom with mountain views" src="imagenes/propiedad-04.jpg" />
+            </div>
+            <div class="col-span-2 overflow-hidden rounded-xl">
+              <img alt="Pool and garden"
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                data-alt="Luxury infinity pool overlooking the mountains" src="imagenes/propiedad-05.jpg" />
+            </div>
+            <div class="overflow-hidden rounded-xl">
+              <img alt="Kitchen" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                data-alt="Modern kitchen with high-end appliances" src="imagenes/propiedad-06.jpg" />
+            </div>
+            <div class="overflow-hidden rounded-xl">
+              <img alt="Exterior evening"
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                data-alt="Night view of the illuminated luxury house" src="imagenes/propiedad-07.jpg" />
+            </div>
+            <!-- Expanded Gallery with new images -->
+            <div class="col-span-2 row-span-2 overflow-hidden rounded-xl">
+              <img alt="Vista Aérea"
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                data-alt="Vista aérea de la propiedad y su gran terreno"
+                src="imagenes/Copia de Copia de _DSC0295.jpg" />
+            </div>
+            <div class="overflow-hidden rounded-xl">
+              <img alt="Comedor y Living"
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                data-alt="Amplio espacio de comedor y sala de estar"
+                src="imagenes/Copia de _DSC0234-HDR(3)_Default.jpg" />
+            </div>
+            <div class="overflow-hidden rounded-xl">
+              <img alt="Cocina conectada"
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                data-alt="Espacio de cocina luminoso" src="imagenes/Copia de _DSC0245-HDR(3)_Default.jpg" />
+            </div>
+            <div class="col-span-2 overflow-hidden rounded-xl">
+              <img alt="Cocina abierta"
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                data-alt="Mesada de granito negro y alacenas de alta calidad"
+                src="imagenes/Copia de _DSC0284-HDR(3)_Default.jpg" />
+            </div>
+            <div class="overflow-hidden rounded-xl">
+              <img alt="Baño con tina"
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                data-alt="Baño principal con finos acabados y bañera"
+                src="imagenes/Copia de _DSC0298-HDR(3)_Default.jpg" />
+            </div>
+            <div class="overflow-hidden rounded-xl">
+              <img alt="Galería interior"
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                data-alt="Galería revestida en piedra con decoración elegante"
+                src="imagenes/Copia de _DSC0389 (1).jpg" />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="py-20 bg-white dark:bg-background-dark" id="detalles">
+        <div class="max-w-7xl mx-auto px-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+            <div>
+              <h2 class="text-3xl font-extrabold mb-8">Especificaciones Técnicas</h2>
+              <div class="space-y-4">
+                <div class="flex justify-between py-4 border-b border-slate-100 dark:border-slate-800">
+                  <span class="text-slate-500 font-medium">Tipo de Propiedad</span>
+                  <span class="font-bold">Casa Quinta Residencial</span>
+                </div>
+                <div class="flex justify-between py-4 border-b border-slate-100 dark:border-slate-800">
+                  <span class="text-slate-500 font-medium">Ubicación</span>
+                  <span class="font-bold">La Granja, Córdoba, Arg.</span>
+                </div>
+                <div class="flex justify-between py-4 border-b border-slate-100 dark:border-slate-800">
+                  <span class="text-slate-500 font-medium">Superficie Cubierta</span>
+                  <span class="font-bold">240 m²</span>
+                </div>
+                <div class="flex justify-between py-4 border-b border-slate-100 dark:border-slate-800">
+                  <span class="text-slate-500 font-medium">Superficie Total</span>
+                  <span class="font-bold">2.831 m² (4 Lotes)</span>
+                </div>
+                <div class="flex justify-between py-4 border-b border-slate-100 dark:border-slate-800">
+                  <span class="text-slate-500 font-medium">Antigüedad</span>
+                  <span class="font-bold">16 años</span>
+                </div>
+                <div class="flex justify-between py-4 border-b border-slate-100 dark:border-slate-800">
+                  <span class="text-slate-500 font-medium">Orientación</span>
+                  <span class="font-bold">Norte</span>
+                </div>
+              </div>
+            </div>
+            <div class="bg-primary/5 rounded-2xl p-8 border border-primary/20">
+              <h2 class="text-3xl font-extrabold mb-8">Por qué elegir esta propiedad</h2>
+              <ul class="space-y-6">
+                <li class="flex items-start gap-4">
+                  <span class="material-symbols-outlined text-green-600 font-bold">check_circle</span>
+                  <div>
+                    <h4 class="font-bold text-lg">Venta Directa</h4>
+                    <p class="text-slate-600 dark:text-slate-400">Sin comisiones inmobiliarias excesivas, trato directo
+                      con el propietario.</p>
+                  </div>
+                </li>
+                <li class="flex items-start gap-4">
+                  <span class="material-symbols-outlined text-green-600 font-bold">check_circle</span>
+                  <div>
+                    <h4 class="font-bold text-lg">Seguridad Jurídica</h4>
+                    <p class="text-slate-600 dark:text-slate-400">Escrituración inmediata, todos los impuestos y
+                      servicios al día.</p>
+                  </div>
+                </li>
+                <li class="flex items-start gap-4">
+                  <span class="material-symbols-outlined text-green-600 font-bold">check_circle</span>
+                  <div>
+                    <h4 class="font-bold text-lg">Entorno Protegido</h4>
+                    <p class="text-slate-600 dark:text-slate-400">Zona residencial consolidada de alta plusvalía y bajo
+                      impacto acústico.</p>
+                  </div>
+                </li>
+                <li class="flex items-start gap-4">
+                  <span class="material-symbols-outlined text-green-600 font-bold">check_circle</span>
+                  <div>
+                    <h4 class="font-bold text-lg">Versatilidad</h4>
+                    <p class="text-slate-600 dark:text-slate-400">Ideal para vivienda permanente, casa de fin de semana
+                      o inversión turística.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="py-20 bg-white dark:bg-background-dark/50 border-y border-slate-100 dark:border-slate-800"
+        id="amenidades">
+        <div class="max-w-7xl mx-auto px-6">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Amenidades Exclusivas</h2>
+            <p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">Espacios diseñados para el disfrute
+              y el relax absoluto en contacto directo con la naturaleza.</p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div
+              class="group rounded-2xl overflow-hidden shadow-lg border border-slate-100 dark:border-slate-800 flex flex-col bg-white dark:bg-slate-800">
+              <div class="relative h-64 overflow-hidden shrink-0">
+                <img src="imagenes/Copia de _DSC0386.jpg" alt="Gran Piscina"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              </div>
+              <div class="p-8 flex-1 flex flex-col justify-center text-center">
+                <h3 class="text-xl font-extrabold mb-3">Gran Piscina</h3>
+                <p class="text-slate-600 dark:text-slate-400">Amplia piscina con vistas panorámicas a las sierras, ideal
+                  para refrescarse y relajarse durante el verano, rodeada de un gran solárium.</p>
+              </div>
+            </div>
+            <div
+              class="group rounded-2xl overflow-hidden shadow-lg border border-slate-100 dark:border-slate-800 flex flex-col bg-white dark:bg-slate-800">
+              <div class="relative h-64 overflow-hidden shrink-0">
+                <img src="imagenes/Copia de _DSC0308 (2).jpg" alt="Deck de Madera Exterior"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              </div>
+              <div class="p-8 flex-1 flex flex-col justify-center text-center">
+                <h3 class="text-xl font-extrabold mb-3">Deck de Madera</h3>
+                <p class="text-slate-600 dark:text-slate-400">Espacios exteriores de madera finamente cuidados e
+                  integrados armoniosamente a la vegetación autóctona del gran terreno.</p>
+              </div>
+            </div>
+            <div
+              class="group rounded-2xl overflow-hidden shadow-lg border border-slate-100 dark:border-slate-800 flex flex-col bg-white dark:bg-slate-800">
+              <div class="relative h-64 overflow-hidden shrink-0">
+                <img src="imagenes/asador_cubierto.jpg" alt="Terraza con Asador"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              </div>
+              <div class="p-8 flex-1 flex flex-col justify-center text-center">
+                <h3 class="text-xl font-extrabold mb-3">Asador Cubierto</h3>
+                <p class="text-slate-600 dark:text-slate-400">Espacio totalmente equipado para reuniones sociales
+                  memorables con parrilla y gran comodidad bajo techo, con vistas inigualables.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="py-20 bg-background-light dark:bg-slate-900">
+        <div class="max-w-7xl mx-auto px-6">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div
+              class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
+              <span class="material-symbols-outlined text-primary text-5xl mb-6">eco</span>
+              <h3 class="text-xl font-extrabold mb-4">Tranquilidad Serrana</h3>
+              <p class="text-slate-600 dark:text-slate-400">Despierte con el sonido de las aves y el aire puro de las
+                Sierras Chicas. Un microclima saludable todo el año.</p>
+            </div>
+            <div
+              class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
+              <span class="material-symbols-outlined text-primary text-5xl mb-6">gavel</span>
+              <h3 class="text-xl font-extrabold mb-4">Seguridad Jurídica</h3>
+              <p class="text-slate-600 dark:text-slate-400">Operación transparente. Títulos perfectos listos para
+                transferir ante el escribano de su confianza.</p>
+            </div>
+            <div
+              class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
+              <span class="material-symbols-outlined text-primary text-5xl mb-6">family_restroom</span>
+              <h3 class="text-xl font-extrabold mb-4">Para Toda la Familia</h3>
+              <p class="text-slate-600 dark:text-slate-400">Espacios amplios y seguros para que los niños crezcan en
+                contacto con la naturaleza y total libertad.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="py-24 bg-white dark:bg-background-dark overflow-hidden relative" id="contacto">
+        <div class="absolute top-0 right-0 w-1/3 h-full bg-primary/5 hidden lg:block"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+            <div>
+              <h2 class="text-4xl font-extrabold mb-6">¿Interesado en conocerla?</h2>
+              <p class="text-lg text-slate-600 dark:text-slate-400 mb-10 leading-relaxed">
+                Estamos a su disposición para coordinar una visita personalizada o enviarle más información técnica y
+                legal sobre la propiedad. No pierda la oportunidad de invertir en calidad de vida.
+              </p>
+              <div class="space-y-6">
+                <div class="flex items-center gap-4">
+                  <span class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-primary">phone_in_talk</span>
+                  </span>
+                  <span class="text-lg font-bold">+54 9 351 665-8967</span>
+                </div>
+                <div class="flex items-center gap-4">
+                  <span class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-primary">mail</span>
+                  </span>
+                  <span class="text-lg font-bold">ventas@lagranjaresidencial.com.ar</span>
+                </div>
+              </div>
+            </div>
+            <div
+              class="bg-background-light dark:bg-slate-800 p-10 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-700">
+              <form class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label class="block text-sm font-bold mb-2 uppercase tracking-wide">Nombre</label>
+                    <input
+                      class="w-full bg-white dark:bg-slate-700 border-slate-200 dark:border-slate-600 rounded-lg p-3 focus:ring-primary focus:border-primary"
+                      placeholder="Ej: Juan Pérez" type="text" />
+                  </div>
+                  <div>
+                    <label class="block text-sm font-bold mb-2 uppercase tracking-wide">Email</label>
+                    <input
+                      class="w-full bg-white dark:bg-slate-700 border-slate-200 dark:border-slate-600 rounded-lg p-3 focus:ring-primary focus:border-primary"
+                      placeholder="email@ejemplo.com" type="email" />
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-sm font-bold mb-2 uppercase tracking-wide">Mensaje</label>
+                  <textarea
+                    class="w-full bg-white dark:bg-slate-700 border-slate-200 dark:border-slate-600 rounded-lg p-3 focus:ring-primary focus:border-primary"
+                    placeholder="Estoy interesado en..." rows="4"></textarea>
+                </div>
+                <button
+                  class="w-full bg-primary hover:bg-primary/90 text-slate-900 font-extrabold py-4 rounded-xl transition-all shadow-md">
+                  Enviar Consulta
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="bg-slate-900 text-white py-12">
+      <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+        <div class="flex items-center gap-3">
+          <span class="material-symbols-outlined text-primary text-3xl">landscape</span>
+          <h2 class="text-xl font-extrabold tracking-tight">La Granja <span class="text-primary">Residencial</span></h2>
+        </div>
+        <p class="text-slate-400 text-sm">© 2026 La Granja Residencial. Todos los derechos reservados. Córdoba,
+          Argentina.</p>
+        <div class="flex gap-6">
+          <a class="text-slate-400 hover:text-white transition-colors" href="#">Facebook</a>
+          <a class="text-slate-400 hover:text-white transition-colors" href="#">Instagram</a>
+          <a class="text-slate-400 hover:text-white transition-colors" href="#">LinkedIn</a>
+        </div>
+      </div>
+    </footer>
+    <a class="fixed bottom-8 right-8 z-50 bg-primary text-slate-900 font-extrabold px-6 py-4 rounded-full shadow-2xl flex items-center gap-2 hover:scale-105 transition-transform group"
+      href="#contacto">
+      <span class="material-symbols-outlined group-hover:rotate-12 transition-transform">calendar_month</span>
+      Programa un Tour
+    </a>
+  </div>
+</body>
+
+</html>
