@@ -1,590 +1,436 @@
-<!DOCTYPE html>
 <html lang="es">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Casa en La Granja — Tu Hogar Entre las Sierras | Colinas de La Granja, Colón, Córdoba</title>
-  <meta name="description"
-    content="Casa de 240m² en Colinas de La Granja, Colón, Córdoba. 5 habitaciones, piscina, terraza mirador, asador y parque de 2.831m². Documentación impecable. Agendá tu visita.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Sora:wght@300;400;500;600;700;800&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#f5c619",
+            "background-light": "#f8f8f5",
+            "background-dark": "#221e10",
+          },
+          fontFamily: {
+            "display": ["Manrope", "sans-serif"]
+          },
+          borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+        },
+      },
+    }
+  </script>
 </head>
 
-<body>
-
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- NAVBAR -->
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <nav id="navbar" class="navbar">
-    <div class="container nav-container">
-      <a href="#" class="logo">
-        <span class="logo-icon">⌂</span>
-        <span class="logo-text">La Granja <span class="logo-accent">Residencial</span></span>
-      </a>
-      <ul class="nav-links">
-        <li><a href="#beneficios">Beneficios</a></li>
-        <li><a href="#propiedad">La Casa</a></li>
-        <li><a href="#entorno">El Entorno</a></li>
-        <li><a href="#galeria">Galería</a></li>
-        <li><a href="#contacto" class="nav-cta">Agendar Visita</a></li>
-      </ul>
-      <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menú">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
-
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- HERO SECTION -->
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <header id="hero" class="hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-particles"></div>
-    <div class="container hero-content">
-      <span class="hero-badge">Venta Directa · Documentación al Día · Operación Segura</span>
-      <h1 class="hero-title">
-        Dejá de buscar<br>
-        <span class="hero-highlight">entre propiedades con problemas.</span><br>
-        <span class="hero-italic">Esta casa te está esperando.</span>
-      </h1>
-      <p class="hero-subtitle">
-        240&nbsp;m² cubiertos, piscina, terraza mirador y un parque de 2.831&nbsp;m² en las Sierras de Córdoba.<br
-          class="hide-mobile">
-        <strong>Sin sorpresas legales. Sin papeles pendientes. Lista para escriturar.</strong>
-      </p>
-      <div class="hero-price-row">
-        <div class="hero-price">
-          <span class="price-label">Precio de cierre</span>
-          <span class="price-value">USD 220.000</span>
+<body
+  class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 transition-colors duration-300">
+  <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+    <header
+      class="sticky top-0 z-50 w-full bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+      <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <span class="material-symbols-outlined text-primary text-3xl">landscape</span>
+          <h2 class="text-xl font-extrabold tracking-tight">La Granja <span class="text-primary">Residencial</span></h2>
         </div>
-        <a href="#contacto" class="btn btn-primary btn-lg">
-          Quiero Agendar una Visita
-          <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
-        </a>
-      </div>
-      <div class="hero-stats">
-        <div class="stat">
-          <span class="stat-number">240<small>m²</small></span>
-          <span class="stat-label">Cubiertos</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <span class="stat-number">2.831<small>m²</small></span>
-          <span class="stat-label">Terreno Total</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <span class="stat-number">5</span>
-          <span class="stat-label">Habitaciones</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <span class="stat-number">3</span>
-          <span class="stat-label">Baños</span>
-        </div>
-      </div>
-    </div>
-    <div class="hero-scroll-indicator">
-      <span>Descubrí más</span>
-      <div class="scroll-arrow"></div>
-    </div>
-  </header>
-
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- PROBLEMA / EMPATÍA -->
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <section id="problema" class="section section-dark">
-    <div class="container">
-      <div class="section-intro centered">
-        <span class="section-tag">Lo que nadie te dice</span>
-        <h2 class="section-title">
-          Sabemos lo que se siente buscar<br class="hide-mobile"> y no encontrar nada <em>real</em>.
-        </h2>
-        <p class="section-desc">
-          Llevás meses recorriendo propiedades. Algunas parecen perfectas en las fotos, pero cuando llegás te encontrás
-          con problemas de papeles, refacciones ocultas o precios inflados.<br>
-          <strong>La brecha entre lo que deseás y lo que podés pagar genera una frustración silenciosa.</strong><br>
-          Y encima, cada mes que pasa seguís pagando alquiler. Sentís que la plata se escurre.
-        </p>
-      </div>
-      <div class="pain-cards">
-        <div class="pain-card">
-          <div class="pain-icon">📄</div>
-          <h3>Problemas de papeles</h3>
-          <p>"Todo lo que nos gusta tiene problemas de documentación. Planos sin aprobar, sucesiones trabadas..."</p>
-        </div>
-        <div class="pain-card">
-          <div class="pain-icon">💸</div>
-          <h3>Presupuesto vs. realidad</h3>
-          <p>"Lo que podemos pagar solo nos alcanza para propiedades que necesitan miles de dólares en arreglos."</p>
-        </div>
-        <div class="pain-card">
-          <div class="pain-icon">📉</div>
-          <h3>Miedo al dólar</h3>
-          <p>"Cada vez que el dólar pega un salto, sentimos que nos quedamos afuera del mercado."</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- BENEFICIO 1 — TU TECHO PROPIO SIN SORPRESAS -->
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <section id="beneficios" class="section section-light">
-    <div class="container">
-      <div class="benefit-block">
-        <div class="benefit-content">
-          <span class="section-tag tag-green">Beneficio #1</span>
-          <h2 class="benefit-title">
-            Tu techo propio,<br>
-            <em>listo para vivir hoy.</em>
-          </h2>
-          <p class="benefit-text">
-            Esta casa tiene <strong>16 años de vida, mantenimiento impecable y documentación al día</strong>. No vas a
-            comprar un proyecto: vas a comprar un hogar terminado, funcional y listo para recibir a tu familia.
-          </p>
-          <ul class="benefit-checklist">
-            <li>
-              <span class="check">✓</span>
-              <span><strong>Planta principal:</strong> Cocina-comedor, amplio living, lavadero, toilette y suite
-                principal con vestidor y baño en suite.</span>
-            </li>
-            <li>
-              <span class="check">✓</span>
-              <span><strong>Planta baja:</strong> 4 habitaciones adicionales, baño completo y cochera doble.</span>
-            </li>
-            <li>
-              <span class="check">✓</span>
-              <span><strong>Terraza mirador:</strong> Con asador y pérgola, ideal para disfrutar las vistas a las
-                sierras.</span>
-            </li>
-            <li>
-              <span class="check">✓</span>
-              <span><strong>Documentación perfecta</strong> — lista para escriturar sin demoras.</span>
-            </li>
-          </ul>
-          <a href="#contacto" class="btn btn-secondary">
-            Solicitar Ficha Técnica Completa
-            <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
+        <nav class="hidden md:flex items-center gap-10">
+          <a class="text-sm font-semibold hover:text-primary transition-colors" href="#propiedad">Propiedad</a>
+          <a class="text-sm font-semibold hover:text-primary transition-colors" href="#galeria">Galería</a>
+          <a class="text-sm font-semibold hover:text-primary transition-colors" href="#detalles">Detalles</a>
+          <a class="text-sm font-semibold hover:text-primary transition-colors" href="#contacto">Contacto</a>
+        </nav>
+        <div class="flex items-center gap-4">
+          <a href="#contacto"
+            class="inline-flex items-center justify-center bg-primary hover:bg-primary/90 text-slate-900 px-6 py-2.5 rounded-lg font-bold text-sm transition-all shadow-sm">
+            Contactar
           </a>
         </div>
-        <div class="benefit-visual">
-          <div class="feature-grid">
-            <div class="feature-card feature-accent">
-              <div class="feature-icon">🏠</div>
-              <h4>240 m² cubiertos</h4>
-              <p>Espacios generosos para toda la familia</p>
+      </div>
+    </header>
+    <main class="flex-1">
+      <section class="relative h-[85vh] w-full flex items-end">
+        <div class="absolute inset-0 z-0">
+          <img alt="Modern stone and wood house exterior" class="w-full h-full object-cover"
+            data-alt="Modern luxury stone and wood house exterior in mountain landscape"
+            src="imagenes/propiedad-01.jpg" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+        </div>
+        <div class="relative z-10 max-w-7xl mx-auto px-6 pb-20 w-full">
+          <div class="max-w-3xl">
+            <span
+              class="inline-block bg-primary text-slate-900 px-3 py-1 rounded text-xs font-bold uppercase tracking-widest mb-4">Oportunidad
+              Única</span>
+            <h1 class="text-white text-5xl md:text-7xl font-extrabold leading-tight mb-6">
+              Cómoda casa familiar en el corazón de las Sierras
+            </h1>
+            <div class="flex flex-wrap items-center gap-6 text-white/90 mb-8">
+              <span class="flex items-center gap-2"><span
+                  class="material-symbols-outlined text-primary">location_on</span> La Granja, Córdoba</span>
+              <span class="flex items-center gap-2 font-bold text-2xl text-primary">USD 220.000</span>
             </div>
-            <div class="feature-card">
-              <div class="feature-icon">🛏️</div>
-              <h4>5 Habitaciones</h4>
-              <p>Suite principal + 4 dormitorios</p>
-            </div>
-            <div class="feature-card">
-              <div class="feature-icon">🚗</div>
-              <h4>Cochera Doble</h4>
-              <p>Seguridad y comodidad para dos vehículos</p>
-            </div>
-            <div class="feature-card">
-              <div class="feature-icon">📐</div>
-              <h4>4 Lotes Unificados</h4>
-              <p>2.831 m² de terreno total</p>
+            <div class="flex gap-4">
+              <a href="#detalles"
+                class="inline-flex items-center justify-center bg-primary text-slate-900 px-8 py-4 rounded-lg font-bold text-lg hover:scale-105 transition-transform">
+                Ver Detalles
+              </a>
+              <a href="#galeria"
+                class="inline-flex items-center justify-center bg-white/10 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white/20 transition-all">
+                Galería Virtual
+              </a>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- BENEFICIO 2 — VIVIR COMO SOÑASTE -->
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <section id="propiedad" class="section section-mid">
-    <div class="container">
-      <div class="benefit-block reverse">
-        <div class="benefit-content">
-          <span class="section-tag tag-gold">Beneficio #2</span>
-          <h2 class="benefit-title">
-            Cada metro cuadrado está pensado<br>
-            <em>para que disfrutes, no para que repares.</em>
-          </h2>
-          <p class="benefit-text">
-            La brecha entre lo que soñás y lo que tu presupuesto permite es el dolor más común del comprador.
-            <strong>Acá no hay sorpresas de refacción ni costos ocultos:</strong> la casa está completa, con espacios
-            exteriores que normalmente solo se ven en propiedades de otro rango de precio.
-          </p>
-          <ul class="benefit-checklist">
-            <li>
-              <span class="check">✓</span>
-              <span><strong>Piscina con solárium húmedo</strong> — para veranear sin salir de tu casa.</span>
-            </li>
-            <li>
-              <span class="check">✓</span>
-              <span><strong>Amplio deck perimetral</strong> — rodeando la planta principal, ideal para reuniones al
-                atardecer.</span>
-            </li>
-            <li>
-              <span class="check">✓</span>
-              <span><strong>Zona de asador techado</strong> — con parrilla, mesada y horno a leña saliendo directamente
-                de la cocina.</span>
-            </li>
-            <li>
-              <span class="check">✓</span>
-              <span><strong>Parque de especies autóctonas</strong> — bajo mantenimiento, verde todo el año.</span>
-            </li>
-          </ul>
-          <a href="#galeria" class="btn btn-secondary">
-            Ver Fotos de los Exteriores
-            <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </a>
-        </div>
-        <div class="benefit-visual">
-          <div class="lifestyle-card">
-            <div class="lifestyle-icon">🌅</div>
-            <h3>Un estilo de vida, no solo una casa</h3>
-            <p>
-              Imaginá llegar del trabajo y relajarte en el deck mirando las sierras.
-              Los fines de semana, encender el asador mientras los chicos juegan en el parque.
-              Las noches de verano, en la pileta con los amigos.
+      </section>
+      <section class="py-20 bg-white dark:bg-background-dark" id="propiedad">
+        <div class="max-w-7xl mx-auto px-6">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
+            <div
+              class="p-6 rounded-xl bg-background-light dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700 flex flex-col items-center text-center group hover:border-primary transition-colors">
+              <span
+                class="material-symbols-outlined text-4xl text-primary mb-4 group-hover:scale-110 transition-transform">straighten</span>
+              <h3 class="text-2xl font-bold">240m²</h3>
+              <p class="text-slate-500 dark:text-slate-400">Edificados</p>
+            </div>
+            <div
+              class="p-6 rounded-xl bg-background-light dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700 flex flex-col items-center text-center group hover:border-primary transition-colors">
+              <span
+                class="material-symbols-outlined text-4xl text-primary mb-4 group-hover:scale-110 transition-transform">bed</span>
+              <h3 class="text-2xl font-bold">5 Dormitorios</h3>
+              <p class="text-slate-500 dark:text-slate-400">Espaciosos</p>
+            </div>
+            <div
+              class="p-6 rounded-xl bg-background-light dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700 flex flex-col items-center text-center group hover:border-primary transition-colors">
+              <span
+                class="material-symbols-outlined text-4xl text-primary mb-4 group-hover:scale-110 transition-transform">bathtub</span>
+              <h3 class="text-2xl font-bold">3 Baños</h3>
+              <p class="text-slate-500 dark:text-slate-400">Completos</p>
+            </div>
+            <div
+              class="p-6 rounded-xl bg-background-light dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700 flex flex-col items-center text-center group hover:border-primary transition-colors">
+              <span
+                class="material-symbols-outlined text-4xl text-primary mb-4 group-hover:scale-110 transition-transform">terrain</span>
+              <h3 class="text-2xl font-bold">2.831m²</h3>
+              <p class="text-slate-500 dark:text-slate-400">Terreno Total</p>
+            </div>
+          </div>
+          <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-extrabold mb-6">Un refugio exclusivo en la naturaleza</h2>
+            <p class="text-lg leading-relaxed text-slate-600 dark:text-slate-400">
+              Esta exclusiva propiedad cuenta con 240m² de construcción sólida sobre 4 lotes unificados, ofreciendo un
+              entorno natural inigualable y privacidad absoluta en las Sierras de Córdoba. Diseñada para integrarse
+              armónicamente con el paisaje, cada rincón de la casa ha sido pensado para el confort familiar y el
+              disfrute del aire libre.
             </p>
-            <p class="lifestyle-highlight">
-              Todo esto a un precio que otros destinarían a un departamento urbano que necesita refecciones.
-            </p>
-            <div class="lifestyle-stats">
-              <div class="ls-stat">
-                <span class="ls-number">☀️</span>
-                <span class="ls-label">Orientación Norte</span>
-              </div>
-              <div class="ls-stat">
-                <span class="ls-number">🏊</span>
-                <span class="ls-label">Piscina + Solárium</span>
-              </div>
-              <div class="ls-stat">
-                <span class="ls-number">🔥</span>
-                <span class="ls-label">Asador + Horno a Leña</span>
-              </div>
-              <div class="ls-stat">
-                <span class="ls-number">🌿</span>
-                <span class="ls-label">Parque Autóctono</span>
-              </div>
-            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- BENEFICIO 3 — OPERACIÓN SEGURA -->
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <section id="entorno" class="section section-light">
-    <div class="container">
-      <div class="benefit-block">
-        <div class="benefit-content">
-          <span class="section-tag tag-blue">Beneficio #3</span>
-          <h2 class="benefit-title">
-            Operación segura, rápida,<br>
-            <em>y sin angustia financiera.</em>
+      </section>
+      <section class="py-20 bg-background-light dark:bg-slate-900" id="galeria">
+        <div class="max-w-7xl mx-auto px-6">
+          <h2 class="text-3xl font-extrabold mb-12 flex items-center gap-3">
+            <span class="w-12 h-1 bg-primary rounded-full"></span>
+            Galería de Imágenes
           </h2>
-          <p class="benefit-text">
-            Sabemos que la volatilidad del dólar y la incertidumbre documental paralizan decisiones. Por eso te
-            ofrecemos asesoría con datos reales del mercado, acompañamiento de principio a fin y una propiedad con
-            <strong>cero sorpresas legales</strong>.
-          </p>
-          <ul class="benefit-checklist">
-            <li>
-              <span class="check">✓</span>
-              <span><strong>Documentación verificada</strong> — títulos, planos aprobados, libre de gravámenes y
-                deudas.</span>
-            </li>
-            <li>
-              <span class="check">✓</span>
-              <span><strong>Precio transparente</strong> —&nbsp;USD&nbsp;220.000 respaldado por comparables de cierre
-                reales de la zona.</span>
-            </li>
-            <li>
-              <span class="check">✓</span>
-              <span><strong>Asesoría financiera personalizada</strong> — evaluamos tu capacidad, simulamos escenarios y
-                te ayudamos a decidir con números.</span>
-            </li>
-            <li>
-              <span class="check">✓</span>
-              <span><strong>Acompañamiento hasta la escritura</strong> — coordinamos escribanos, bancos y toda la
-                gestión documental.</span>
-            </li>
-          </ul>
-          <a href="#contacto" class="btn btn-secondary">
-            Solicitar Evaluación Financiera Gratuita
-            <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </a>
-        </div>
-        <div class="benefit-visual">
-          <div class="trust-badges">
-            <div class="trust-badge">
-              <div class="badge-icon">🔒</div>
-              <h4>Operación 100 % Segura</h4>
-              <p>Documentación auditada antes de la publicación</p>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px] md:auto-rows-[300px]">
+            <div class="col-span-2 row-span-2 overflow-hidden rounded-xl">
+              <img alt="Living room interior"
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                data-alt="Spacious luxury living room with large windows" src="imagenes/propiedad-02.jpg" />
             </div>
-            <div class="trust-badge">
-              <div class="badge-icon">📊</div>
-              <h4>Datos Reales de Mercado</h4>
-              <p>Precio basado en comparables de cierre, no en estimaciones</p>
+            <div class="overflow-hidden rounded-xl">
+              <img alt="Bathroom" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                data-alt="Modern minimalist bathroom with marble finishes" src="imagenes/propiedad-03.jpg" />
             </div>
-            <div class="trust-badge">
-              <div class="badge-icon">🤝</div>
-              <h4>Gestión Integral</h4>
-              <p>De la primera visita a la firma de escritura, sin intermediarios adicionales</p>
+            <div class="overflow-hidden rounded-xl">
+              <img alt="Bedroom" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                data-alt="Cozy master bedroom with mountain views" src="imagenes/propiedad-04.jpg" />
             </div>
-            <div class="trust-badge">
-              <div class="badge-icon">⏱️</div>
-              <h4>Cierre en 60–90 Días</h4>
-              <p>Proceso ágil sin trabas documentales ni demoras evitables</p>
+            <div class="col-span-2 overflow-hidden rounded-xl">
+              <img alt="Pool and garden"
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                data-alt="Luxury infinity pool overlooking the mountains" src="imagenes/propiedad-05.jpg" />
+            </div>
+            <div class="overflow-hidden rounded-xl">
+              <img alt="Kitchen" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                data-alt="Modern kitchen with high-end appliances" src="imagenes/propiedad-06.jpg" />
+            </div>
+            <div class="overflow-hidden rounded-xl">
+              <img alt="Exterior evening"
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                data-alt="Night view of the illuminated luxury house" src="imagenes/propiedad-07.jpg" />
+            </div>
+            <!-- Expanded Gallery with new images -->
+            <div class="col-span-2 row-span-2 overflow-hidden rounded-xl">
+              <img alt="Vista Aérea"
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                data-alt="Vista aérea de la propiedad y su gran terreno"
+                src="imagenes/Copia de Copia de _DSC0295.jpg" />
+            </div>
+            <div class="overflow-hidden rounded-xl">
+              <img alt="Comedor y Living"
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                data-alt="Amplio espacio de comedor y sala de estar"
+                src="imagenes/Copia de _DSC0234-HDR(3)_Default.jpg" />
+            </div>
+            <div class="overflow-hidden rounded-xl">
+              <img alt="Cocina conectada"
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                data-alt="Espacio de cocina luminoso" src="imagenes/Copia de _DSC0245-HDR(3)_Default.jpg" />
+            </div>
+            <div class="col-span-2 overflow-hidden rounded-xl">
+              <img alt="Cocina abierta"
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                data-alt="Mesada de granito negro y alacenas de alta calidad"
+                src="imagenes/Copia de _DSC0284-HDR(3)_Default.jpg" />
+            </div>
+            <div class="overflow-hidden rounded-xl">
+              <img alt="Baño con tina"
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                data-alt="Baño principal con finos acabados y bañera"
+                src="imagenes/Copia de _DSC0298-HDR(3)_Default.jpg" />
+            </div>
+            <div class="overflow-hidden rounded-xl">
+              <img alt="Galería interior"
+                class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                data-alt="Galería revestida en piedra con decoración elegante"
+                src="imagenes/Copia de _DSC0389 (1).jpg" />
             </div>
           </div>
+        </div>
+      </section>
+      <section class="py-20 bg-white dark:bg-background-dark" id="detalles">
+        <div class="max-w-7xl mx-auto px-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+            <div>
+              <h2 class="text-3xl font-extrabold mb-8">Especificaciones Técnicas</h2>
+              <div class="space-y-4">
+                <div class="flex justify-between py-4 border-b border-slate-100 dark:border-slate-800">
+                  <span class="text-slate-500 font-medium">Tipo de Propiedad</span>
+                  <span class="font-bold">Casa Quinta Residencial</span>
+                </div>
+                <div class="flex justify-between py-4 border-b border-slate-100 dark:border-slate-800">
+                  <span class="text-slate-500 font-medium">Ubicación</span>
+                  <span class="font-bold">La Granja, Córdoba, Arg.</span>
+                </div>
+                <div class="flex justify-between py-4 border-b border-slate-100 dark:border-slate-800">
+                  <span class="text-slate-500 font-medium">Superficie Cubierta</span>
+                  <span class="font-bold">240 m²</span>
+                </div>
+                <div class="flex justify-between py-4 border-b border-slate-100 dark:border-slate-800">
+                  <span class="text-slate-500 font-medium">Superficie Total</span>
+                  <span class="font-bold">2.831 m² (4 Lotes)</span>
+                </div>
+                <div class="flex justify-between py-4 border-b border-slate-100 dark:border-slate-800">
+                  <span class="text-slate-500 font-medium">Antigüedad</span>
+                  <span class="font-bold">16 años</span>
+                </div>
+                <div class="flex justify-between py-4 border-b border-slate-100 dark:border-slate-800">
+                  <span class="text-slate-500 font-medium">Orientación</span>
+                  <span class="font-bold">Norte</span>
+                </div>
+              </div>
+            </div>
+            <div class="bg-primary/5 rounded-2xl p-8 border border-primary/20">
+              <h2 class="text-3xl font-extrabold mb-8">Por qué elegir esta propiedad</h2>
+              <ul class="space-y-6">
+                <li class="flex items-start gap-4">
+                  <span class="material-symbols-outlined text-green-600 font-bold">check_circle</span>
+                  <div>
+                    <h4 class="font-bold text-lg">Venta Directa</h4>
+                    <p class="text-slate-600 dark:text-slate-400">Sin comisiones inmobiliarias excesivas, trato directo
+                      con el propietario.</p>
+                  </div>
+                </li>
+                <li class="flex items-start gap-4">
+                  <span class="material-symbols-outlined text-green-600 font-bold">check_circle</span>
+                  <div>
+                    <h4 class="font-bold text-lg">Seguridad Jurídica</h4>
+                    <p class="text-slate-600 dark:text-slate-400">Escrituración inmediata, todos los impuestos y
+                      servicios al día.</p>
+                  </div>
+                </li>
+                <li class="flex items-start gap-4">
+                  <span class="material-symbols-outlined text-green-600 font-bold">check_circle</span>
+                  <div>
+                    <h4 class="font-bold text-lg">Entorno Protegido</h4>
+                    <p class="text-slate-600 dark:text-slate-400">Zona residencial consolidada de alta plusvalía y bajo
+                      impacto acústico.</p>
+                  </div>
+                </li>
+                <li class="flex items-start gap-4">
+                  <span class="material-symbols-outlined text-green-600 font-bold">check_circle</span>
+                  <div>
+                    <h4 class="font-bold text-lg">Versatilidad</h4>
+                    <p class="text-slate-600 dark:text-slate-400">Ideal para vivienda permanente, casa de fin de semana
+                      o inversión turística.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="py-20 bg-white dark:bg-background-dark/50 border-y border-slate-100 dark:border-slate-800"
+        id="amenidades">
+        <div class="max-w-7xl mx-auto px-6">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Amenidades Exclusivas</h2>
+            <p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">Espacios diseñados para el disfrute
+              y el relax absoluto en contacto directo con la naturaleza.</p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div
+              class="group rounded-2xl overflow-hidden shadow-lg border border-slate-100 dark:border-slate-800 flex flex-col bg-white dark:bg-slate-800">
+              <div class="relative h-64 overflow-hidden shrink-0">
+                <img src="imagenes/Copia de _DSC0386.jpg" alt="Gran Piscina"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              </div>
+              <div class="p-8 flex-1 flex flex-col justify-center text-center">
+                <h3 class="text-xl font-extrabold mb-3">Gran Piscina</h3>
+                <p class="text-slate-600 dark:text-slate-400">Amplia piscina con vistas panorámicas a las sierras, ideal
+                  para refrescarse y relajarse durante el verano, rodeada de un gran solárium.</p>
+              </div>
+            </div>
+            <div
+              class="group rounded-2xl overflow-hidden shadow-lg border border-slate-100 dark:border-slate-800 flex flex-col bg-white dark:bg-slate-800">
+              <div class="relative h-64 overflow-hidden shrink-0">
+                <img src="imagenes/Copia de _DSC0308 (2).jpg" alt="Deck de Madera Exterior"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              </div>
+              <div class="p-8 flex-1 flex flex-col justify-center text-center">
+                <h3 class="text-xl font-extrabold mb-3">Deck de Madera</h3>
+                <p class="text-slate-600 dark:text-slate-400">Espacios exteriores de madera finamente cuidados e
+                  integrados armoniosamente a la vegetación autóctona del gran terreno.</p>
+              </div>
+            </div>
+            <div
+              class="group rounded-2xl overflow-hidden shadow-lg border border-slate-100 dark:border-slate-800 flex flex-col bg-white dark:bg-slate-800">
+              <div class="relative h-64 overflow-hidden shrink-0">
+                <img src="imagenes/asador_cubierto.jpg" alt="Terraza con Asador"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              </div>
+              <div class="p-8 flex-1 flex flex-col justify-center text-center">
+                <h3 class="text-xl font-extrabold mb-3">Asador Cubierto</h3>
+                <p class="text-slate-600 dark:text-slate-400">Espacio totalmente equipado para reuniones sociales
+                  memorables con parrilla y gran comodidad bajo techo, con vistas inigualables.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="py-20 bg-background-light dark:bg-slate-900">
+        <div class="max-w-7xl mx-auto px-6">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div
+              class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
+              <span class="material-symbols-outlined text-primary text-5xl mb-6">eco</span>
+              <h3 class="text-xl font-extrabold mb-4">Tranquilidad Serrana</h3>
+              <p class="text-slate-600 dark:text-slate-400">Despierte con el sonido de las aves y el aire puro de las
+                Sierras Chicas. Un microclima saludable todo el año.</p>
+            </div>
+            <div
+              class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
+              <span class="material-symbols-outlined text-primary text-5xl mb-6">gavel</span>
+              <h3 class="text-xl font-extrabold mb-4">Seguridad Jurídica</h3>
+              <p class="text-slate-600 dark:text-slate-400">Operación transparente. Títulos perfectos listos para
+                transferir ante el escribano de su confianza.</p>
+            </div>
+            <div
+              class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
+              <span class="material-symbols-outlined text-primary text-5xl mb-6">family_restroom</span>
+              <h3 class="text-xl font-extrabold mb-4">Para Toda la Familia</h3>
+              <p class="text-slate-600 dark:text-slate-400">Espacios amplios y seguros para que los niños crezcan en
+                contacto con la naturaleza y total libertad.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="py-24 bg-white dark:bg-background-dark overflow-hidden relative" id="contacto">
+        <div class="absolute top-0 right-0 w-1/3 h-full bg-primary/5 hidden lg:block"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+            <div>
+              <h2 class="text-4xl font-extrabold mb-6">¿Interesado en conocerla?</h2>
+              <p class="text-lg text-slate-600 dark:text-slate-400 mb-10 leading-relaxed">
+                Estamos a su disposición para coordinar una visita personalizada o enviarle más información técnica y
+                legal sobre la propiedad. No pierda la oportunidad de invertir en calidad de vida.
+              </p>
+              <div class="space-y-6">
+                <div class="flex items-center gap-4">
+                  <span class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-primary">phone_in_talk</span>
+                  </span>
+                  <span class="text-lg font-bold">+54 9 351 665-8967</span>
+                </div>
+                <div class="flex items-center gap-4">
+                  <span class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-primary">mail</span>
+                  </span>
+                  <span class="text-lg font-bold">ventas@lagranjaresidencial.com.ar</span>
+                </div>
+              </div>
+            </div>
+            <div
+              class="bg-background-light dark:bg-slate-800 p-10 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-700">
+              <form class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label class="block text-sm font-bold mb-2 uppercase tracking-wide">Nombre</label>
+                    <input
+                      class="w-full bg-white dark:bg-slate-700 border-slate-200 dark:border-slate-600 rounded-lg p-3 focus:ring-primary focus:border-primary"
+                      placeholder="Ej: Juan Pérez" type="text" />
+                  </div>
+                  <div>
+                    <label class="block text-sm font-bold mb-2 uppercase tracking-wide">Email</label>
+                    <input
+                      class="w-full bg-white dark:bg-slate-700 border-slate-200 dark:border-slate-600 rounded-lg p-3 focus:ring-primary focus:border-primary"
+                      placeholder="email@ejemplo.com" type="email" />
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-sm font-bold mb-2 uppercase tracking-wide">Mensaje</label>
+                  <textarea
+                    class="w-full bg-white dark:bg-slate-700 border-slate-200 dark:border-slate-600 rounded-lg p-3 focus:ring-primary focus:border-primary"
+                    placeholder="Estoy interesado en..." rows="4"></textarea>
+                </div>
+                <button
+                  class="w-full bg-primary hover:bg-primary/90 text-slate-900 font-extrabold py-4 rounded-xl transition-all shadow-md">
+                  Enviar Consulta
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="bg-slate-900 text-white py-12">
+      <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+        <div class="flex items-center gap-3">
+          <span class="material-symbols-outlined text-primary text-3xl">landscape</span>
+          <h2 class="text-xl font-extrabold tracking-tight">La Granja <span class="text-primary">Residencial</span></h2>
+        </div>
+        <p class="text-slate-400 text-sm">© 2026 La Granja Residencial. Todos los derechos reservados. Córdoba,
+          Argentina.</p>
+        <div class="flex gap-6">
+          <a class="text-slate-400 hover:text-white transition-colors" href="#">Facebook</a>
+          <a class="text-slate-400 hover:text-white transition-colors" href="#">Instagram</a>
+          <a class="text-slate-400 hover:text-white transition-colors" href="#">LinkedIn</a>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- UBICACIÓN -->
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <section class="section section-dark">
-    <div class="container">
-      <div class="section-intro centered">
-        <span class="section-tag">Ubicación Privilegiada</span>
-        <h2 class="section-title">
-          Colinas de La Granja,<br class="hide-mobile"> <em>donde las sierras abrazan tu hogar.</em>
-        </h2>
-        <p class="section-desc">
-          La Granja, Departamento Colón, Provincia de Córdoba. A pocos kilómetros de la capital, pero en un entorno
-          serrano que te devuelve la paz que la ciudad te quitó. Naturaleza, tranquilidad y accesibilidad en un solo
-          lugar.
-        </p>
-      </div>
-      <div class="location-highlights">
-        <div class="loc-card">
-          <span class="loc-emoji">🏔️</span>
-          <h4>Sierras Chicas</h4>
-          <p>Paisaje serrano, aire puro y vistas panorámicas desde tu terraza mirador</p>
-        </div>
-        <div class="loc-card">
-          <span class="loc-emoji">🚗</span>
-          <h4>Conectividad</h4>
-          <p>Rápido acceso a Córdoba Capital por autopista y rutas consolidadas</p>
-        </div>
-        <div class="loc-card">
-          <span class="loc-emoji">🏫</span>
-          <h4>Servicios</h4>
-          <p>Colegios, comercios y servicios de salud en la zona</p>
-        </div>
-        <div class="loc-card">
-          <span class="loc-emoji">🛡️</span>
-          <h4>Seguridad</h4>
-          <p>Barrio residencial consolidado con vecinos permanentes</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- RESUMEN DE PROPIEDAD -->
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <section class="section section-summary">
-    <div class="container">
-      <div class="summary-grid">
-        <div class="summary-left">
-          <span class="section-tag tag-white">Resumen de la Propiedad</span>
-          <h2 class="summary-title">Todo lo que incluye<br>por <span class="price-inline">USD&nbsp;220.000</span></h2>
-          <p class="summary-desc">Una casa de 240&nbsp;m² cubiertos sobre un terreno de 2.831&nbsp;m² conformado por 4
-            lotes unificados. 16 años de antigüedad con mantenimiento impecable.</p>
-        </div>
-        <div class="summary-right">
-          <div class="summary-table">
-            <div class="st-row">
-              <span class="st-label">Tipo</span>
-              <span class="st-value">Casa — 2 plantas + terraza</span>
-            </div>
-            <div class="st-row">
-              <span class="st-label">Ubicación</span>
-              <span class="st-value">Colinas de La Granja, Depto. Colón, Córdoba</span>
-            </div>
-            <div class="st-row">
-              <span class="st-label">Superficie cubierta</span>
-              <span class="st-value">240 m² aprox.</span>
-            </div>
-            <div class="st-row">
-              <span class="st-label">Terreno</span>
-              <span class="st-value">2.831 m² (4 lotes)</span>
-            </div>
-            <div class="st-row">
-              <span class="st-label">Habitaciones</span>
-              <span class="st-value">5 (suite + 4 dormitorios)</span>
-            </div>
-            <div class="st-row">
-              <span class="st-label">Baños</span>
-              <span class="st-value">3 (en suite, completo, toilette)</span>
-            </div>
-            <div class="st-row">
-              <span class="st-label">Cochera</span>
-              <span class="st-value">Doble</span>
-            </div>
-            <div class="st-row">
-              <span class="st-label">Extras</span>
-              <span class="st-value">Piscina, deck, asador, horno a leña, pérgola</span>
-            </div>
-            <div class="st-row">
-              <span class="st-label">Antigüedad</span>
-              <span class="st-value">16 años</span>
-            </div>
-            <div class="st-row st-row-highlight">
-              <span class="st-label">Precio</span>
-              <span class="st-value">USD 220.000</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- GALERÍA DE PROPIEDADES -->
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <section id="galeria" class="section section-dark">
-    <div class="container">
-      <div class="section-intro centered">
-        <span class="section-tag">Recorrido Visual</span>
-        <h2 class="section-title">
-          Galería de Fotos,<br class="hide-mobile"> <em>conocé cada rincón antes de visitarla.</em>
-        </h2>
-        <p class="section-desc">
-          Estas son fotos reales de la propiedad. Sin filtros, sin renders. Lo que ves es exactamente lo que vas a
-          encontrar cuando vengas.
-        </p>
-      </div>
-      <div class="gallery-grid">
-        <div class="gallery-item gallery-item--wide" data-index="0">
-          <img src="imagenes/propiedad-01.jpg" alt="Vista general de la propiedad en Colinas de La Granja"
-            loading="lazy">
-          <div class="gallery-overlay">
-            <span class="gallery-zoom">🔍</span>
-          </div>
-        </div>
-        <div class="gallery-item" data-index="1">
-          <img src="imagenes/propiedad-02.jpg" alt="Interior de la casa — espacios amplios y luminosos" loading="lazy">
-          <div class="gallery-overlay">
-            <span class="gallery-zoom">🔍</span>
-          </div>
-        </div>
-        <div class="gallery-item" data-index="2">
-          <img src="imagenes/propiedad-03.jpg" alt="Habitaciones de la propiedad" loading="lazy">
-          <div class="gallery-overlay">
-            <span class="gallery-zoom">🔍</span>
-          </div>
-        </div>
-        <div class="gallery-item gallery-item--tall" data-index="3">
-          <img src="imagenes/propiedad-04.jpg" alt="Detalles del diseño interior" loading="lazy">
-          <div class="gallery-overlay">
-            <span class="gallery-zoom">🔍</span>
-          </div>
-        </div>
-        <div class="gallery-item gallery-item--wide" data-index="4">
-          <img src="imagenes/propiedad-05.jpg" alt="Vista panorámica HDR de la propiedad y entorno serrano"
-            loading="lazy">
-          <div class="gallery-overlay">
-            <span class="gallery-zoom">🔍</span>
-          </div>
-        </div>
-        <div class="gallery-item" data-index="5">
-          <img src="imagenes/propiedad-06.jpg" alt="Exteriores — deck y áreas al aire libre" loading="lazy">
-          <div class="gallery-overlay">
-            <span class="gallery-zoom">🔍</span>
-          </div>
-        </div>
-        <div class="gallery-item" data-index="6">
-          <img src="imagenes/propiedad-07.jpg" alt="Espacios exteriores — parque y vegetación" loading="lazy">
-          <div class="gallery-overlay">
-            <span class="gallery-zoom">🔍</span>
-          </div>
-        </div>
-        <div class="gallery-item gallery-item--tall" data-index="7">
-          <img src="imagenes/propiedad-08.jpg" alt="Zona de piscina y solárium" loading="lazy">
-          <div class="gallery-overlay">
-            <span class="gallery-zoom">🔍</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Lightbox Modal -->
-  <div id="lightbox" class="lightbox" aria-hidden="true">
-    <div class="lightbox-backdrop"></div>
-    <button class="lightbox-close" aria-label="Cerrar">&times;</button>
-    <button class="lightbox-prev" aria-label="Anterior">&#8249;</button>
-    <button class="lightbox-next" aria-label="Siguiente">&#8250;</button>
-    <div class="lightbox-content">
-      <img id="lightbox-img" src="" alt="">
-      <span class="lightbox-counter" id="lightbox-counter"></span>
-    </div>
+    </footer>
+    <a class="fixed bottom-8 right-8 z-50 bg-primary text-slate-900 font-extrabold px-6 py-4 rounded-full shadow-2xl flex items-center gap-2 hover:scale-105 transition-transform group"
+      href="#contacto">
+      <span class="material-symbols-outlined group-hover:rotate-12 transition-transform">calendar_month</span>
+      Programa un Tour
+    </a>
   </div>
-
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- CTA FINAL -->
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <section id="contacto" class="section section-cta">
-    <div class="container centered">
-      <span class="section-tag tag-white">¿Listo para dar el paso?</span>
-      <h2 class="cta-title">
-        Dejá de tirar plata en el alquiler.<br>
-        <em>Agendá una visita y conocé tu próximo hogar.</em>
-      </h2>
-      <p class="cta-desc">
-        Coordinamos una visita técnica sin compromiso. Te mostramos la propiedad, te entregamos la ficha técnica
-        completa y te asesoramos sobre tu situación financiera para que decidas con datos, no con incertidumbre.
-      </p>
-      <div class="cta-buttons">
-        <a href="https://wa.me/5493516658967?text=Hola%2C%20quiero%20agendar%20una%20visita%20a%20la%20casa%20de%20La%20Granja"
-          class="btn btn-whatsapp btn-lg" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" class="whatsapp-icon">
-            <path
-              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.981.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-          </svg>
-          Escribime por WhatsApp
-        </a>
-        <a href="tel:+5493516658967" class="btn btn-outline-white btn-lg">
-          📞 Llamar Ahora
-        </a>
-      </div>
-      <p class="cta-micro">Atención personalizada de lunes a sábado, 9 a 19 h. Sin compromiso.</p>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <!-- FOOTER -->
-  <!-- ═══════════════════════════════════════════════════════ -->
-  <footer class="footer">
-    <div class="container footer-inner">
-      <p class="footer-text">© 2026 — Servicio de intermediación inmobiliaria · Córdoba, Argentina</p>
-      <p class="footer-disclaimer">Las imágenes son ilustrativas. Superficies y medidas aproximadas sujetas a
-        verificación en plano. Precio en dólares estadounidenses sujeto a confirmación al momento de la operación.</p>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
 </body>
 
 </html>
