@@ -1,3 +1,36 @@
-# Agent config
+# === Agent config ===
 .agent/
 .gemini/
+.antigravity/
+
+# === Dependencies ===
+node_modules/
+package-lock.json
+
+# === Build / Output ===
+.next/
+dist/
+build/
+out/
+
+# === Multimedia pesado (no subir a Git) ===
+Multimedia/
+*.mp4
+*.mov
+*.avi
+*.psd
+*.ai
+
+# === OS ===
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# === Temp / Logs ===
+*.tmp
+*.log
+*.bak
+
+# === IDE ===
+.vscode/
+*.code-workspace
