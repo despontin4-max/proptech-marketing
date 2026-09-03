@@ -75,25 +75,15 @@ const DEFAULT_USERS: SheetUser[] = [
 ];
 
 export function getLocalUsers(): SheetUser[] {
-  if (fs.existsSync(USERS_JSON_PATH)) {
-    try {
-      const data = fs.readFileSync(USERS_JSON_PATH, 'utf-8');
-      return JSON.parse(data);
-    } catch (e) {
-      console.error('Error reading users.json', e);
-    }
-  }
-  // Initialize users.json if not exists
-  saveLocalUsers(DEFAULT_USERS);
+  // En Vercel no podemos usar fs.writeFileSync para persistencia real.
+  // Mantenemos los usuarios por defecto en memoria.
   return DEFAULT_USERS;
 }
 
 export function saveLocalUsers(users: SheetUser[]) {
-  try {
-    fs.writeFileSync(USERS_JSON_PATH, JSON.stringify(users, null, 2));
-  } catch (e) {
-    console.error('Error writing users.json', e);
-  }
+  // Desactivado temporalmente por incompatibilidad con Serverless.
+  // TODO: Implementar base de datos real (Supabase) o escribir en Google Sheets.
+  console.log('Intento de guardar usuarios interceptado.');
 }
 
 function findLocalMasterWorkbook(): any | null {
@@ -148,7 +138,8 @@ export async function getMasterClients(): Promise<ClientRecord[]> {
       try {
         const xlsx = require('xlsx');
         const gvizUrl = `https://docs.google.com/spreadsheets/d/${spreadsheetId}/gviz/tq?tqx=out:csv&gid=0`; // Por defecto, tab 1
-        const res = await fetch(gvizUrl, { cache: 'no-store' });
+        // Cachear 60 segundos para evitar Rate Limits y acelerar carga
+        const res = await fetch(gvizUrl, { next: { revalidate: 60 } });
         if (res.ok) {
           const csvText = await res.text();
           if (csvText && csvText.length > 50) {
