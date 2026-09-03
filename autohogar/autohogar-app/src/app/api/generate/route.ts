@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
-import { renderToFile } from '@react-pdf/renderer';
+import os from 'os';
+import { renderToStream } from '@react-pdf/renderer';
 import React from 'react';
 import { ReciboPDF } from '@/utils/pdfTemplate';
 import { getMasterClients, normalizeName, appendAuditLog } from '@/utils/googleSheets';
@@ -9,6 +10,25 @@ import { HEADER_IMAGE_BASE64 } from '@/utils/headerAsset';
 import { cookies } from 'next/headers';
 import { verifySession } from '@/utils/session';
 import { checkRateLimit } from '@/lib/rateLimit';
+
+function getOutputDir(): string {
+  const localPublic = path.join(process.cwd(), 'public', 'recibos');
+  try {
+    if (!fs.existsSync(/*turbopackIgnore: true*/ localPublic)) {
+      fs.mkdirSync(localPublic, { recursive: true });
+    }
+    const testFile = path.join(localPublic, '.write_test');
+    fs.writeFileSync(testFile, 'ok');
+    fs.unlinkSync(testFile);
+    return localPublic;
+  } catch {
+    const tmpRecibos = path.join(os.tmpdir(), 'recibos');
+    if (!fs.existsSync(/*turbopackIgnore: true*/ tmpRecibos)) {
+      fs.mkdirSync(tmpRecibos, { recursive: true });
+    }
+    return tmpRecibos;
+  }
+}
 
 export async function POST(request: Request) {
   try {
@@ -38,10 +58,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'No records provided' }, { status: 400 });
     }
 
-    const outputDir = path.join(process.cwd(), 'public', 'recibos');
-    if (!fs.existsSync(outputDir)) {
-      fs.mkdirSync(outputDir, { recursive: true });
-    }
+    const outputDir = getOutputDir();
 
     // 1. Load Master Database from Google Sheets
     const masterData = await getMasterClients();
@@ -90,12 +107,21 @@ export async function POST(request: Request) {
       };
 
       const fileName = `Recibo_${clientData.cod}_${String(clientData.soli).replace(/[^a-zA-Z0-9]/g, '_')}.pdf`;
-      const filePath = path.join(outputDir, fileName);
+      const filePath = path.join(/*turbopackIgnore: true*/ outputDir, fileName);
 
-      // Render PDF using @react-pdf/renderer
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const pdfComponent = React.createElement(ReciboPDF, { clientData, headerBase64 }) as any;
-      await renderToFile(pdfComponent, filePath);
+      // Render PDF using @react-pdf/renderer renderToStream
+      try {
+        const pdfComponent = React.createElement(ReciboPDF, { clientData, headerBase64 }) as any;
+        const stream = await renderToStream(pdfComponent);
+        const chunks: Buffer[] = [];
+        for await (const chunk of stream) {
+          chunks.push(typeof chunk === 'string' ? Buffer.from(chunk) : chunk);
+        }
+        const buffer = Buffer.concat(chunks);
+        fs.writeFileSync(filePath, buffer);
+      } catch (err) {
+        console.warn(`Could not write PDF to ${filePath}:`, err);
+      }
 
       // WhatsApp Link with direct public PDF URL
       const pdfPublicUrl = `${baseUrl}/recibos/${fileName}`;
