@@ -1,0 +1,763 @@
+1/22
+RESUMEN DE CUENTA
+AGRO INVERSIONES NOA S.A.
+CVU: 0000003100003035992355 33712208169	CUIT/ CUIL:
+Del 1 al 30 de abril de 2026	Periodo:
+Saldo inicial: $ 2.291.527,53 Entradas: $ 21.805.964,80
+Salidas: $ -21.205.017,36 Saldo final: $ 2.892.474,97
+DETALLE DE MOVIMIENTOS
+Fecha Descripción ID de la
+operación Valor Saldo
+01-04-2026
+Transferencia recibida
+MOTEDIT ALICIA DEL
+CARMEN
+152816971304 $ 248.500,00 $ 2.540.027,53
+01-04-2026 Transferencia recibida Analia
+Del Valle Montoya Rivero 152079971907 $ 79.520,00 $ 2.619.547,53
+01-04-2026 Transferencia recibida Juan
+Jose Jofre 152081114599 $ 54.670,00 $ 2.674.217,53
+01-04-2026 Transferencia recibida Jorge
+Luis Farias 152081154417 $ 99.400,00 $ 2.773.617,53
+01-04-2026 Liquidación de dinero 152085039559 $ 57.282,00 $ 2.830.899,53
+01-04-2026 Transferencia recibida Silvia
+Graciela Palacio 152828823560 $ 149.100,00 $ 2.979.999,53
+01-04-2026 Transferencia recibida Cesar
+Alejandro Sanchez 152864253568 $ 59.640,00 $ 3.039.639,53
+01-04-2026 Transferencia recibida JESICA
+KAREN LEPEZ RODRIG 152127259925 $ 59.640,00 $ 3.099.279,53
+01-04-2026 Transferencia recibida
+Hugogustavo Riveros 152135587089 $ 29.820,00 $ 3.129.099,53
+
+-- 1 of 22 --
+
+2/22
+Fecha Descripción ID de la
+operación Valor Saldo
+01-04-2026 Transferencia recibida
+CORREA ROBERTO ESTEBAN 152897984798 $ 198.800,00 $ 3.327.899,53
+01-04-2026 Transferencia recibida Silvina
+Dayana Jofre Funes 152166274391 $ 248.500,00 $ 3.576.399,53
+02-04-2026
+Transferencia recibida
+ORELLANO QUIROGA
+DEBORA CAREN
+152963674068 $ 298.200,00 $ 3.874.599,53
+02-04-2026 Transferencia enviada Sueldo
+Sosa Paula Belen 152228650385 $ -100.000,00 $ 3.774.599,53
+02-04-2026 Impuesto por extracción 152228650385 $ -600,00 $ 3.773.999,53
+02-04-2026 Transferencia recibida Pamela
+Lorena Caliva 152982432792 $ 59.640,00 $ 3.833.639,53
+02-04-2026 Transferencia recibida
+Fabiana Alejandra Villacorta 152323782173 $ 79.520,00 $ 3.913.159,53
+03-04-2026 Transferencia enviada
+Marcelo Ricardo Paz 152377566601 $ -50.300,00 $ 3.862.859,53
+03-04-2026 Transferencia recibida KAREN
+NURI ALALUF GODOY 152388688459 $ 79.520,00 $ 3.942.379,53
+04-04-2026 Transferencia recibida INGRID
+NICOLE SOLEDAD LAI 152493478643 $ 59.640,00 $ 4.002.019,53
+04-04-2026 Transferencia recibida Maria
+Elizabeth Rojas Grasso 152502050657 $ 59.640,00 $ 4.061.659,53
+05-04-2026 Transferencia recibida
+BARROS ZULEMA ENRIQUETA 152631584427 $ 149.100,00 $ 4.210.759,53
+05-04-2026 Transferencia recibida Viviana
+Graciela Poblete 153406800194 $ 79.520,00 $ 4.290.279,53
+
+-- 2 of 22 --
+
+3/22
+Fecha Descripción ID de la
+operación Valor Saldo
+05-04-2026 Pago Mercado Libre S R L -
+MLA MP 152669516335 $ -2.796,32 $ 4.287.483,21
+06-04-2026 Transferencia recibida Miguel
+Angel Altamirano 153457104858 $ 49.700,00 $ 4.337.183,21
+06-04-2026 Transferencia enviada
+Roberto Rudelli 153462573902 $ -1.100.000,00 $ 3.237.183,21
+06-04-2026 Impuesto por extracción 153462573902 $ -6.600,00 $ 3.230.583,21
+06-04-2026 Transferencia recibida
+Elizabeth Noemi Bustos 152731507433 $ 79.520,00 $ 3.310.103,21
+06-04-2026 Transferencia enviada Sueldo
+Sosa Paula Belen 153474460016 $ -300.000,00 $ 3.010.103,21
+06-04-2026 Impuesto por extracción 153474460016 $ -1.800,00 $ 3.008.303,21
+06-04-2026 Transferencia recibida
+Fabiana Andrea Ruiz 152734886287 $ 59.640,00 $ 3.067.943,21
+06-04-2026
+Transferencia recibida
+SANCHEZ LOBOS AGOSTINA
+DEL VALLE
+152736812961 $ 298.200,00 $ 3.366.143,21
+06-04-2026 Transferencia recibida
+MARCELO ROBERTO GARAY 152747901283 $ 139.160,00 $ 3.505.303,21
+06-04-2026 Transferencia recibida
+MADRID HECTOR NICOLAS 152748992681 $ 497.000,00 $ 4.002.303,21
+06-04-2026
+Transferencia recibida
+MERCADO RECABARREN
+MARIO CESAR
+153493399972 $ 59.640,00 $ 4.061.943,21
+06-04-2026 Transferencia recibida Ricardo
+Ramon Alcaraz 153495424806 $ 29.820,00 $ 4.091.763,21
+
+-- 3 of 22 --
+
+4/22
+Fecha Descripción ID de la
+operación Valor Saldo
+06-04-2026 Transferencia recibida MARIA
+CAROLINA LORENZO DIAZ 152753846303 $ 298.200,00 $ 4.389.963,21
+06-04-2026 Transferencia recibida
+SANTANA ANIBAL SEFERINO 153509937204 $ 59.640,00 $ 4.449.603,21
+06-04-2026 Liquidación de dinero 153513862338 $ 58.662,00 $ 4.508.265,21
+06-04-2026 Transferencia recibida Daniel
+Javier Robledo 153517276266 $ 99.400,00 $ 4.607.665,21
+06-04-2026
+Transferencia recibida
+TORRES VEDOYA PABLO
+EZEQUIEL
+153528400034 $ 74.550,00 $ 4.682.215,21
+06-04-2026 Transferencia recibida Juan
+Jesus Vargas Cabaña 153565705442 $ 178.920,00 $ 4.861.135,21
+07-04-2026
+Transferencia recibida
+caterina stefania tapia
+gonzalez
+152880715721 $ 64.610,00 $ 4.925.745,21
+07-04-2026 Transferencia recibida
+Elizabet Idalina Almazan 153629672412 $ 34.790,00 $ 4.960.535,21
+07-04-2026 Transferencia recibida Romina
+Eliana Martinez 153631596656 $ 119.280,00 $ 5.079.815,21
+07-04-2026 Transferencia recibida Manuel
+Alfredo Cepeda 152889675137 $ 298.200,00 $ 5.378.015,21
+07-04-2026 Transferencia recibida
+Gustavo Matias Luna Peña 152901103361 $ 99.400,00 $ 5.477.415,21
+07-04-2026
+Transferencia recibida
+DAIANA MICAELA ROJAS
+VIDELA
+153656221472 $ 1.988,00 $ 5.479.403,21
+07-04-2026 Transferencia recibida
+German Alejandro Casadevall 152920087079 $ 59.640,00 $ 5.539.043,21
+
+-- 4 of 22 --
+
+5/22
+Fecha Descripción ID de la
+operación Valor Saldo
+07-04-2026 Transferencia recibida Edgar
+Ariel Andrada 153668736354 $ 149.100,00 $ 5.688.143,21
+07-04-2026 Transferencia recibida Laura
+Edith Elizondo 152965795823 $ 99.400,00 $ 5.787.543,21
+07-04-2026 Transferencia recibida
+Antonio Nicolas Guevara 153709976642 $ 39.760,00 $ 5.827.303,21
+07-04-2026 Transferencia recibida Angel
+Sebastian Alameda 152970663087 $ 59.640,00 $ 5.886.943,21
+08-04-2026 Transferencia enviada
+Roberto Fabio Rudelli 153029491899 $ -1.006.000,00 $ 4.880.943,21
+08-04-2026 Transferencia recibida Juana
+Beatriz Siman 153789928052 $ 198.800,00 $ 5.079.743,21
+08-04-2026 Transferencia recibida Lucio
+Alejandro Cardozo 153062645191 $ 59.640,00 $ 5.139.383,21
+08-04-2026 Liquidación de dinero 153810344760 $ 143.205,00 $ 5.282.588,21
+08-04-2026 Transferencia enviada Maria
+Florencia Branciforti 153068016833 $ -1.106.600,00 $ 4.175.988,21
+08-04-2026 Transferencia enviada
+LicMullerP 153068073505 $ -1.006.000,00 $ 3.169.988,21
+08-04-2026 Transferencia enviada Mariela
+Anahi Sosa Robledo 153811602842 $ -1.500.000,00 $ 1.669.988,21
+08-04-2026 Impuesto por extracción 153811602842 $ -9.000,00 $ 1.660.988,21
+08-04-2026 Transferencia enviada
+Eduardo 153812130522 $ -1.509.000,00 $ 151.988,21
+08-04-2026 Transferencia recibida Victor
+Barboza 153095477935 $ 59.640,00 $ 211.628,21
+
+-- 5 of 22 --
+
+6/22
+Fecha Descripción ID de la
+operación Valor Saldo
+08-04-2026
+Transferencia recibida
+GENTILI CHIRINO SABRINA
+ANABELA
+153846156176 $ 59.640,00 $ 271.268,21
+08-04-2026 Transferencia recibida PEREZ
+JOSE ISMAE 153121426861 $ 59.640,00 $ 330.908,21
+08-04-2026 Transferencia recibida Walter
+Alexis Castillo 153866600656 $ 149.100,00 $ 480.008,21
+08-04-2026 Transferencia enviada Daiana
+Micaela Rojas Videla 153124376527 $ -2.000,00 $ 478.008,21
+08-04-2026 Impuesto por extracción 153124376527 $ -12,00 $ 477.996,21
+08-04-2026 Transferencia recibida Claudia
+Silvana Morales 153132566971 $ 99.400,00 $ 577.396,21
+08-04-2026 Transferencia recibida Valeria
+Vanesa Bueno 153877859558 $ 29.820,00 $ 607.216,21
+08-04-2026 Transferencia recibida Estela
+Nancy Narvaez 153133946389 $ 59.640,00 $ 666.856,21
+08-04-2026
+Transferencia recibida
+GUAYQUINCHAY FLAVIA
+GISELLE
+153153714503 $ 248.500,00 $ 915.356,21
+09-04-2026 Liquidación de dinero 153815640402 $ 49.109,50 $ 964.465,71
+09-04-2026 Transferencia recibida SILVIA
+DEL VALLE ESCUDERO 153960838260 $ 248.500,00 $ 1.212.965,71
+09-04-2026 Transferencia recibida
+Carmen Beatriz Moran Alvarez 153216629907 $ 59.640,00 $ 1.272.605,71
+09-04-2026 Liquidación de dinero 153221924817 $ 286.410,00 $ 1.559.015,71
+
+-- 6 of 22 --
+
+7/22
+Fecha Descripción ID de la
+operación Valor Saldo
+09-04-2026 Transferencia recibida
+ESPINA MARCELA ROXANA 153228564123 $ 198.800,00 $ 1.757.815,71
+09-04-2026 Transferencia recibida
+MU#OZ LAURA ANDREA 153237036595 $ 99.400,00 $ 1.857.215,71
+09-04-2026
+Transferencia recibida
+Mauricio Alejandro Marin
+Farias
+153238407117 $ 99.400,00 $ 1.956.615,71
+09-04-2026 Transferencia recibida
+FERNANDO EMANUEL BAZAN 153989238954 $ 198.800,00 $ 2.155.415,71
+09-04-2026 Transferencia recibida Marine
+Yasmin Chavez 153245887947 $ 59.640,00 $ 2.215.055,71
+09-04-2026 Transferencia recibida
+CARLOS VERGARA 153254435915 $ 298.200,00 $ 2.513.255,71
+09-04-2026 Transferencia enviada
+LicMullerP 153261772055 $ -1.006.000,00 $ 1.507.255,71
+09-04-2026 Transferencia enviada
+Eduardo 154007167170 $ -1.006.000,00 $ 501.255,71
+09-04-2026 Transferencia enviada Mariela
+Anahi Sosa Robledo 153281365339 $ -493.800,00 $ 7.455,71
+09-04-2026 Impuesto por extracción 153281365339 $ -2.962,80 $ 4.492,91
+09-04-2026 Transferencia recibida Cristian
+Fernando Castro 154043153216 $ 39.760,00 $ 44.252,91
+09-04-2026 Transferencia recibida
+Mauricio Daniel Paz 154066210738 $ 35.784,00 $ 80.036,91
+09-04-2026 Transferencia recibida PAULA
+ROSANA GABRIELA PER 154076294352 $ 59.640,00 $ 139.676,91
+
+-- 7 of 22 --
+
+8/22
+Fecha Descripción ID de la
+operación Valor Saldo
+10-04-2026 Transferencia recibida
+Rodrigo Nicolas Cilia 154120655572 $ 298.200,00 $ 437.876,91
+10-04-2026 Liquidación de dinero 153388085125 $ 59.059,20 $ 496.936,11
+10-04-2026
+Transferencia recibida
+MALDONADO, NELLY
+LEONOR
+153395759337 $ 99.400,00 $ 596.336,11
+10-04-2026 Transferencia recibida Celina
+Inés Cortez Elizondo 153402265713 $ 89.460,00 $ 685.796,11
+10-04-2026 Transferencia recibida
+Lourdes Del Bianchi Almazan 153410029487 $ 64.610,00 $ 750.406,11
+10-04-2026 Transferencia recibida Oscar
+Emilio Diaz 153417109067 $ 99.400,00 $ 849.806,11
+10-04-2026 Transferencia recibida Claudia
+Carolina Fernandez 154163293010 $ 198.800,00 $ 1.048.606,11
+10-04-2026 Transferencia recibida Zulma
+Esther Caliva 153428878469 $ 79.520,00 $ 1.128.126,11
+10-04-2026 Transferencia recibida Diego
+Martin Machuca 154205386036 $ 64.610,00 $ 1.192.736,11
+10-04-2026 Transferencia recibida
+MARTINEZ CHRISTIAN IVAN 154211154250 $ 119.280,00 $ 1.312.016,11
+10-04-2026
+Transferencia recibida
+Federico Javier Sanchez
+Adarvez
+153479560305 $ 74.550,00 $ 1.386.566,11
+10-04-2026 Transferencia recibida
+VIVIANA ALEJANDRA ROJAS 154227891406 $ 99.400,00 $ 1.485.966,11
+10-04-2026 Transferencia recibida roberto
+sebastian tobares 153485730519 $ 149.100,00 $ 1.635.066,11
+
+-- 8 of 22 --
+
+9/22
+Fecha Descripción ID de la
+operación Valor Saldo
+11-04-2026 Transferencia recibida Danisa
+Angeles Valdez 154273550846 $ 29.820,00 $ 1.664.886,11
+11-04-2026
+Transferencia recibida
+CASTRO FLORES DANIELA
+SOLANGE
+153529872047 $ 39.760,00 $ 1.704.646,11
+11-04-2026 Transferencia enviada Ramos,
+Nelida Mirta 154281107302 $ -1.635.368,00 $ 69.278,11
+11-04-2026 Impuesto por extracción 154281107302 $ -9.812,21 $ 59.465,90
+11-04-2026 Transferencia recibida Jorge
+Ivan Arancibia Gallardo 154300057810 $ 29.820,00 $ 89.285,90
+11-04-2026 Transferencia recibida LOPEZ
+LUCIANA DEL VALLE 154306462584 $ 59.640,00 $ 148.925,90
+12-04-2026 Transferencia recibida Rocío
+Selva Sosa 153738933955 $ 49.700,00 $ 198.625,90
+13-04-2026 Transferencia recibida Maria
+Laura Sosa 154553507858 $ 59.640,00 $ 258.265,90
+13-04-2026 Transferencia recibida
+Alejandro Maximiliano Perez 154555916084 $ 59.640,00 $ 317.905,90
+13-04-2026
+Transferencia recibida
+MARCELA VERONICA
+GONZALEZ
+153810324017 $ 59.640,00 $ 377.545,90
+13-04-2026 Transferencia recibida Hugo
+Ariel Paredes 154565276410 $ 64.610,00 $ 442.155,90
+13-04-2026 Transferencia recibida Cecilia
+Cristina Olmo 153821386525 $ 79.520,00 $ 521.675,90
+13-04-2026 Transferencia enviada
+LicMullerP 154571654998 $ -251.500,00 $ 270.175,90
+
+-- 9 of 22 --
+
+10/22
+Fecha Descripción ID de la
+operación Valor Saldo
+13-04-2026 Transferencia recibida Analia
+Veronica Andari 154571742614 $ 79.520,00 $ 349.695,90
+13-04-2026 Transferencia recibida
+Fernando Exequiel Delgado 154585948480 $ 54.670,00 $ 404.365,90
+13-04-2026 Transferencia recibida
+Gerardo Javier Quinteros 154591581186 $ 298.200,00 $ 702.565,90
+13-04-2026
+Transferencia recibida
+Francisco Javier Pereyra
+Santibañez
+154623872856 $ 14.910,00 $ 717.475,90
+13-04-2026 Transferencia recibida
+QUIROGA, DIEGO ALEXI 154626670924 $ 149.100,00 $ 866.575,90
+13-04-2026
+Transferencia recibida
+Micaela Belén Ocampo
+Rodriguez
+154638478772 $ 99.400,00 $ 965.975,90
+13-04-2026 Transferencia recibida VIDELA
+EDGARDO ORLANDO 154643663642 $ 119.280,00 $ 1.085.255,90
+14-04-2026 Transferencia recibida
+Ernesto Fabian Diaz 153947624403 $ 59.640,00 $ 1.144.895,90
+14-04-2026 Transferencia recibida Andrea
+Rosana Martinez Benavidez 154704412242 $ 59.640,00 $ 1.204.535,90
+14-04-2026 Transferencia recibida
+Dominga Noemi Molina 153955255759 $ 59.640,00 $ 1.264.175,90
+14-04-2026 Transferencia recibida Liliana
+Vanesa Gomez 154708216244 $ 149.100,00 $ 1.413.275,90
+14-04-2026 Liquidación de dinero 154738389610 $ 62.055,50 $ 1.475.331,40
+14-04-2026 Transferencia enviada
+Eduardo Javier Marun 153995416101 $ -500.000,00 $ 975.331,40
+
+-- 10 of 22 --
+
+11/22
+Fecha Descripción ID de la
+operación Valor Saldo
+14-04-2026 Impuesto por extracción 153995416101 $ -3.000,00 $ 972.331,40
+14-04-2026 Transferencia recibida MARIA
+EUGENIA CASTRO 154750422034 $ 198.800,00 $ 1.171.131,40
+14-04-2026
+Transferencia recibida
+CARDOZO MIRANDA PAOLA
+VA
+154015817953 $ 59.640,00 $ 1.230.771,40
+14-04-2026 Transferencia recibida Romina
+Alejandra Espinoza 154774044296 $ 49.700,00 $ 1.280.471,40
+14-04-2026 Transferencia recibida Roxana
+Eliana Diaz Diaz 154031433415 $ 69.580,00 $ 1.350.051,40
+14-04-2026 Transferencia recibida Lucia
+Nilda Vazquez 154045274639 $ 59.640,00 $ 1.409.691,40
+14-04-2026 Transferencia recibida Silvana
+Romina Marquez 154045402833 $ 64.610,00 $ 1.474.301,40
+14-04-2026 Pago con QR DISTRIBUIDORA
+GAS CUYANA 154048253579 $ -4.006,85 $ 1.470.294,55
+14-04-2026 Impuesto por extracción 154048253579 $ -24,04 $ 1.470.270,51
+14-04-2026 Pago de servicio Movistar
+Hogar 154800286454 $ -62.877,21 $ 1.407.393,30
+14-04-2026 Pago con QR OBRA
+SANITARIA SOCIED 154799773040 $ -34.905,17 $ 1.372.488,13
+14-04-2026 Impuesto por extracción 154799773040 $ -209,43 $ 1.372.278,70
+14-04-2026 Pago NATURGY SAN JUAN S.
+A. 154050352145 $ -123.577,38 $ 1.248.701,32
+14-04-2026 Transferencia recibida Noelia
+Jaquelina Montenegro Durand 154809225990 $ 54.670,00 $ 1.303.371,32
+
+-- 11 of 22 --
+
+12/22
+Fecha Descripción ID de la
+operación Valor Saldo
+14-04-2026 Transferencia recibida Maria
+Luisa Ochoa 154059172771 $ 59.640,00 $ 1.363.011,32
+15-04-2026 Transferencia recibida
+Eduardo Hernan Carbajal 154100467625 $ 149.100,00 $ 1.512.111,32
+15-04-2026 Transferencia recibida
+Alexandra Vanesa Espejo 154860687148 $ 59.640,00 $ 1.571.751,32
+15-04-2026 Transferencia recibida
+MONICA PATRICIA VILLALA 154111937517 $ 99.400,00 $ 1.671.151,32
+15-04-2026 Transferencia recibida JUANA
+BEATRIZ CORTEZ 154868410920 $ 99.400,00 $ 1.770.551,32
+15-04-2026 Transferencia recibida Diego
+Andres Ormeño 154130911053 $ 79.520,00 $ 1.850.071,32
+15-04-2026 Transferencia recibida Julieta
+Agata Landa Muñoz 154148475223 $ 298.200,00 $ 2.148.271,32
+15-04-2026 Transferencia recibida Raquel
+Evangelina Rojas 154154417381 $ 29.820,00 $ 2.178.091,32
+15-04-2026 Transferencia recibida Romina
+Beatriz Santana 154917600632 $ 258.440,00 $ 2.436.531,32
+15-04-2026 Liquidación de dinero 154017789181 $ 53.574,00 $ 2.490.105,32
+15-04-2026 Transferencia recibida Rosa
+Nelida Vargas 154984799996 $ 9.940,00 $ 2.500.045,32
+16-04-2026 Transferencia enviada Agro
+Inversiones Noa Sa 154999507920 $ -550.000,00 $ 1.950.045,32
+16-04-2026 Transferencia enviada Alonso
+Eduardo Rafael 154300491725 $ -1.026.640,00 $ 923.405,32
+16-04-2026 Impuesto por extracción 154300491725 $ -6.159,84 $ 917.245,48
+
+-- 12 of 22 --
+
+13/22
+Fecha Descripción ID de la
+operación Valor Saldo
+16-04-2026 Transferencia recibida Elisa
+Natalia Lopez Aguilera 155055371474 $ 39.760,00 $ 957.005,48
+16-04-2026 Transferencia recibida Rosana
+Elizabeth Pereyra 155073259604 $ 99.400,00 $ 1.056.405,48
+16-04-2026 Transferencia recibida Renzo
+Emanuel Chiffel Cardozo 155098312944 $ 59.640,00 $ 1.116.045,48
+17-04-2026 Liquidación de dinero 154870850552 $ 89.290,00 $ 1.205.335,48
+17-04-2026 Transferencia recibida Johana
+Soledad Garon Vega 155215856472 $ 49.700,00 $ 1.255.035,48
+17-04-2026 Transferencia enviada Mariela
+Anahi Sosa Robledo 155238150736 $ -271.815,00 $ 983.220,48
+17-04-2026 Impuesto por extracción 155238150736 $ -1.630,89 $ 981.589,59
+17-04-2026 Transferencia recibida
+PAREDES MIRIAM DEL VALLE 155255477906 $ 198.800,00 $ 1.180.389,59
+17-04-2026 Transferencia recibida Gisella
+Anahi Pujado Villalobo 154502499883 $ 29.820,00 $ 1.210.209,59
+17-04-2026 Transferencia recibida
+MOLINA AGUERO, AYELE 155266045316 $ 29.820,00 $ 1.240.029,59
+17-04-2026 Transferencia recibida Paola
+Çgisel Espejo 155276178798 $ 29.820,00 $ 1.269.849,59
+18-04-2026 Transferencia recibida Oscar
+Antonio Morales 155339866238 $ 49.700,00 $ 1.319.549,59
+18-04-2026 Transferencia recibida Elvio
+Arnaldo Lara 155405876746 $ 59.640,00 $ 1.379.189,59
+20-04-2026 Transferencia recibida Noelia
+Gissel Navarro 154844663073 $ 99.400,00 $ 1.478.589,59
+
+-- 13 of 22 --
+
+14/22
+Fecha Descripción ID de la
+operación Valor Saldo
+20-04-2026 Transferencia recibida
+CONDE JESICA ALEJANDRA 155611764826 $ 99.400,00 $ 1.577.989,59
+20-04-2026 Transferencia recibida
+Leandro Miguel Tejada 155612501368 $ 39.760,00 $ 1.617.749,59
+20-04-2026 Transferencia recibida Rocio
+Belen Herrera 155614261016 $ 74.550,00 $ 1.692.299,59
+20-04-2026 Transferencia recibida
+BRIZUELA MERCEDES DEOLIN 155614573886 $ 99.400,00 $ 1.791.699,59
+20-04-2026 Transferencia recibida
+CARRASCO NATALIA JUDITH 154861854863 $ 99.400,00 $ 1.891.099,59
+20-04-2026 Transferencia recibida Mariela
+Benita Perez 155620063702 $ 79.520,00 $ 1.970.619,59
+20-04-2026 Transferencia enviada
+LicMullerP 154864754011 $ -201.200,00 $ 1.769.419,59
+20-04-2026 Transferencia recibida ALICIA
+/ADRIANA MUNOZ 154866908743 $ 59.640,00 $ 1.829.059,59
+20-04-2026 Transferencia recibida Yesica
+Tamara Arias 155625089770 $ 39.760,00 $ 1.868.819,59
+20-04-2026 Transferencia recibida Natalia
+Lorena Saire 155627884536 $ 59.640,00 $ 1.928.459,59
+20-04-2026 Transferencia recibida Sol
+Melina Aragón 155633960584 $ 99.400,00 $ 2.027.859,59
+20-04-2026 Transferencia recibida
+Eduardo Alexis Luna 154895180871 $ 29.820,00 $ 2.057.679,59
+20-04-2026 Transferencia recibida FIDEL
+CHOQUE AGUILAR 155651554656 $ 248.500,00 $ 2.306.179,59
+
+-- 14 of 22 --
+
+15/22
+Fecha Descripción ID de la
+operación Valor Saldo
+20-04-2026 Transferencia recibida Jesica
+Castro 155666673068 $ 99.400,00 $ 2.405.579,59
+20-04-2026 Transferencia recibida LOPEZ
+NORBERTO 154933903203 $ 59.640,00 $ 2.465.219,59
+20-04-2026 Transferencia recibida KAREN
+NURI ALALUF GODOY 154955119515 $ 87.472,00 $ 2.552.691,59
+20-04-2026
+Transferencia recibida
+ANDRES ESPINDOLA
+WALTER DARIO
+155724207496 $ 54.670,00 $ 2.607.361,59
+21-04-2026 Transferencia enviada
+Roberto Rudelli 154992833215 $ -2.000.000,00 $ 607.361,59
+21-04-2026 Impuesto por extracción 154992833215 $ -12.000,00 $ 595.361,59
+21-04-2026
+Transferencia recibida
+VICTORIA CAROLINA
+FERNAND
+155766994424 $ 64.610,00 $ 659.971,59
+21-04-2026 Transferencia recibida
+Arnaldo Miguel Pino 155780147706 $ 64.610,00 $ 724.581,59
+21-04-2026 Transferencia recibida
+Leonardo Matias Gomez 155781214770 $ 59.640,00 $ 784.221,59
+21-04-2026 Transferencia recibida Erica
+Debora Ochoa 155785740994 $ 39.760,00 $ 823.981,59
+21-04-2026 Transferencia recibida Cesar
+Armando Tello Davila 155789933272 $ 69.580,00 $ 893.561,59
+21-04-2026 Transferencia recibida Nancy
+Daniela Rojas 155791851148 $ 159.040,00 $ 1.052.601,59
+21-04-2026 Transferencia recibida Maria
+Olga Luna 155041728429 $ 21.868,00 $ 1.074.469,59
+
+-- 15 of 22 --
+
+16/22
+Fecha Descripción ID de la
+operación Valor Saldo
+21-04-2026 Transferencia recibida Merly
+Samame Alarcon 155065831433 $ 59.640,00 $ 1.134.109,59
+21-04-2026 Transferencia recibida Jesus
+Omar Contreras Ortiz 155829139564 $ 59.640,00 $ 1.193.749,59
+22-04-2026 Transferencia recibida Paola
+Andrea Molina 155910806816 $ 59.640,00 $ 1.253.389,59
+22-04-2026
+Transferencia recibida
+Rodrigo Javier Gonzalez
+Gutierrez
+155922691498 $ 99.400,00 $ 1.352.789,59
+22-04-2026 Transferencia recibida DIAZ
+MIGUEL ANGEL 155261475591 $ 59.640,00 $ 1.412.429,59
+23-04-2026 Transferencia recibida
+Barbara Manrique 155313194553 $ 298.200,00 $ 1.710.629,59
+23-04-2026 Transferencia recibida Laura
+Susana Alegre 156077864550 $ 29.820,00 $ 1.740.449,59
+23-04-2026 Transferencia recibida Mario
+Santiago Elizondo 156130649996 $ 69.580,00 $ 1.810.029,59
+24-04-2026 Transferencia recibida Raul
+Alberto Zalazar 155462383903 $ 49.700,00 $ 1.859.729,59
+24-04-2026 Transferencia recibida
+CONDE JESICA ALEJANDRA 155512641389 $ 61.628,00 $ 1.921.357,59
+24-04-2026 Transferencia recibida Mario
+Javier Paez 156279600958 $ 49.700,00 $ 1.971.057,59
+24-04-2026 Transferencia recibida
+Leonardo Francisco Mercado 156282934552 $ 59.640,00 $ 2.030.697,59
+24-04-2026 Transferencia recibida INES
+CAROLINA CRUZ 156285096350 $ 49.700,00 $ 2.080.397,59
+
+-- 16 of 22 --
+
+17/22
+Fecha Descripción ID de la
+operación Valor Saldo
+24-04-2026 Liquidación de dinero 155527892631 $ 18.358,00 $ 2.098.755,59
+24-04-2026 Transferencia recibida G/O
+REINOSO MARIN 155535108635 $ 159.040,00 $ 2.257.795,59
+25-04-2026 Transferencia recibida Celia
+Marcela Villafane 155599564919 $ 39.760,00 $ 2.297.555,59
+27-04-2026 Transferencia recibida
+Dominga Manuela Tello 155875547923 $ 44.730,00 $ 2.342.285,59
+27-04-2026 Transferencia enviada
+Roberto Rudelli 155884009427 $ -1.448.000,00 $ 894.285,59
+27-04-2026 Impuesto por extracción 155884009427 $ -8.688,00 $ 885.597,59
+27-04-2026 Transferencia recibida Reina
+Mary Mallea 155884900907 $ 79.520,00 $ 965.117,59
+27-04-2026 Pago Municipalidad de la
+Ciudad de San Juan 156651242048 $ -47.955,22 $ 917.162,37
+27-04-2026 Transferencia recibida Hector
+Ariel Arabena 155922239407 $ 59.640,00 $ 976.802,37
+27-04-2026 Transferencia recibida ELVIA
+MATILDE ESPINOZA SALAS 155929816559 $ 59.640,00 $ 1.036.442,37
+27-04-2026 Transferencia recibida Diego
+Armando Ogaz 156696161764 $ 29.820,00 $ 1.066.262,37
+28-04-2026 Transferencia recibida
+Candela Marilín Lopez Chavez 156731300352 $ 54.670,00 $ 1.120.932,37
+28-04-2026 Transferencia enviada
+Roberto Rudelli 155991885733 $ -1.087.000,00 $ 33.932,37
+28-04-2026 Impuesto por extracción 155991885733 $ -6.522,00 $ 27.410,37
+
+-- 17 of 22 --
+
+18/22
+Fecha Descripción ID de la
+operación Valor Saldo
+28-04-2026 Transferencia recibida
+Facundo Andres Puga Cortez 156792894936 $ 99.400,00 $ 126.810,37
+28-04-2026 Transferencia recibida Ariel
+Leonardo Fernandez 156041700795 $ 59.640,00 $ 186.450,37
+28-04-2026 Transferencia recibida iliana
+yael paez 156042811031 $ 99.400,00 $ 285.850,37
+28-04-2026 Liquidación de dinero 156068335887 $ 26.787,00 $ 312.637,37
+28-04-2026 Transferencia recibida
+CONDE JESICA ALEJANDRA 156105201405 $ 37.772,00 $ 350.409,37
+29-04-2026 Transferencia recibida
+MOnica De la 156911267044 $ 149.100,00 $ 499.509,37
+29-04-2026 Transferencia recibida Liliana
+Celia Sanchez Garcia 156919652542 $ 29.820,00 $ 529.329,37
+29-04-2026 Transferencia recibida KAREN
+NURI ALALUF GODOY 156156963941 $ 135.676,03 $ 665.005,40
+29-04-2026 Transferencia recibida Lidia
+Mariana Mendez Balmaceda 156169077683 $ 59.640,00 $ 724.645,40
+29-04-2026 Transferencia recibida Mario
+Marti 156198594299 $ 198.800,00 $ 923.445,40
+29-04-2026 Transferencia recibida Laura
+Beatriz Robledo 156973196848 $ 198.800,00 $ 1.122.245,40
+29-04-2026 Transferencia recibida
+GOMEZ EDITH JORGELINA 156989864976 $ 59.640,00 $ 1.181.885,40
+29-04-2026 Transferencia recibida
+Marianela Janet Nunxxez 156234847909 $ 29.820,00 $ 1.211.705,40
+29-04-2026 Transferencia recibida Claudia
+Silvana Morales 156250252493 $ 99.400,00 $ 1.311.105,40
+
+-- 18 of 22 --
+
+19/22
+Fecha Descripción ID de la
+operación Valor Saldo
+29-04-2026
+Transferencia recibida
+GERMAN OMAR SORIA
+PALACIO
+156256522583 $ 69.580,00 $ 1.380.685,40
+30-04-2026 Transferencia recibida Nélida
+Trinidad Gasque 156283757143 $ 79.520,00 $ 1.460.205,40
+30-04-2026 Transferencia recibida Gabriel
+David Palomar Gomez 157047747504 $ 298.200,00 $ 1.758.405,40
+30-04-2026 Transferencia recibida Gabriel
+David Palomar Gomez 157048055316 $ 298.200,00 $ 2.056.605,40
+30-04-2026 Transferencia recibida Rufa 157055790800 $ 198.800,00 $ 2.255.405,40
+30-04-2026 Transferencia recibida Ana
+Lorena Escuela 156295912079 $ 79.520,00 $ 2.334.925,40
+30-04-2026 Transferencia recibida Elda
+Vanessa Gutierrez Atencio 156298132113 $ 99.400,00 $ 2.434.325,40
+30-04-2026 Transferencia recibida Fabian
+Alejandro Cerda 157073382354 $ 59.640,00 $ 2.493.965,40
+30-04-2026
+Transferencia recibida
+Gabriela Celeste Fernandez
+Goria
+156312252181 $ 34.790,00 $ 2.528.755,40
+30-04-2026 Transferencia recibida Rosa
+Del Jesus Ortega 157076406480 $ 69.580,00 $ 2.598.335,40
+30-04-2026 Transferencia enviada Reta
+Veronica Paola 156316376651 $ -94.600,00 $ 2.503.735,40
+30-04-2026 Impuesto por extracción 156316376651 $ -567,60 $ 2.503.167,80
+30-04-2026 Transferencia enviada
+Dominguez Miriam Edi 157080734694 $ -276.000,00 $ 2.227.167,80
+
+-- 19 of 22 --
+
+20/22
+Fecha Descripción ID de la
+operación Valor Saldo
+30-04-2026 Impuesto por extracción 157080734694 $ -1.656,00 $ 2.225.511,80
+30-04-2026 Transferencia recibida Cintia
+Paola Sanz 156318136087 $ 59.640,00 $ 2.285.151,80
+30-04-2026 Transferencia enviada Ortiz
+Gladys Vanesa 157081005712 $ -225.500,00 $ 2.059.651,80
+30-04-2026 Impuesto por extracción 157081005712 $ -1.353,00 $ 2.058.298,80
+30-04-2026 Transferencia enviada Tania
+Daniela Chaves 156319279801 $ -171.824,80 $ 1.886.474,00
+30-04-2026 Transferencia enviada Yamila
+Yael Bueno 156320300973 $ -199.188,00 $ 1.687.286,00
+30-04-2026 Transferencia recibida
+SUSANA ELIZABETH ALCANIS 157083987390 $ 39.760,00 $ 1.727.046,00
+30-04-2026 Transferencia recibida Valeria
+Ivana Paez Gomez 157084082020 $ 129.220,00 $ 1.856.266,00
+30-04-2026
+Transferencia enviada
+Barrionuevo Ricardo
+Emmanuel
+157083815268 $ -285.600,00 $ 1.570.666,00
+30-04-2026 Impuesto por extracción 157083815268 $ -1.713,60 $ 1.568.952,40
+30-04-2026 Transferencia enviada Silvia
+Edith Barrionuevo 156321445573 $ -344.052,00 $ 1.224.900,40
+30-04-2026 Transferencia recibida
+SUSANA ELIZABETH ALCANIS 156324079313 $ 99.400,00 $ 1.324.300,40
+30-04-2026 Transferencia enviada Mariela
+Anahi Sosa Robledo 157091162408 $ -100.000,00 $ 1.224.300,40
+30-04-2026 Impuesto por extracción 157091162408 $ -600,00 $ 1.223.700,40
+
+-- 20 of 22 --
+
+21/22
+Fecha Descripción ID de la
+operación Valor Saldo
+30-04-2026 Transferencia recibida Maria
+Olga Luna 157104098224 $ 27.832,00 $ 1.251.532,40
+30-04-2026 Transferencia recibida Elisa
+Valeria Olivera 157106149620 $ 29.820,00 $ 1.281.352,40
+30-04-2026 Transferencia recibida
+MONTIEL MARIANELA BELEN 157121620672 $ 198.800,00 $ 1.480.152,40
+30-04-2026
+Transferencia recibida
+Fabricio Leonel Herrera
+Burgos
+157122454468 $ 69.580,00 $ 1.549.732,40
+30-04-2026 Transferencia recibida Karen
+Nuri Alaluf Godoy 156365268469 $ 21.276,57 $ 1.571.008,97
+30-04-2026
+Transferencia recibida
+MIRIAM AYELEN LEPEZ
+MEDINA
+156372736219 $ 59.640,00 $ 1.630.648,97
+30-04-2026 Transferencia recibida Yanina
+Calderón 157137813656 $ 39.760,00 $ 1.670.408,97
+30-04-2026 Transferencia recibida Cintia
+Romina Calderon Estevez 156374420707 $ 99.400,00 $ 1.769.808,97
+30-04-2026 Transferencia recibida Hernan
+Jimenez 156376869325 $ 79.520,00 $ 1.849.328,97
+30-04-2026 Transferencia recibida Yasmin
+Zahira Barco 157142491806 $ 49.700,00 $ 1.899.028,97
+30-04-2026 Transferencia recibida EDHEN 157143912744 $ 99.400,00 $ 1.998.428,97
+30-04-2026 Liquidación de dinero 156380304731 $ 146.864,00 $ 2.145.292,97
+30-04-2026 Transferencia recibida Carlos
+Marcelo Madrid 156380481487 $ 59.640,00 $ 2.204.932,97
+
+-- 21 of 22 --
+
+Fecha de generación: 04-05-2026
+Mercado Libre S.R.L. CUIT 30-70308853-4 Av. Caseros 3039, Piso 2, CP 1264, Parque Patricios, CABA. Encuentra nuestros canales
+de consulta en: www.mercadopago.com.ar
+22/22
+Fecha Descripción ID de la
+operación Valor Saldo
+30-04-2026 Transferencia recibida Juan
+Ariel Almazan 156382928945 $ 59.640,00 $ 2.264.572,97
+30-04-2026 Transferencia recibida Elina
+Tamara Reyna Villafañe 156391439259 $ 49.700,00 $ 2.314.272,97
+30-04-2026 Transferencia recibida Daniela
+Valeria Macias 156392549027 $ 59.640,00 $ 2.373.912,97
+30-04-2026 Transferencia recibida Emilce
+Sabrina Pasten 157161017166 $ 59.640,00 $ 2.433.552,97
+30-04-2026 Transferencia recibida Nuvia
+Celeste Pereyra 156401798729 $ 29.820,00 $ 2.463.372,97
+30-04-2026 Liquidación de dinero 156342037109 $ 71.432,00 $ 2.534.804,97
+30-04-2026 Transferencia recibida
+MOLINA AGUERO, AYELE 157168402006 $ 29.820,00 $ 2.564.624,97
+30-04-2026
+Transferencia recibida
+Ludmila Guadalupe Baigorria
+Lopez
+156405499129 $ 29.820,00 $ 2.594.444,97
+30-04-2026 Liquidación de dinero 157106195648 $ 89.290,00 $ 2.683.734,97
+30-04-2026 Transferencia recibida Martha
+Beatriz Castillo 157179527408 $ 59.640,00 $ 2.743.374,97
+30-04-2026 Transferencia recibida Carlos
+Eduardo Bonilla 156423042477 $ 89.460,00 $ 2.832.834,97
+30-04-2026
+Transferencia recibida
+Roberto Ezequiel Pastoriza
+Olmos
+157194949156 $ 59.640,00 $ 2.892.474,97
+
+-- 22 of 22 --
+

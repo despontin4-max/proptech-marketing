@@ -1,0 +1,15 @@
+REGISTRACIONES DE CAJA - MOVIMIENTO DIARIO DE: INGRESOS
+MAYO 2026
+Fecha Comprobante
+N°
+Cod. Cuenta Cuenta Cliente / Subconcepto / Alcaraciones Cod. Cliente Cod. Cobro Forma de
+Cobro/Pago
+Importe
+08/05/26 115 Depósitos Banco Galicia FUENTE ROSA ELVIRA 7 1 60.000,00
+15/05/26 115 Depósitos Banco Galicia ORELLANO VERA YESICA BEATRIZ 7 1 60.000,00
+120.000,00
+FECHA	PERIODO
+Página 1 de 1
+
+-- 1 of 1 --
+

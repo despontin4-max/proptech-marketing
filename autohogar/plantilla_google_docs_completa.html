@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0 auto;
+      padding: 20px;
+      color: #000;
+      background: #fff;
+      font-size: 11px;
+      width: 700px;
+    }
+    .cuerpo-1 {
+      margin-bottom: 30px;
+    }
+    .orange-banner {
+      background-color: #eb8226;
+      color: #fff;
+      font-size: 14px;
+      font-weight: bold;
+      padding: 5px 10px;
+      border-radius: 4px;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .soli-box {
+      background-color: #fff;
+      color: #000;
+      border: 1px solid #eb8226;
+      padding: 2px 12px;
+      border-radius: 3px;
+    }
+    .grid-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 5px;
+      margin-bottom: 5px;
+    }
+    .grid-box {
+      border: 2px solid #eb8226;
+      border-radius: 5px;
+      padding: 5px 10px;
+      background: #fff;
+      vertical-align: top;
+    }
+    .box-label {
+      font-size: 9px;
+      color: #0099d8;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .box-val {
+      font-size: 13px;
+      font-weight: bold;
+      color: #000;
+    }
+    .importe-box {
+      border: 2px solid #eb8226;
+      border-radius: 5px;
+      width: 200px;
+      text-align: center;
+      float: right;
+      margin-top: 5px;
+    }
+    .importe-header {
+      background: #fff;
+      color: #0099d8;
+      font-size: 10px;
+      font-weight: bold;
+      padding: 3px 0;
+      border-bottom: 2px solid #eb8226;
+    }
+    .importe-val {
+      font-size: 16px;
+      font-weight: bold;
+      padding: 5px 0;
+    }
+    .clear { clear: both; }
+  </style>
+</head>
+<body>
+
+  <!-- BLOQUE 1 -->
+  <div class="cuerpo-1">
+    <div class="orange-banner">
+      <span>AVISO VENCIMIENTO DE ANTICIPO</span>
+      <span>Nº <span class="soli-box">{{SOLI}}</span></span>
+    </div>
+    <table class="grid-table">
+      <tr>
+        <td class="grid-box" style="width: 55%;">
+          <div class="box-label">NOMBRE Y APELLIDO &nbsp;&nbsp; ( {{COD}} ) / 001</div>
+          <div class="box-val">{{NOMBRE}}</div>
+        </td>
+        <td class="grid-box" style="width: 20%;">
+          <div class="box-label">D.N.I.</div>
+          <div class="box-val">{{DNI}}</div>
+        </td>
+        <td class="grid-box" rowspan="2" style="width: 25%;">
+          <div class="box-label">DIRECCIÓN</div>
+          <div class="box-val">{{DIRECCION}}</div>
+          <div class="box-val" style="font-size: 11px; margin-top: 5px;">{{LOCALIDAD}} SAN JUAN</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="grid-box">
+          <div class="box-label">PRODUCTO SOLICITADO</div>
+          <div class="box-val">{{PLAN}}</div>
+        </td>
+        <td class="grid-box">
+          <div class="box-label">ANTICIPO - VENCIMIENTO</div>
+          <div class="box-val">{{CUOTA}} - {{VENCIMIENTO}}</div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <p style="font-size: 10px; margin-top: 8px;">
+            <strong>Señor Cliente: Se informa que los únicos medios de pago habilitados son los siguientes:</strong><br>
+            - Depósito o transferencia bancaria.<br>
+            - Sucursales habilitadas para el cobro.<br>
+            - Pago al cobrador que envía la compañía a su domicilio quien entregará constancia correspondiente.
+          </p>
+        </td>
+        <td class="grid-box">
+          <div class="box-label">TELÉFONO</div>
+          <div class="box-val" style="font-size: 12px;">54 2643171848</div>
+        </td>
+      </tr>
+    </table>
+    <div class="importe-box">
+      <div class="importe-header">IMPORTE ABONADO</div>
+      <div class="importe-val">{{MONTO}}</div>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <!-- BLOQUE 2 -->
+  <div class="cuerpo-1">
+    <div class="orange-banner">
+      <span>AVISO VENCIMIENTO DE ANTICIPO</span>
+      <span>Nº <span class="soli-box">{{SOLI}}</span></span>
+    </div>
+    <table class="grid-table">
+      <tr>
+        <td class="grid-box" style="width: 55%;">
+          <div class="box-label">NOMBRE Y APELLIDO &nbsp;&nbsp; ( {{COD}} ) / 001</div>
+          <div class="box-val">{{NOMBRE}}</div>
+        </td>
+        <td class="grid-box" style="width: 20%;">
+          <div class="box-label">D.N.I.</div>
+          <div class="box-val">{{DNI}}</div>
+        </td>
+        <td class="grid-box" rowspan="2" style="width: 25%;">
+          <div class="box-label">DIRECCIÓN</div>
+          <div class="box-val">{{DIRECCION}}</div>
+          <div class="box-val" style="font-size: 11px; margin-top: 5px;">{{LOCALIDAD}} SAN JUAN</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="grid-box">
+          <div class="box-label">PRODUCTO SOLICITADO</div>
+          <div class="box-val">{{PLAN}}</div>
+        </td>
+        <td class="grid-box">
+          <div class="box-label">ANTICIPO - VENCIMIENTO</div>
+          <div class="box-val">{{CUOTA}} - {{VENCIMIENTO}}</div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <p style="font-size: 10px; margin-top: 8px;">
+            <strong>Señor Cliente: Se informa que los únicos medios de pago habilitados son los siguientes:</strong><br>
+            - Depósito o transferencia bancaria.<br>
+            - Sucursales habilitadas para el cobro.<br>
+            - Pago al cobrador que envía la compañía a su domicilio quien entregará constancia correspondiente.
+          </p>
+        </td>
+        <td class="grid-box">
+          <div class="box-label">TELÉFONO</div>
+          <div class="box-val" style="font-size: 12px;">54 2643171848</div>
+        </td>
+      </tr>
+    </table>
+    <div class="importe-box">
+      <div class="importe-header">IMPORTE ABONADO</div>
+      <div class="importe-val">{{MONTO}}</div>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <!-- BLOQUE 3 -->
+  <div class="cuerpo-1">
+    <div class="orange-banner">
+      <span>AVISO VENCIMIENTO DE ANTICIPO</span>
+      <span>Nº <span class="soli-box">{{SOLI}}</span></span>
+    </div>
+    <table class="grid-table">
+      <tr>
+        <td class="grid-box" style="width: 55%;">
+          <div class="box-label">NOMBRE Y APELLIDO &nbsp;&nbsp; ( {{COD}} ) / 001</div>
+          <div class="box-val">{{NOMBRE}}</div>
+        </td>
+        <td class="grid-box" style="width: 20%;">
+          <div class="box-label">D.N.I.</div>
+          <div class="box-val">{{DNI}}</div>
+        </td>
+        <td class="grid-box" rowspan="2" style="width: 25%;">
+          <div class="box-label">DIRECCIÓN</div>
+          <div class="box-val">{{DIRECCION}}</div>
+          <div class="box-val" style="font-size: 11px; margin-top: 5px;">{{LOCALIDAD}} SAN JUAN</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="grid-box">
+          <div class="box-label">PRODUCTO SOLICITADO</div>
+          <div class="box-val">{{PLAN}}</div>
+        </td>
+        <td class="grid-box">
+          <div class="box-label">ANTICIPO - VENCIMIENTO</div>
+          <div class="box-val">{{CUOTA}} - {{VENCIMIENTO}}</div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <p style="font-size: 10px; margin-top: 8px;">
+            <strong>Señor Cliente: Se informa que los únicos medios de pago habilitados son los siguientes:</strong><br>
+            - Depósito o transferencia bancaria.<br>
+            - Sucursales habilitadas para el cobro.<br>
+            - Pago al cobrador que envía la compañía a su domicilio quien entregará constancia correspondiente.
+          </p>
+        </td>
+        <td class="grid-box">
+          <div class="box-label">TELÉFONO</div>
+          <div class="box-val" style="font-size: 12px;">54 2643171848</div>
+        </td>
+      </tr>
+    </table>
+    <div class="importe-box">
+      <div class="importe-header">IMPORTE ABONADO</div>
+      <div class="importe-val">{{MONTO}}</div>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+</body>
+</html>

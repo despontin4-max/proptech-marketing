@@ -1,0 +1,8 @@
+EFECTIVO -	$ 0%
+X BANCO -	$ 0%
+X M PAGO 255.000	$ 100%
+TOTAL 255.000	$ 100%
+COBRANZA BANCO
+
+-- 1 of 1 --
+

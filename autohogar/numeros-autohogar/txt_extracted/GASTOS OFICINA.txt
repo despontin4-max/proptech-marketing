@@ -1,0 +1,51 @@
+REGISTRACIONES DE CAJA - MOVIMIENTO DIARIO DE: INGRESOS
+MARZO 2026
+Fecha Comprobante
+N°
+Cod. Cuenta Cuenta Cliente / Subconcepto / Alcaraciones Cod. Cliente Cod. Cobro Forma de
+Cobro/Pago
+Importe
+02/03/26 105 Gastos de Limpieza LIMPIEZA OFICINA 1 20.000,00
+02/03/26 105 Gastos de Limpieza ARTICULOS DE LIMPIEZA 1 6.800,00
+02/03/26 105 Gastos de Limpieza ARTICULOS DE LIMPIEZA 1 16.900,00
+03/03/26 111 Gastos Oficina AGUA OFICINA 1 84.000,00
+03/03/26 111 Gastos Oficina ENCOMIENDA 1 22.800,00
+04/03/26 111 Gastos Oficina REMOSION DE CARTEL ABOGADO CALLE 1 109.000,00
+05/03/26 111 Gastos Oficina ARTICULOS DE LIMPIEZA 1 9.500,00
+05/03/26 105 Gastos de Limpieza LIMPIEZA OFICINA 1 20.000,00
+06/03/26 112 Gastos x vendedores DATEROS 1 100.000,00
+09/03/26 108 Gastos de publicidad y propaganda FACEBOOK VERO 1 300.000,00
+09/03/26 105 Gastos de Limpieza LIMPIEZA OFICINA 1 20.000,00
+11/03/26 111 Gastos Oficina MATAFUEGOS 1 22.000,00
+12/03/26 108 Gastos de publicidad y propaganda RADIOS-REGALOS-INCENT 1 60.000,00
+12/03/26 105 Gastos de Limpieza LIMPIEZA OFICINA 1 20.000,00
+12/03/26 112 Gastos x vendedores DATEROS 1 100.000,00
+16/03/26 112 Gastos x vendedores ASEGURADO BALANOSKY 1 1.000.000,00
+16/03/26 105 Gastos de Limpieza LIMPIEZA OFICINA 1 20.000,00
+18/03/26 111 Gastos Oficina INSUMOS LIMPIEZA 1 41.610,00
+19/03/26 105 Gastos de Limpieza LIMPIEZA OFICINA 1 20.000,00
+19/03/26 111 Gastos Oficina 6 FOCOS ILUMINACION 1 58.980,00
+19/03/26 112 Gastos x vendedores DATEROS 1 100.000,00
+20/03/26 111 Gastos Oficina RESMA 1 11.500,00
+25/03/26 105 Gastos de Limpieza LIMPIEZA OFICINA 1 20.000,00
+25/03/26 111 Gastos Oficina ALIMENTO GATO 1 40.000,00
+27/03/26 105 Gastos de Limpieza LIMPIEZA OFICINA 1 20.000,00
+27/03/26 108 Gastos de publicidad y propaganda FACE VERO 1 300.000,00
+27/03/26 111 Gastos Oficina ENCOMIENDA 1 9.000,00
+FECHA	PERIODO
+Página 1 de 2
+
+-- 1 of 2 --
+
+Fecha Comprobante
+N°
+Cod. Cuenta Cuenta Cliente / Subconcepto / Alcaraciones Cod. Cliente Cod. Cobro Forma de
+Cobro/Pago
+Importe
+27/03/26 112 Gastos x vendedores DATEROS 1 100.000,00
+30/03/26 105 Gastos de Limpieza LIMPIEZA OFICINA 1 20.000,00
+2.672.090,00
+Página 2 de 2
+
+-- 2 of 2 --
+

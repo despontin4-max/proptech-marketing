@@ -1,0 +1,11 @@
+const xlsx = require('xlsx');
+const path = require('path');
+const file = path.join(__dirname, '..', '07 CLIENTES DE MEDIO ELECT AGOSTO 2026.xlsx');
+const workbook = xlsx.readFile(file);
+const sheetName = workbook.SheetNames[0];
+const worksheet = workbook.Sheets[sheetName];
+const data = xlsx.utils.sheet_to_json(worksheet, { header: 1 });
+console.log('Headers:', data[0]);
+console.log('Row 1:', data[1]);
+console.log('Row 2:', data[2]);
+console.log('Row 3:', data[3]);

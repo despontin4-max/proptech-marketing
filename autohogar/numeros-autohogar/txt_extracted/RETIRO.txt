@@ -1,0 +1,16 @@
+REGISTRACIONES DE CAJA - MOVIMIENTO DIARIO DE: INGRESOS
+MARZO 2026
+Fecha Comprobante
+N°
+Cod. Cuenta Cuenta Cliente / Subconcepto / Alcaraciones Cod. Cliente Cod. Cobro Forma de
+Cobro/Pago
+Importe
+05/03/26 117 Retiro Fabio INGRESO X TRANSFERENCIA FILIPICH FABIO 1 -142.035,00
+26/03/26 117 Retiro Fabio X GASTOS FISCO 1 -550.000,00
+31/03/26 117 Retiro Fabio X CIERRE DE MES 1 130.185,00
+-561.850,00
+FECHA	PERIODO
+Página 1 de 1
+
+-- 1 of 1 --
+

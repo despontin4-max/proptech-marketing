@@ -1,0 +1,378 @@
+REGISTRACIONES DE CAJA - MOVIMIENTO DIARIO DE: INGRESOS
+MARZO 2026
+Fecha Comprobante
+N°
+Cod. Cuenta Cuenta Cliente / Subconcepto / Alcaraciones Cod. Cliente Cod. Cobro Forma de
+Cobro/Pago
+Importe
+02/03/26 126 x Cobro con mercado pago MOTEDIT ALICIA 2 1 250.000,00
+02/03/26 126 x Cobro con mercado pago CASTRO CRISTIAN 2 1 40.000,00
+02/03/26 126 x Cobro con mercado pago LUNA PEÑA GUSTAVO MATIAS 2 1 100.000,00
+02/03/26 126 x Cobro con mercado pago MONTAÑA MARIA CECILIA 2 1 200.000,00
+02/03/26 126 x Cobro con mercado pago RIVAS ESTELA 7 1 50.000,00
+02/03/26 126 x Cobro con mercado pago LUNA OSVALDO 2 1 60.000,00
+02/03/26 126 x Cobro con mercado pago PAZ MAURICIO DANIEL 7 1 36.000,00
+02/03/26 126 x Cobro con mercado pago GARAY JUAN 7 1 60.000,00
+02/03/26 126 x Cobro con mercado pago GARAY JUAN 7 1 60.000,00
+02/03/26 126 x Cobro con mercado pago VILLACORTA FABIANA ALEJANDRA 7 1 80.000,00
+02/03/26 126 x Cobro con mercado pago POBLETE VIVIANA GRACIELA 7 1 80.000,00
+02/03/26 126 x Cobro con mercado pago SANCHEZ CESAR ALEJANDRO 7 1 60.000,00
+02/03/26 126 x Cobro con mercado pago PEREZ JOSE ISMAEL 7 1 60.000,00
+02/03/26 126 x Cobro con mercado pago BUENO VALERIA VANESA 7 1 30.000,00
+02/03/26 126 x Cobro con mercado pago MONTOYA RIVERO 2 1 50.000,00
+03/03/26 126 x Cobro con mercado pago AGUA OFICINA 1 -84.000,00
+03/03/26 126 x Cobro con mercado pago VARAS CARINA ESTHER 2 1 300.000,00
+03/03/26 126 x Cobro con mercado pago CORREA ROBERTO ESTEBAN 2 1 200.000,00
+03/03/26 126 x Cobro con mercado pago RODRIGUEZ FLORA ETELVINA 7 1 60.000,00
+03/03/26 126 x Cobro con mercado pago ALCARAZ RICARDO RAMON 7 1 30.000,00
+03/03/26 126 x Cobro con mercado pago SANTANA ANIBAL SEFERINO 7 1 60.000,00
+03/03/26 126 x Cobro con mercado pago ESCUELA ANA LORENA 7 1 60.000,00
+03/03/26 126 x Cobro con mercado pago NIEVA AGUILERA 7 1 20.000,00
+03/03/26 126 x Cobro con mercado pago CALIVA PAMELA LORENA 7 1 60.000,00
+03/03/26 126 x Cobro con mercado pago SANCHEZ LOBOS AGOSTINA DEL VALLE 7 1 300.000,00
+03/03/26 126 x Cobro con mercado pago DIAZ ANTONELLA YAMILA 7 1 300.000,00
+03/03/26 126 x Cobro con mercado pago GARAY MARCELO 7 1 60.000,00
+FECHA	PERIODO
+Página 1 de 10
+
+-- 1 of 10 --
+
+Fecha Comprobante
+N°
+Cod. Cuenta Cuenta Cliente / Subconcepto / Alcaraciones Cod. Cliente Cod. Cobro Forma de
+Cobro/Pago
+Importe
+03/03/26 126 x Cobro con mercado pago GARAY MARCELO ROBERTO 7 1 60.000,00
+03/03/26 126 x Cobro con mercado pago MARIN FARIAS MAURICIO ALEJANDRO 7 1 100.000,00
+03/03/26 126 x Cobro con mercado pago VERA GUZMAN TOMAS GABRIEL 2 1 150.000,00
+03/03/26 126 x Cobro con mercado pago NIEVAS CINTHYA DAYANA 7 1 60.000,00
+04/03/26 126 x Cobro con mercado pago QUIROGA CINTIA ELIZABETH 2 1 150.000,00
+04/03/26 126 x Cobro con mercado pago VENTA BALANOSKY 1 100.000,00
+04/03/26 126 x Cobro con mercado pago PAGO VENTA BALANOSKY 1 -100.000,00
+04/03/26 126 x Cobro con mercado pago MOLINA AGÜERO AYELEN VICTORIA 7 1 30.000,00
+04/03/26 126 x Cobro con mercado pago MARTINEZ ROMINA ELIANA 7 1 120.000,00
+04/03/26 126 x Cobro con mercado pago ROBLEDO DANIEL JAVIER 7 1 100.000,00
+04/03/26 126 x Cobro con mercado pago BUSTOS ELIZABETH NOEMI 7 1 60.000,00
+04/03/26 126 x Cobro con mercado pago DI CARLO DIAZ FLORENCIA BELEN 7 1 60.000,00
+04/03/26 126 x Cobro con mercado pago MILLA VERONICA ANTONIA 7 1 70.000,00
+04/03/26 126 x Cobro con mercado pago SIMAN JUANA BEATRIZ 7 1 200.000,00
+05/03/26 126 x Cobro con mercado pago ALTAMIRANO MIGUEL ANGEL 1 1 50.000,00
+05/03/26 126 x Cobro con mercado pago BARROS ZULEMA 2 1 150.000,00
+05/03/26 126 x Cobro con mercado pago TAPIA GONZALEZ CATERINA 7 1 65.000,00
+05/03/26 126 x Cobro con mercado pago GONZALEZ MARCELA VERONICA 7 1 60.000,00
+05/03/26 126 x Cobro con mercado pago RUIZ FABIANA ANDREA 7 1 60.000,00
+05/03/26 126 x Cobro con mercado pago RECHES SANCHEZ ELBIO 7 1 60.000,00
+05/03/26 126 x Cobro con mercado pago PAREDES HUGO ARIEL 7 1 65.000,00
+05/03/26 126 x Cobro con mercado pago MALDONADO NELLY LEONOR 7 1 100.000,00
+05/03/26 126 x Cobro con mercado pago MACHUCA DIEGO MARTIN 7 1 65.000,00
+05/03/26 126 x Cobro con mercado pago RIVEROS HUGO GUSTAVO 7 1 30.000,00
+05/03/26 126 x Cobro con mercado pago BARBOZA G. VICTOR HUGO 7 1 60.000,00
+05/03/26 126 x Cobro con mercado pago INGRESO X TRANSFERENCIA FILIPICH FABIO 1 142.035,00
+06/03/26 126 x Cobro con mercado pago VENTA BALANOSKY + PAGO CEPEDA 1 300.000,00
+06/03/26 126 x Cobro con mercado pago PAGO VENTA BALANOSKY DE CEPEDA MANUEL 1 -200.000,00
+06/03/26 126 x Cobro con mercado pago CASADEVALL GERMAN ALEJANDRO 2 1 60.000,00
+06/03/26 126 x Cobro con mercado pago CALDERON ROSANA ANALIA 7 1 50.000,00
+Página 2 de 10
+
+-- 2 of 10 --
+
+Fecha Comprobante
+N°
+Cod. Cuenta Cuenta Cliente / Subconcepto / Alcaraciones Cod. Cliente Cod. Cobro Forma de
+Cobro/Pago
+Importe
+06/03/26 126 x Cobro con mercado pago MUÑOZ LAURA ANDREA 2 1 100.000,00
+06/03/26 126 x Cobro con mercado pago LORENZO DIAZ MARIA CAROLINA 2 1 300.000,00
+06/03/26 126 x Cobro con mercado pago GUAYAQUINCHAY FLAVIA GISELLE 7 1 100.000,00
+06/03/26 126 x Cobro con mercado pago GUAYAQUINCHAY FLAVIA GISELLE 7 1 100.000,00
+06/03/26 126 x Cobro con mercado pago GOMEZ ASTORGA VIVIANA GRISELDA 7 1 320.000,00
+06/03/26 126 x Cobro con mercado pago ORELLANO VERA DIEGO EDUARDO 1 1 60.000,00
+08/03/26 126 x Cobro con mercado pago GUEVARA ANTONIO NICOLAS 7 1 40.000,00
+08/03/26 126 x Cobro con mercado pago NARVAEZ PAULO EMANUEL 7 1 70.000,00
+08/03/26 126 x Cobro con mercado pago ANDRADA EDGAR ARIEL 7 1 150.000,00
+08/03/26 126 x Cobro con mercado pago ALVAREZ MORAN CARMEN BEATRIZ 7 1 60.000,00
+08/03/26 126 x Cobro con mercado pago SOSA MARIA LAURA 7 1 60.000,00
+08/03/26 126 x Cobro con mercado pago ESPEJO ALEXANDRA VANESA 7 1 80.000,00
+09/03/26 126 x Cobro con mercado pago SUELDO ANAHI 1 -1.000.000,00
+09/03/26 126 x Cobro con mercado pago SUELDO PAULA 1 -1.000.000,00
+09/03/26 126 x Cobro con mercado pago SUELDO EDUARDO 1 -1.000.000,00
+09/03/26 126 x Cobro con mercado pago SUELDO FLORENCIA 1 -850.000,00
+09/03/26 126 x Cobro con mercado pago SUELDO MAXIMA 1 -500.000,00
+09/03/26 126 x Cobro con mercado pago FACEBOOK VERO 1 -300.000,00
+09/03/26 126 x Cobro con mercado pago LIMPIEZA OFICINA 1 -20.000,00
+09/03/26 126 x Cobro con mercado pago NAVARRO NOELIA GISEL 7 1 100.000,00
+09/03/26 126 x Cobro con mercado pago PEREYRA RUBEN DOMINGO 7 1 220.000,00
+09/03/26 126 x Cobro con mercado pago CHAMORRO PEREA MARTIN ALFREDO 7 1 65.000,00
+09/03/26 126 x Cobro con mercado pago PEREZ ALEJANDRO MAXIMILIANO 7 1 60.000,00
+09/03/26 126 x Cobro con mercado pago CORTEZ ELIZONDO CELINA INES 7 1 90.000,00
+09/03/26 126 x Cobro con mercado pago BAZAN FERNANDO EMANUEL 7 1 200.000,00
+09/03/26 126 x Cobro con mercado pago REINOSO LUISA ALEJANDRA 7 1 55.000,00
+09/03/26 126 x Cobro con mercado pago GARAY JUAN 7 1 60.000,00
+09/03/26 126 x Cobro con mercado pago GARAY JUAN 7 1 60.000,00
+09/03/26 126 x Cobro con mercado pago AMANTE VALVERDE CECILIA DEL VALLE 7 1 20.000,00
+09/03/26 126 x Cobro con mercado pago NARVAEZ ESTELA NANCY 7 1 60.000,00
+Página 3 de 10
+
+-- 3 of 10 --
+
+Fecha Comprobante
+N°
+Cod. Cuenta Cuenta Cliente / Subconcepto / Alcaraciones Cod. Cliente Cod. Cobro Forma de
+Cobro/Pago
+Importe
+09/03/26 126 x Cobro con mercado pago ORELLANO QUIROGA DEBORA CAREN 2 1 300.000,00
+09/03/26 126 x Cobro con mercado pago ROBLEDO LAURA 2 1 200.000,00
+10/03/26 126 x Cobro con mercado pago ALQUILER 1 -1.064.632,00
+10/03/26 126 x Cobro con mercado pago PEREYRA SANTIBAÑEZ 1 1 15.000,00
+10/03/26 126 x Cobro con mercado pago LOPEZ AGUILERA ELISA NATALIA 2 1 40.000,00
+10/03/26 126 x Cobro con mercado pago ANDARI ANALIA VERONICA 2 1 80.000,00
+10/03/26 126 x Cobro con mercado pago ROJAS VIVIANA ALEJANDRA 2 1 100.000,00
+10/03/26 126 x Cobro con mercado pago DIAZ OSCAR EMILIO 2 1 100.000,00
+10/03/26 126 x Cobro con mercado pago CARRASCO NATALIA JUDITH 2 1 100.000,00
+10/03/26 126 x Cobro con mercado pago PEREZ PAULA ROSANA GABRIELA 7 1 60.000,00
+10/03/26 126 x Cobro con mercado pago CHAVEZ MARINE YASMIN 7 1 60.000,00
+10/03/26 126 x Cobro con mercado pago FERNANDEZ CLAUDIA CAROLINA 7 1 200.000,00
+10/03/26 126 x Cobro con mercado pago SANCHEZ ADARVEZ FEDERICO JAVIER 7 1 75.000,00
+10/03/26 126 x Cobro con mercado pago CASTRO FLORES DANIELA SOLANGE 7 1 40.000,00
+10/03/26 126 x Cobro con mercado pago MARTINEZ CRISTIAN IVAN 7 1 120.000,00
+10/03/26 126 x Cobro con mercado pago ESPINA ROXANA MARCELA 7 1 200.000,00
+10/03/26 126 x Cobro con mercado pago CARDOZO MIRANDA PAOLA VANESA 7 1 60.000,00
+10/03/26 126 x Cobro con mercado pago BALMACEDA QUINTERO ALEJANDRA NICOLE 7 1 300.000,00
+10/03/26 126 x Cobro con mercado pago CRUZ PEREA MORENA ABRIL 7 1 100.000,00
+10/03/26 126 x Cobro con mercado pago ARANCIBIA GALLARDO JORGE IVAN 7 1 30.000,00
+10/03/26 126 x Cobro con mercado pago GARAY MERCADO ANGEL FABIAN 7 1 260.000,00
+10/03/26 126 x Cobro con mercado pago ESPEJO PAOLA GISELA 7 1 30.000,00
+11/03/26 126 x Cobro con mercado pago SUELDO PAULA 1 -1.000.000,00
+11/03/26 126 x Cobro con mercado pago SUELDO EDUARDO 1 -1.000.000,00
+11/03/26 126 x Cobro con mercado pago SUELDO ANAHI 1 -46.000,00
+11/03/26 126 x Cobro con mercado pago SUAREZ BEATRIZ CAROLINA 2 1 65.000,00
+11/03/26 126 x Cobro con mercado pago CALIVA ZULMA 2 1 80.000,00
+11/03/26 126 x Cobro con mercado pago ESPIN CRISTINA CECILIA 7 1 60.000,00
+11/03/26 126 x Cobro con mercado pago MOLINA DOMINGA NOEMI 7 1 60.000,00
+11/03/26 126 x Cobro con mercado pago SOSA SELVA ROCIO 7 1 50.000,00
+Página 4 de 10
+
+-- 4 of 10 --
+
+Fecha Comprobante
+N°
+Cod. Cuenta Cuenta Cliente / Subconcepto / Alcaraciones Cod. Cliente Cod. Cobro Forma de
+Cobro/Pago
+Importe
+11/03/26 126 x Cobro con mercado pago PAEZ MARIO JAVIER 7 1 50.000,00
+11/03/26 126 x Cobro con mercado pago VAZQUEZ LUCIA NILDA 7 1 60.000,00
+11/03/26 126 x Cobro con mercado pago MADRID CARLOS MARCELO 7 1 60.000,00
+11/03/26 126 x Cobro con mercado pago NUÑEZ CHIRINO VIVIANA DEL CARMEN 7 1 60.000,00
+11/03/26 126 x Cobro con mercado pago QUINTEROS GERARDO JAVIER 7 1 300.000,00
+11/03/26 126 x Cobro con mercado pago ARAYA PABLO RAUL 7 1 100.000,00
+11/03/26 126 x Cobro con mercado pago GUTIERREZ ATENCIO ELDA VANESA 7 1 50.000,00
+11/03/26 126 x Cobro con mercado pago DIAZ DIAZ ROXANA ELIANA 7 1 70.000,00
+11/03/26 126 x Cobro con mercado pago MONTAÑA MARGARITA 7 1 60.000,00
+12/03/26 126 x Cobro con mercado pago MOVISTAR OFICINA SAN JUAN 1 -60.011,00
+12/03/26 126 x Cobro con mercado pago AGUA SAN JUAN 1 -34.905,00
+12/03/26 126 x Cobro con mercado pago LUZ SAN JUAN 1 -158.717,00
+12/03/26 126 x Cobro con mercado pago GAS SAN JUAN 1 -4.025,00
+12/03/26 126 x Cobro con mercado pago CARGAS SOCIALES 1 -208.220,00
+12/03/26 126 x Cobro con mercado pago SUELDO EDUARDO 1 -500.000,00
+12/03/26 126 x Cobro con mercado pago SUELDO ANAHI 1 -300.000,00
+12/03/26 126 x Cobro con mercado pago TAPIA SOSA LAURA ISABEL 1 60.000,00
+12/03/26 126 x Cobro con mercado pago GOMEZ LILIANA 7 1 150.000,00
+12/03/26 126 x Cobro con mercado pago CASTRO MARIA 7 1 200.000,00
+12/03/26 126 x Cobro con mercado pago BALMACEDA ESTER MARIA 7 1 60.000,00
+12/03/26 126 x Cobro con mercado pago OCHOA MARIA LUISA 7 1 60.000,00
+12/03/26 126 x Cobro con mercado pago VALDEZ DANISA ANGELES 7 1 30.000,00
+12/03/26 126 x Cobro con mercado pago ESPEJO ALEXANDRA VANESA 7 1 80.000,00
+12/03/26 126 x Cobro con mercado pago MERCADO LEONARDO FRANCISCO 7 1 60.000,00
+12/03/26 126 x Cobro con mercado pago PEREYRA ROSANA ELIZABETH 7 1 100.000,00
+12/03/26 126 x Cobro con mercado pago VIDELA EDGARDO 7 1 120.000,00
+12/03/26 126 x Cobro con mercado pago CONDE JESICA ALEJANDRA 2 1 200.000,00
+13/03/26 126 x Cobro con mercado pago ARROYO MARIANA 7 1 60.000,00
+13/03/26 126 x Cobro con mercado pago MONTOYA RIVERO ANALIA DEL VALLE 2 1 30.000,00
+13/03/26 126 x Cobro con mercado pago DELGADO FENANDO 7 1 55.000,00
+Página 5 de 10
+
+-- 5 of 10 --
+
+Fecha Comprobante
+N°
+Cod. Cuenta Cuenta Cliente / Subconcepto / Alcaraciones Cod. Cliente Cod. Cobro Forma de
+Cobro/Pago
+Importe
+13/03/26 126 x Cobro con mercado pago BAIGORRIA LOPEZ LUDMILA GUADALUPE 7 1 30.000,00
+13/03/26 126 x Cobro con mercado pago CORTEZ JUANA BEATRIZ 7 1 100.000,00
+13/03/26 126 x Cobro con mercado pago LUCERO CARMONA YAQUELINA ELIZABETH 7 1 60.000,00
+13/03/26 126 x Cobro con mercado pago CRIADO LAURA 7 1 150.000,00
+13/03/26 126 x Cobro con mercado pago ORMEÑO DEGO ANDRES 7 1 80.000,00
+13/03/26 126 x Cobro con mercado pago OLIVERA ELISA VALERIA 7 1 55.000,00
+13/03/26 126 x Cobro con mercado pago OLIVERA ELISA VALERIA 7 1 55.000,00
+13/03/26 126 x Cobro con mercado pago MARTINEZ BENAVIDEZ ANDREA ROSANA 7 1 60.000,00
+13/03/26 126 x Cobro con mercado pago LUNA EDUARDO ALEXIS 7 1 30.000,00
+13/03/26 126 x Cobro con mercado pago ARIAS YESICA TAMARA 7 1 40.000,00
+13/03/26 126 x Cobro con mercado pago GENTILI CHIRINO SABRINA ANABELA 7 1 60.000,00
+13/03/26 126 x Cobro con mercado pago CHIFFEL CARDOZO RENZO EMANUEL 7 1 60.000,00
+13/03/26 126 x Cobro con mercado pago GAITAN MONICA MARIA 7 1 100.000,00
+13/03/26 126 x Cobro con mercado pago LAIMES INGRID NICOLE SOLEDAD 7 1 60.000,00
+13/03/26 126 x Cobro con mercado pago DIAZ ERNESTO FABIAN 7 1 60.000,00
+16/03/26 126 x Cobro con mercado pago LOPEZ LUCIANA 2 1 60.000,00
+16/03/26 126 x Cobro con mercado pago ASEGURADO BALANOSKY 1 -1.000.000,00
+16/03/26 126 x Cobro con mercado pago SUELDO FLORENCIA 1 -250.000,00
+16/03/26 126 x Cobro con mercado pago ARAGON SOL MELINA 2 1 100.000,00
+16/03/26 126 x Cobro con mercado pago MARQUEZ SILVANA 7 1 65.000,00
+16/03/26 126 x Cobro con mercado pago TELLO CACERES 7 1 50.000,00
+16/03/26 126 x Cobro con mercado pago ROJAS RAQUEL EVANGELINA 7 1 30.000,00
+16/03/26 126 x Cobro con mercado pago OCAMPO RODRIGUEZ MICAELA BELEN 7 1 100.000,00
+16/03/26 126 x Cobro con mercado pago CALDERON ELIANA ELIZABETH 7 1 60.000,00
+16/03/26 126 x Cobro con mercado pago OLMO CECILIA CRISTINA 7 1 80.000,00
+16/03/26 126 x Cobro con mercado pago CALDERON ROSANA ANALIA 7 1 450.000,00
+16/03/26 126 x Cobro con mercado pago PARADA MARIA LUCIA 7 1 150.000,00
+17/03/26 126 x Cobro con mercado pago LARA ELVIO ARNALDO 7 1 60.000,00
+17/03/26 126 x Cobro con mercado pago MUÑOZ ALICIA ADRIANA 7 1 60.000,00
+17/03/26 126 x Cobro con mercado pago PRUEBA POSNET 1 50,00
+Página 6 de 10
+
+-- 6 of 10 --
+
+Fecha Comprobante
+N°
+Cod. Cuenta Cuenta Cliente / Subconcepto / Alcaraciones Cod. Cliente Cod. Cobro Forma de
+Cobro/Pago
+Importe
+18/03/26 126 x Cobro con mercado pago OCHOA ERICA DEBORA 7 1 40.000,00
+18/03/26 126 x Cobro con mercado pago FERNANDEZ VICTORIA CAROLINA 1 1 65.000,00
+19/03/26 126 x Cobro con mercado pago PINO ARNALDO 1 1 65.000,00
+19/03/26 126 x Cobro con mercado pago HONORARIOS MARUN 1 -500.000,00
+19/03/26 126 x Cobro con mercado pago SERRANO GOMEZ BRAIAN ESTEBAN 2 1 80.000,00
+19/03/26 126 x Cobro con mercado pago CORTEZ CARLOS 2 1 150.000,00
+19/03/26 126 x Cobro con mercado pago DIAZ MIGUEL ANGEL 7 1 60.000,00
+19/03/26 126 x Cobro con mercado pago IBAÑEZ ROBERTO EXEQUIEL 7 1 60.000,00
+19/03/26 126 x Cobro con mercado pago CRUZ INES CAROLINA 7 1 50.000,00
+19/03/26 126 x Cobro con mercado pago NARVAEZ PAULO 7 1 80.000,00
+19/03/26 126 x Cobro con mercado pago PAEZ SONIA 7 1 60.000,00
+19/03/26 126 x Cobro con mercado pago GONZALEZ MARCELA VERONICA 7 1 60.000,00
+19/03/26 126 x Cobro con mercado pago TERRERA GABRIELA MARIANA 7 1 60.000,00
+19/03/26 126 x Cobro con mercado pago ELIZONDO MARIO SANTIAGO 7 1 70.000,00
+19/03/26 126 x Cobro con mercado pago MELIAN LILIANA BEATRIZ 7 1 30.000,00
+20/03/26 126 x Cobro con mercado pago ZALAZAR RAUL ALBERTO 2 1 50.000,00
+20/03/26 126 x Cobro con mercado pago MOLINA PAOLA ANDREA 7 1 60.000,00
+20/03/26 126 x Cobro con mercado pago RODRIGUEZ MARELES 7 1 150.000,00
+20/03/26 126 x Cobro con mercado pago HERRERA ROCIO BELEN 7 1 75.000,00
+20/03/26 126 x Cobro con mercado pago VARGAS NELIDA 2 1 10.000,00
+20/03/26 126 x Cobro con mercado pago TELLO CESAR ARMANDO 7 1 70.000,00
+20/03/26 126 x Cobro con mercado pago BRITOS MARIA DE LOS ANGELES 7 1 60.000,00
+20/03/26 126 x Cobro con mercado pago YACANTE ALLENDE FRANCISCO JAVIER 7 1 60.000,00
+20/03/26 126 x Cobro con mercado pago CALDERON KIEFER YANINA VANESA 7 1 20.000,00
+20/03/26 126 x Cobro con mercado pago ANDRES ESPINDOLA WALTER DARIO 7 1 55.000,00
+20/03/26 126 x Cobro con mercado pago HORQUERA BARRRIONUEVO CLAUDIA ELIZABETH 7 1 60.000,00
+25/03/26 126 x Cobro con mercado pago PAREDES MIRIAM DEL VALLE 2 1 200.000,00
+25/03/26 126 x Cobro con mercado pago VILLALOBO PUJADO 2 1 30.000,00
+25/03/26 126 x Cobro con mercado pago LUNA OLGA 2 1 50.000,00
+25/03/26 126 x Cobro con mercado pago BARRERA LUCAS SAMUEL 2 1 100.000,00
+Página 7 de 10
+
+-- 7 of 10 --
+
+Fecha Comprobante
+N°
+Cod. Cuenta Cuenta Cliente / Subconcepto / Alcaraciones Cod. Cliente Cod. Cobro Forma de
+Cobro/Pago
+Importe
+25/03/26 126 x Cobro con mercado pago LIMPIEZA OFICINA 1 -20.000,00
+25/03/26 126 x Cobro con mercado pago VENTA GASTON 1 150.000,00
+25/03/26 126 x Cobro con mercado pago PAGO VENTA GASTON 1 -150.000,00
+25/03/26 126 x Cobro con mercado pago ALCANIS SUSANA ELIZABETH 7 1 40.000,00
+25/03/26 126 x Cobro con mercado pago TELLO DOMINGA MANUELA 7 1 45.000,00
+25/03/26 126 x Cobro con mercado pago TORRES VEDOYA PABLO EZEQUIEL 7 1 75.000,00
+25/03/26 126 x Cobro con mercado pago MARTINEZ CARLOS ALBERTO 7 1 60.000,00
+25/03/26 126 x Cobro con mercado pago NIEVAS ELIANA TERESITA 7 1 60.000,00
+25/03/26 126 x Cobro con mercado pago TEJADA LEANDRO MIGUEL 7 1 40.000,00
+25/03/26 126 x Cobro con mercado pago BARRAZA OSCAR 2 1 140.000,00
+25/03/26 126 x Cobro con mercado pago RODRIGUEZ CALISAYA 2 1 250.000,00
+25/03/26 126 x Cobro con mercado pago ELIZONDO LAURA 2 1 100.000,00
+26/03/26 126 x Cobro con mercado pago VENTA GASTON 1 30.000,00
+26/03/26 126 x Cobro con mercado pago JOFRE ELIZABETH DEL VALLE 7 1 30.000,00
+26/03/26 126 x Cobro con mercado pago MANRIQUE BRIZUELA BARBARA ELIZABETH 7 1 300.000,00
+26/03/26 126 x Cobro con mercado pago ABALLAY HUGO ROBERTO 2 1 150.000,00
+27/03/26 126 x Cobro con mercado pago MARTI Y VILLEGAS 1 200.000,00
+27/03/26 126 x Cobro con mercado pago FACE VERO 1 -300.000,00
+27/03/26 126 x Cobro con mercado pago DATEROS 1 -100.000,00
+27/03/26 126 x Cobro con mercado pago VENTA GASTON 1 150.000,00
+27/03/26 126 x Cobro con mercado pago PAGO VENTA GASTON 1 -150.000,00
+27/03/26 126 x Cobro con mercado pago ESPINOZA SALAS ELVIA MATILDE 7 1 60.000,00
+27/03/26 126 x Cobro con mercado pago HUANCA QUISPE MIRIAM NANCY 7 1 90.000,00
+27/03/26 126 x Cobro con mercado pago CONTRERAS ORTIZ JESUS OMAR 2 1 60.000,00
+27/03/26 126 x Cobro con mercado pago FIGUEROA CLAUDIA LUCRECIA 7 1 50.000,00
+30/03/26 126 x Cobro con mercado pago PAEZ ILIANA 7 1 100.000,00
+30/03/26 126 x Cobro con mercado pago STRAMBACH RODRIGUEZ NATALIA RUTH 7 1 80.000,00
+30/03/26 126 x Cobro con mercado pago STRAMBACH RODRIGUEZ NATALIA RUTH 7 1 80.000,00
+30/03/26 126 x Cobro con mercado pago GOMEZ JORGELINA 7 1 60.000,00
+30/03/26 126 x Cobro con mercado pago PASTEN EMILCE SABRINA 7 1 60.000,00
+Página 8 de 10
+
+-- 8 of 10 --
+
+Fecha Comprobante
+N°
+Cod. Cuenta Cuenta Cliente / Subconcepto / Alcaraciones Cod. Cliente Cod. Cobro Forma de
+Cobro/Pago
+Importe
+30/03/26 126 x Cobro con mercado pago PEREIRA JULIO DAVID 7 1 40.000,00
+30/03/26 126 x Cobro con mercado pago MALLEA REYNA 7 1 80.000,00
+30/03/26 126 x Cobro con mercado pago MONTENEGRO DURAN 7 1 55.000,00
+31/03/26 126 x Cobro con mercado pago COMISIONES EDUARDO 1 -1.025.240,00
+31/03/26 126 x Cobro con mercado pago DEVOLUCION DOMINGUEZ MIRIAM EDIT 1 -276.000,00
+31/03/26 126 x Cobro con mercado pago DEVOLUCION ORTIZ GLADYS VANESSA 1 -225.500,00
+31/03/26 126 x Cobro con mercado pago DEVOLUCION CHAVES TANIA DANIELA 1 -170.800,00
+31/03/26 126 x Cobro con mercado pago DEVOLUCION BUENO YAMILA YAEL 1 -198.000,00
+31/03/26 126 x Cobro con mercado pago DEVOLUCION BARRIONUEVO RICARDO EMMANUEL 1 -285.600,00
+31/03/26 126 x Cobro con mercado pago DEVOLUCION BARRIONUEVO SILVIA EDITH 1 -342.000,00
+31/03/26 126 x Cobro con mercado pago DEVOLUCION CORTEZ MAURICIO GASTON 1 -218.000,00
+31/03/26 126 x Cobro con mercado pago GOMEZ PALOMAR 2 1 300.000,00
+31/03/26 126 x Cobro con mercado pago GOMEZ PALOMAR 2 1 300.000,00
+31/03/26 126 x Cobro con mercado pago CHAVEZ CELESTE YANEL 2 1 100.000,00
+31/03/26 126 x Cobro con mercado pago ROBLEDO LAURA BEATRIZ 2 1 200.000,00
+31/03/26 126 x Cobro con mercado pago MONTIEL MARIANELA BELEN 2 1 200.000,00
+31/03/26 126 x Cobro con mercado pago NUÑEZ MARIANELA JANET 2 1 30.000,00
+31/03/26 126 x Cobro con mercado pago SORIA PALACIO GERMAN OMAR 7 1 70.000,00
+31/03/26 126 x Cobro con mercado pago GASQUE NELIDA TRINIDAD 7 1 80.000,00
+31/03/26 126 x Cobro con mercado pago CASTILLO MARTHA BEATRIZ 7 1 60.000,00
+31/03/26 126 x Cobro con mercado pago MERCADO ADRIAN IVAN 7 1 40.000,00
+31/03/26 126 x Cobro con mercado pago CERDA FABIAN ALEJANDRO 7 1 60.000,00
+31/03/26 126 x Cobro con mercado pago PAEZ GOMEZ VALERIA IVANA 7 1 130.000,00
+31/03/26 126 x Cobro con mercado pago TRIGO ESPEJO CARLOS JAVIER 7 1 30.000,00
+31/03/26 126 x Cobro con mercado pago BARCO YASMIN ZAHIRA 7 1 50.000,00
+31/03/26 126 x Cobro con mercado pago HIDALGO MORENO MAURO 7 1 60.000,00
+31/03/26 126 x Cobro con mercado pago PEREYRA NUVIA CELESTE 7 1 30.000,00
+31/03/26 126 x Cobro con mercado pago FERNANDEZ GORIA GABRIELA CELESTE 7 1 35.000,00
+31/03/26 126 x Cobro con mercado pago FLORES LUCAS MATIAS 7 1 30.000,00
+31/03/26 126 x Cobro con mercado pago FALCON ARTEZ YANINA VANESA 7 1 100.000,00
+Página 9 de 10
+
+-- 9 of 10 --
+
+Fecha Comprobante
+N°
+Cod. Cuenta Cuenta Cliente / Subconcepto / Alcaraciones Cod. Cliente Cod. Cobro Forma de
+Cobro/Pago
+Importe
+31/03/26 126 x Cobro con mercado pago ALMAZAN JUAN ARIEL 7 1 60.000,00
+31/03/26 126 x Cobro con mercado pago ORTEGA ROSA DEL JESUS 7 1 70.000,00
+31/03/26 126 x Cobro con mercado pago JIMENEZ HERNAN 7 1 80.000,00
+31/03/26 126 x Cobro con mercado pago MACIAS DANIELA VALERIA 7 1 60.000,00
+31/03/26 126 x Cobro con mercado pago LUJAN MONICA ANGELICA 7 1 100.000,00
+31/03/26 126 x Cobro con mercado pago SANCHEZ GARCIA LILIANA CELIA 7 1 30.000,00
+31/03/26 126 x Cobro con mercado pago MILLA VERONICA ANTONIA 7 1 70.000,00
+31/03/26 126 x Cobro con mercado pago GONZALEZ GUTIERREZ RODRIGO 7 1 100.000,00
+31/03/26 126 x Cobro con mercado pago TRIGO IBAÑEZ 7 1 100.000,00
+31/03/26 126 x Cobro con mercado pago MONTAÑA MARIA CECILIA 2 1 200.000,00
+31/03/26 126 x Cobro con mercado pago NIEVAS CINTHIA 7 1 60.000,00
+31/03/26 126 x Cobro con mercado pago LEPEZ MEDINA 7 1 60.000,00
+31/03/26 126 x Cobro con mercado pago GAITAN VALERIA 7 1 70.000,00
+31/03/26 126 x Cobro con mercado pago REYNA VILLAFAÑE 7 1 50.000,00
+31/03/26 126 x Cobro con mercado pago SERRANO GOMEZ BRAIAN ESTEBAN 2 1 170.000,00
+31/03/26 126 x Cobro con mercado pago ESCUELA ANA LORENA 7 1 60.000,00
+31/03/26 126 x Cobro con mercado pago VARGAS CABAÑAS JESUS 2 1 180.000,00
+8.196.435,00
+Página 10 de 10
+
+-- 10 of 10 --
+
