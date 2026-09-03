@@ -97,21 +97,20 @@ export function saveLocalUsers(users: SheetUser[]) {
 }
 
 function findLocalMasterWorkbook(): any | null {
+  if (process.env.VERCEL) {
+    return null;
+  }
   try {
     const fs = require('fs');
     const path = require('path');
     const xlsx = require('xlsx');
 
     const candidates = [
-      path.join(process.cwd(), '..', 'BASE_DATOS_OFICIAL_AGOSTO_2026', 'AUTOHOGAR_BASE_OFICIAL_AGOSTO_REAL.xlsx'),
-      path.join(process.cwd(), 'BASE_DATOS_OFICIAL_AGOSTO_2026', 'AUTOHOGAR_BASE_OFICIAL_AGOSTO_REAL.xlsx'),
-      path.resolve('C:\\Users\\USER\\Desktop\\PROPTECH MARKETING\\autohogar\\BASE_DATOS_OFICIAL_AGOSTO_2026\\AUTOHOGAR_BASE_OFICIAL_AGOSTO_REAL.xlsx'),
-      path.join(process.cwd(), '..', 'AUTOHOGAR_BASE_RELACIONAL_3_PESTANIAS.xlsx'),
       path.join(process.cwd(), 'AUTOHOGAR_BASE_RELACIONAL_3_PESTANIAS.xlsx'),
     ];
 
     for (const p of candidates) {
-      if (fs.existsSync(p)) {
+      if (fs.existsSync(/*turbopackIgnore: true*/ p)) {
         return xlsx.readFile(p);
       }
     }
@@ -311,11 +310,10 @@ export async function getHistorialFromSheet(nro_solicitud?: string): Promise<His
     if (!spreadsheetId) {
       // Fallback local
       const fs = require('fs');
-      const path = require('path');
       const xlsx = require('xlsx');
-      const localPath = path.join(process.cwd(), '..', 'AUTOHOGAR_BASE_RELACIONAL_3_PESTANIAS.xlsx');
+      const localPath = path.join(process.cwd(), 'AUTOHOGAR_BASE_RELACIONAL_3_PESTANIAS.xlsx');
 
-      if (fs.existsSync(localPath)) {
+      if (fs.existsSync(/*turbopackIgnore: true*/ localPath)) {
         const wb = xlsx.readFile(localPath);
         if (wb.SheetNames.includes('Historial_Pagos')) {
           const raw = xlsx.utils.sheet_to_json(wb.Sheets['Historial_Pagos']);

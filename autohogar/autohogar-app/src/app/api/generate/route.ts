@@ -5,6 +5,7 @@ import { renderToFile } from '@react-pdf/renderer';
 import React from 'react';
 import { ReciboPDF } from '@/utils/pdfTemplate';
 import { getMasterClients, normalizeName, appendAuditLog } from '@/utils/googleSheets';
+import { HEADER_IMAGE_BASE64 } from '@/utils/headerAsset';
 import { cookies } from 'next/headers';
 import { verifySession } from '@/utils/session';
 import { checkRateLimit } from '@/lib/rateLimit';
@@ -45,13 +46,8 @@ export async function POST(request: Request) {
     // 1. Load Master Database from Google Sheets
     const masterData = await getMasterClients();
 
-    // 2. Load header image as base64
-    const headerPath = path.join(process.cwd(), '..', 'full_top_header_exact.png');
-    let headerBase64 = '';
-    if (fs.existsSync(headerPath)) {
-      const imgBuffer = fs.readFileSync(headerPath);
-      headerBase64 = `data:image/png;base64,${imgBuffer.toString('base64')}`;
-    }
+    // 2. Header image base64
+    const headerBase64 = HEADER_IMAGE_BASE64;
 
     const host = request.headers.get('host') || 'localhost:3000';
     // For WhatsApp to render links properly, they must explicitly use http/https.

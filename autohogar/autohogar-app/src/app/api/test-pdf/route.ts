@@ -4,6 +4,7 @@ import path from 'path';
 import { renderToFile } from '@react-pdf/renderer';
 import React from 'react';
 import { ReciboPDF } from '@/utils/pdfTemplate';
+import { HEADER_IMAGE_BASE64 } from '@/utils/headerAsset';
 
 export async function GET(request: Request) {
   try {
@@ -12,12 +13,7 @@ export async function GET(request: Request) {
       fs.mkdirSync(outputDir, { recursive: true });
     }
 
-    const headerPath = path.join(process.cwd(), '..', 'full_top_header_exact.png');
-    let headerBase64 = '';
-    if (fs.existsSync(headerPath)) {
-      const imgBuffer = fs.readFileSync(headerPath);
-      headerBase64 = `data:image/png;base64,${imgBuffer.toString('base64')}`;
-    }
+    const headerBase64 = HEADER_IMAGE_BASE64;
 
     const clientData = {
       cod: '816',
