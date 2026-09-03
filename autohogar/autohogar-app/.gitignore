@@ -36,6 +36,11 @@ yarn-error.log*
 # vercel
 .vercel
 
+# generated pdfs
+public/recibos/*.pdf
+public/recibos/**/*
+public/backups/*.json
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

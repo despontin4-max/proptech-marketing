@@ -3,6 +3,11 @@
 .gemini/
 .antigravity/
 
+# === Secrets / Environment ===
+.env
+.env.*
+.env.local
+.env.production
 # === Dependencies ===
 node_modules/
 package-lock.json
@@ -20,6 +25,8 @@ Multimedia/
 *.avi
 *.psd
 *.ai
+autohogar/autohogar-app/public/recibos/
+autohogar/autohogar-app/public/backups/
 
 # === OS ===
 Thumbs.db
