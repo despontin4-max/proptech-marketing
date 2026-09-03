@@ -1,0 +1,23 @@
+[
+  {
+    "email": "despontin4@gmail.com",
+    "password": "AutoHogar2026!",
+    "nombre": "Maximiliano Despontin",
+    "rol": "ADMIN",
+    "estado": "ACTIVO"
+  },
+  {
+    "email": "antonellar070@gmail.com",
+    "password": "AutoHogar2026!",
+    "nombre": "Antonella (Recepción)",
+    "rol": "recepcion",
+    "estado": "ACTIVO"
+  },
+  {
+    "email": "lalilopezfotos@gmail.com",
+    "password": "AutoHogar2026!",
+    "nombre": "Florencia (Cobranzas)",
+    "rol": "cobranzas",
+    "estado": "ACTIVO"
+  }
+]
