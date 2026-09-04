@@ -1,10 +1,24 @@
 import React from 'react';
-import { Document, Page, Text, View, StyleSheet, Image } from '@react-pdf/renderer';
+import { Document, Page, Text, View, StyleSheet, Image, Font } from '@react-pdf/renderer';
+
+Font.register({
+  family: 'Roboto',
+  fonts: [
+    {
+      src: 'https://cdnjs.cloudflare.com/ajax/libs/ink/3.1.10/fonts/Roboto/roboto-regular-webfont.ttf',
+      fontWeight: 'normal',
+    },
+    {
+      src: 'https://cdnjs.cloudflare.com/ajax/libs/ink/3.1.10/fonts/Roboto/roboto-bold-webfont.ttf',
+      fontWeight: 'bold',
+    },
+  ],
+});
 
 const styles = StyleSheet.create({
   page: {
     padding: '30pt 42.5pt 20pt 42.5pt',
-    fontFamily: 'Helvetica',
+    fontFamily: 'Roboto',
   },
   pageContainer: {
     width: '100%',
@@ -132,7 +146,7 @@ export const ReciboPDF = ({ clientData, headerBase64 }: { clientData: any, heade
   const soliPadded = String(clientData.soli || 0).padStart(5, '0');
   
   const rawPhone = String(clientData.phone || '').trim();
-  const phoneLines = rawPhone.split(/[\/\n]+/).map(p => p.trim()).filter(p => p.length > 0);
+  const phoneLines = Array.from(new Set(rawPhone.split(/[\/\n]+/).map(p => p.trim()).filter(p => p.length > 0)));
   
   const rawAmount = String(clientData.amount || '0,00').trim();
   const formattedAmount = rawAmount.startsWith('$') ? rawAmount : `$ ${rawAmount}`;
