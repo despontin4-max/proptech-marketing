@@ -131,7 +131,7 @@ function formatExcelDate(val: any): string {
  */
 export async function getMasterClients(): Promise<ClientRecord[]> {
   try {
-    const spreadsheetId = process.env.GOOGLE_SHEET_ID || '1MH8X7HaAjPgi6C1PUBg1Ll4QjB0sHQXmGb4ISXHsVEY';
+    const spreadsheetId = '1MH8X7HaAjPgi6C1PUBg1Ll4QjB0sHQXmGb4ISXHsVEY';
 
     // 1. Intentar lectura en vivo vía Google Sheets GViz API / Public Export
     if (spreadsheetId) {
@@ -255,7 +255,7 @@ export interface SheetUser {
  */
 export async function getUsersFromSheet(): Promise<SheetUser[]> {
   try {
-    const spreadsheetId = process.env.GOOGLE_SHEET_ID;
+    const spreadsheetId = '1MH8X7HaAjPgi6C1PUBg1Ll4QjB0sHQXmGb4ISXHsVEY';
 
     if (!spreadsheetId) {
       const wb = findLocalMasterWorkbook();
