@@ -131,7 +131,7 @@ function formatExcelDate(val: any): string {
  */
 export async function getMasterClients(): Promise<ClientRecord[]> {
   try {
-    const spreadsheetId = process.env.GOOGLE_SHEET_ID || '16gtCaBkyDblCvnmB17GzdPe1jeQ52Zvj';
+    const spreadsheetId = process.env.GOOGLE_SHEET_ID || '1MH8X7HaAjPgi6C1PUBg1Ll4QjB0sHQXmGb4ISXHsVEY';
 
     // 1. Intentar lectura en vivo vía Google Sheets GViz API / Public Export
     if (spreadsheetId) {
@@ -148,19 +148,19 @@ export async function getMasterClients(): Promise<ClientRecord[]> {
             const raw = xlsx.utils.sheet_to_json(wb.Sheets[sheetName]);
             if (raw && raw.length > 0) {
               return raw.map((r: any) => ({
-                cod: r['CODIGO CLIENTE'] || r.ID_CLIENTE || r.COD || r.cod || '',
+                cod: r['COD_CUENTA'] || r['CODIGO CLIENTE'] || r.ID_CLIENTE || r.COD || r.cod || '',
                 soli: r['CONTRATO (SOLI)'] || r.NRO_SOLICITUD || r.NRO_CONTRATO || r.soli || '',
-                name: r['NOMBRE Y APELLIDO'] || r.CLIENTE || r.name || '',
+                name: r['NOMBRE_APELLIDO'] || r.CLIENTE || r.name || '',
                 dni: String(r['DNI'] || r.dni || ''),
                 address: r['DIRECCION'] || r.address || '',
                 city: r['LOCALIDAD'] || r.city || '',
                 province: r['PROVINCIA'] || r.province || 'SAN JUAN',
-                plan: r['PLAN / PRODUCTO'] || r.PRODUCTO_SOLICITADO || r.PLAN || r.plan || '',
+                plan: r['PLAN / PRODUCTO'] || r['PLAN'] || r.PRODUCTO_SOLICITADO || r.plan || '',
                 phone: String(r['TELEFONO'] || r.TELEFONO_1 || r.phone || ''),
-                amount: String(r['IMPORTE ABONADO'] || r.VALOR_CUOTA_ESTIMADA || r['VALOR CUOTA ACTUAL ($)'] || r.amount || '0,00').replace(/^\$\s*/, ''),
-                cuotaNum: String(r['CUOTA ACTUAL (PDF)'] || r.CUOTAS_PAGADAS || r['CUOTAS PAGADAS'] || '1'),
+                amount: String(r['VALOR_CUOTA'] || r['IMPORTE ABONADO'] || r['VALOR CUOTA ACTUAL ($)'] || r.amount || '0,00').replace(/^\$\s*/, ''),
+                cuotaNum: String(r['CUOTA ACTUAL (PDF)'] || r.CUOTAS_PAGADAS || '1'),
                 dueDate: formatExcelDate(r['FECHA DE VENCIMIENTO'] || r.VENCIMIENTO || r.dueDate || ''),
-                history: String(r['HISTORIAL ULTIMOS 5 PAGOS'] || r.HISTORIAL_DE_PAGOS || r['HISTORIAL DE PAGOS'] || r.history || ''),
+                history: String(r['HISTORIAL ULTIMOS 5 PAGOS'] || r.HISTORIAL_DE_PAGOS || r.history || ''),
               }));
             }
           }
@@ -175,7 +175,7 @@ export async function getMasterClients(): Promise<ClientRecord[]> {
       try {
         const auth = getAuth();
         const sheets = google.sheets({ version: 'v4', auth });
-        const range = process.env.GOOGLE_SHEET_RANGE || 'CLIENTES ACTIVOS!A:S';
+        const range = process.env.GOOGLE_SHEET_RANGE || '1_CLIENTES!A:K'; // Nueva pestaña
 
         const response = await sheets.spreadsheets.values.get({
           spreadsheetId,
@@ -191,19 +191,19 @@ export async function getMasterClients(): Promise<ClientRecord[]> {
               return idx >= 0 ? (row[idx] || '') : '';
             };
             return {
-              cod: getVal('CODIGO') || getVal('ID_CLIENTE') || row[7] || '',
-              soli: getVal('CONTRATO') || getVal('SOLI') || row[6] || '',
+              cod: getVal('COD_CUENTA') || row[0] || '',
+              soli: getVal('CONTRATO') || row[1] || '',
               name: getVal('NOMBRE') || row[2] || '',
-              dni: String(getVal('DNI') || row[1] || ''),
-              address: getVal('DIRECCION') || row[4] || '',
+              dni: String(getVal('DNI') || row[3] || ''),
+              phone: String(getVal('TELEFONO') || row[4] || ''),
               city: getVal('LOCALIDAD') || row[5] || '',
-              province: getVal('PROVINCIA') || 'SAN JUAN',
-              phone: String(getVal('TELEFONO') || row[3] || ''),
-              plan: getVal('PLAN') || getVal('PRODUCTO') || row[8] || '',
-              cuotaNum: String(getVal('CUOTA') || row[10] || '1'),
-              amount: String(getVal('IMPORTE') || row[12] || '0,00').replace(/^\$\s*/, ''),
-              dueDate: formatExcelDate(getVal('VENCIMIENTO') || row[11] || ''),
-              history: getVal('HISTORIAL') || row[16] || '',
+              address: getVal('DIRECCION') || row[6] || '',
+              plan: getVal('PLAN') || row[7] || '',
+              cuotaNum: '1', // Default for now
+              amount: String(getVal('VALOR_CUOTA') || row[9] || '0,00').replace(/^\$\s*/, ''),
+              province: 'SAN JUAN',
+              dueDate: '',
+              history: '',
             };
           });
         }
