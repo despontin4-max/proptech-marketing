@@ -137,7 +137,8 @@ export async function getMasterClients(): Promise<ClientRecord[]> {
     if (spreadsheetId) {
       try {
         const xlsx = require('xlsx');
-        const gvizUrl = `https://docs.google.com/spreadsheets/d/${spreadsheetId}/gviz/tq?tqx=out:csv&gid=0`; // Por defecto, tab 1
+        // gid=651627672 corresponde a la pestaña 1_CLIENTES
+        const gvizUrl = `https://docs.google.com/spreadsheets/d/${spreadsheetId}/gviz/tq?tqx=out:csv&gid=651627672`;
         // Cachear 60 segundos para evitar Rate Limits y acelerar carga
         const res = await fetch(gvizUrl, { next: { revalidate: 60 } });
         if (res.ok) {
