@@ -106,7 +106,9 @@ export async function POST(request: Request) {
         titular_comprobante: String(record.titular_comprobante || '').trim(),
       };
 
-      const fileName = `Recibo_${clientData.cod}_${String(clientData.soli).replace(/[^a-zA-Z0-9]/g, '_')}.pdf`;
+      // Filename: Recibo_COD_SOLI.pdf — simple para que el fallback lo pueda reconstruir
+      const safeNombre = String(clientData.name || '').replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ0-9]/g, '_').slice(0, 30);
+      const fileName = `Recibo_${clientData.cod}_${String(clientData.soli || safeNombre)}.pdf`;
       const filePath = path.join(/*turbopackIgnore: true*/ outputDir, fileName);
 
       // Render PDF using @react-pdf/renderer renderToStream

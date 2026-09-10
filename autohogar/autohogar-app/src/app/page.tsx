@@ -22,6 +22,7 @@ interface Cliente {
 export default function Dashboard() {
   const router = useRouter();
   const [clientes, setClientes] = useState<Cliente[]>([]);
+  const [codVerificados, setCodVerificados] = useState<Set<string>>(new Set());
   const [searchTerm, setSearchTerm] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [errorMsg, setErrorMsg] = useState('');
@@ -43,7 +44,6 @@ export default function Dashboard() {
         if (!authData.authenticated) { router.push('/login'); return; }
         setCurrentUser(authData.user);
 
-        // Usar la nueva API robusta por índice de columna
         const clientsRes = await fetch('/api/clientes/list');
         const clientsData = await clientsRes.json();
 
@@ -53,11 +53,10 @@ export default function Dashboard() {
           return;
         }
 
-        if (clientsData.clientes.length === 0) {
-          setDebugInfo(`Headers detectados: ${JSON.stringify(clientsData.headers)}`);
-        }
-
         setClientes(clientsData.clientes);
+        if (clientsData.codVerificados) {
+          setCodVerificados(new Set(clientsData.codVerificados));
+        }
       } catch (err: any) {
         setErrorMsg(err.message || 'Error de red');
       } finally {
@@ -210,7 +209,10 @@ export default function Dashboard() {
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-100">
-                      {filteredClientes.slice(0, 150).map(c => (
+                      {filteredClientes.slice(0, 150).map(c => {
+                        const verificado = codVerificados.has(String(c.cod));
+                        const esAdmin = currentUser?.rol?.toUpperCase() === 'ADMIN';
+                        return (
                         <tr key={c.cod + c.soli} className="hover:bg-orange-50 transition-colors">
                           <td className="px-4 py-2.5 font-mono text-slate-700">{c.cod}</td>
                           <td className="px-4 py-2.5 text-slate-600">{c.soli}</td>
@@ -221,15 +223,22 @@ export default function Dashboard() {
                             {c.amount ? `$${c.amount}` : '-'}
                           </td>
                           <td className="px-4 py-2.5 text-right">
-                            <button
-                              onClick={() => openModal(c)}
-                              className="bg-emerald-600 text-white px-3 py-1.5 rounded-lg hover:bg-emerald-700 text-xs font-semibold flex items-center gap-1 ml-auto"
-                            >
-                              <FileText className="w-3 h-3" /> Emitir Recibo
-                            </button>
+                            {verificado ? (
+                              <button
+                                onClick={() => openModal(c)}
+                                className="bg-emerald-600 text-white px-3 py-1.5 rounded-lg hover:bg-emerald-700 text-xs font-semibold flex items-center gap-1 ml-auto"
+                              >
+                                <FileText className="w-3 h-3" /> Emitir Recibo
+                              </button>
+                            ) : (
+                              <span className="text-xs text-amber-600 font-semibold flex items-center gap-1 justify-end">
+                                <AlertCircle className="w-3 h-3" /> Pago no verificado
+                              </span>
+                            )}
                           </td>
                         </tr>
-                      ))}
+                        );
+                      })}
                       {filteredClientes.length === 0 && (
                         <tr>
                           <td colSpan={7} className="px-4 py-8 text-center text-slate-400">

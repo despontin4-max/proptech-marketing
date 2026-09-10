@@ -3,7 +3,9 @@ import { cookies } from 'next/headers';
 import { verifySession } from '@/utils/session';
 
 const SHEET_ID = '1MH8X7HaAjPgi6C1PUBg1Ll4QjB0sHQXmGb4ISXHsVEY';
-const CLIENTES_GID = '651627672'; // gid de la pestaña 1_CLIENTES
+// Usar nombre de pestaña: más robusto que gid que puede cambiar si se reorganiza el archivo
+const CLIENTES_SHEET = '1_CLIENTES';
+const CUENTA_SHEET = '2_CUENTA_CORRIENTE';
 
 /**
  * Parser CSV robusto que maneja celdas con comillas y comas internas.
@@ -54,19 +56,20 @@ export async function GET() {
   if (!session) return NextResponse.json({ error: 'No autorizado' }, { status: 401 });
 
   try {
-    const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&gid=${CLIENTES_GID}`;
-    const res = await fetch(url, { cache: 'no-store' }); // sin caché para datos frescos
+    // Usar nombre de pestaña (confirmado por inspección directa del CSV)
+    const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${CLIENTES_SHEET}`;
+    const res = await fetch(url, { cache: 'no-store' });
 
     if (!res.ok) {
       return NextResponse.json(
-        { error: `GViz respondió HTTP ${res.status}. ¿La planilla es pública?` },
+        { error: `GViz respondio HTTP ${res.status}. La planilla debe ser publica (lectura).` },
         { status: 502 }
       );
     }
 
     const text = await res.text();
     if (!text || text.length < 10) {
-      return NextResponse.json({ error: 'Respuesta vacía de Google Sheets' }, { status: 502 });
+      return NextResponse.json({ error: 'Respuesta vacia de Google Sheets' }, { status: 502 });
     }
 
     const rows = parseCSV(text);
@@ -74,7 +77,10 @@ export async function GET() {
       return NextResponse.json({ success: true, clientes: [], headers: rows[0] || [] });
     }
 
-    // Saltar fila 0 (encabezados), mapear por posición de columna
+    // Headers confirmados por inspeccion directa del GViz (10/09/2026):
+    // [0] CODIGO CLIENTE  [1] CONTRATO (SOLI)  [2] NOMBRE_APELLIDO  [3] DNI
+    // [4] TELEFONO  [5] LOCALIDAD  [6] DIRECCION  [7] PLAN / PRODUCTO
+    // [8] CUOTAS_TOTALES  [9] VALOR_CUOTA  [10] ESTADO
     const clientes = rows.slice(1)
       .filter(row => row[0] && row[0].trim() !== '')
       .map(row => ({
@@ -91,10 +97,28 @@ export async function GET() {
         estado:   row[10] || 'ACTIVO',
       }));
 
+    // Leer CUENTA_CORRIENTE para obtener los COD_CUENTA verificados
+    let codVerificados: Set<string> = new Set();
+    try {
+      const ccUrl = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${CUENTA_SHEET}`;
+      const ccRes = await fetch(ccUrl, { cache: 'no-store' });
+      if (ccRes.ok) {
+        const ccText = await ccRes.text();
+        const ccRows = parseCSV(ccText);
+        // [0]FECHA_VENCIMIENTO [1]FECHA_PAGO_REAL [2]COD_CUENTA [3]CONCEPTO [4]MEDIO_PAGO [5]VERIFICACION_ADMIN
+        ccRows.slice(1).forEach(row => {
+          if (row[2] && String(row[5]).toUpperCase() === 'TRUE') {
+            codVerificados.add(String(row[2]).trim());
+          }
+        });
+      }
+    } catch {}
+
     return NextResponse.json({
       success: true,
       total: clientes.length,
-      headers: rows[0], // para debug
+      codVerificados: Array.from(codVerificados),
+      headers: rows[0], // debug
       clientes,
     });
 

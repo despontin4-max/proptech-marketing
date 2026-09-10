@@ -133,12 +133,12 @@ export async function getMasterClients(): Promise<ClientRecord[]> {
   try {
     const spreadsheetId = '1MH8X7HaAjPgi6C1PUBg1Ll4QjB0sHQXmGb4ISXHsVEY';
 
-    // 1. Intentar lectura en vivo vía Google Sheets GViz API / Public Export
+    // 1. Intentar lectura en vivo vía Google Sheets GViz API
     if (spreadsheetId) {
       try {
         const xlsx = require('xlsx');
-        // gid=651627672 corresponde a la pestaña 1_CLIENTES
-        const gvizUrl = `https://docs.google.com/spreadsheets/d/${spreadsheetId}/gviz/tq?tqx=out:csv&gid=651627672`;
+        // Usar nombre de pestaña (más robusto que gid que puede cambiar)
+        const gvizUrl = `https://docs.google.com/spreadsheets/d/${spreadsheetId}/gviz/tq?tqx=out:csv&sheet=1_CLIENTES`;
         // Cachear 60 segundos para evitar Rate Limits y acelerar carga
         const res = await fetch(gvizUrl, { next: { revalidate: 60 } });
         if (res.ok) {
@@ -148,20 +148,23 @@ export async function getMasterClients(): Promise<ClientRecord[]> {
             const sheetName = wb.SheetNames[0];
             const raw = xlsx.utils.sheet_to_json(wb.Sheets[sheetName]);
             if (raw && raw.length > 0) {
+              // Mapeo con headers REALES confirmados del GViz de 1_CLIENTES:
+              // CODIGO CLIENTE, CONTRATO (SOLI), NOMBRE_APELLIDO, DNI, TELEFONO,
+              // LOCALIDAD, DIRECCION, PLAN / PRODUCTO, CUOTAS_TOTALES, VALOR_CUOTA, ESTADO
               return raw.map((r: any) => ({
-                cod: r['COD_CUENTA'] || r['CODIGO CLIENTE'] || r.ID_CLIENTE || r.COD || r.cod || '',
-                soli: r['CONTRATO (SOLI)'] || r.NRO_SOLICITUD || r.NRO_CONTRATO || r.soli || '',
-                name: r['NOMBRE_APELLIDO'] || r.CLIENTE || r.name || '',
-                dni: String(r['DNI'] || r.dni || ''),
-                address: r['DIRECCION'] || r.address || '',
-                city: r['LOCALIDAD'] || r.city || '',
-                province: r['PROVINCIA'] || r.province || 'SAN JUAN',
-                plan: r['PLAN / PRODUCTO'] || r['PLAN'] || r.PRODUCTO_SOLICITADO || r.plan || '',
-                phone: String(r['TELEFONO'] || r.TELEFONO_1 || r.phone || ''),
-                amount: String(r['VALOR_CUOTA'] || r['IMPORTE ABONADO'] || r['VALOR CUOTA ACTUAL ($)'] || r.amount || '0,00').replace(/^\$\s*/, ''),
-                cuotaNum: String(r['CUOTA ACTUAL (PDF)'] || r.CUOTAS_PAGADAS || '1'),
-                dueDate: formatExcelDate(r['FECHA DE VENCIMIENTO'] || r.VENCIMIENTO || r.dueDate || ''),
-                history: String(r['HISTORIAL ULTIMOS 5 PAGOS'] || r.HISTORIAL_DE_PAGOS || r.history || ''),
+                cod:      r['CODIGO CLIENTE'] || r['COD_CUENTA'] || r.cod || '',
+                soli:     r['CONTRATO (SOLI)'] || r.soli || '',
+                name:     r['NOMBRE_APELLIDO'] || r.name || '',
+                dni:      String(r['DNI'] || r.dni || ''),
+                phone:    String(r['TELEFONO'] || r.phone || ''),
+                city:     r['LOCALIDAD'] || r.city || '',
+                address:  r['DIRECCION'] || r.address || '',
+                plan:     r['PLAN / PRODUCTO'] || r.plan || '',
+                cuotaNum: String(r['CUOTAS_TOTALES'] || '1'),
+                amount:   String(r['VALOR_CUOTA'] || '0').replace(/[$.\s]/g, '').replace(',', '.'),
+                province: 'SAN JUAN',
+                dueDate:  '',
+                history:  '',
               }));
             }
           }
