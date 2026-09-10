@@ -31,11 +31,12 @@ export default function Dashboard() {
 
         // Fetch all clients
         const clientsRes = await fetch('/api/clientes?all=true');
-        if (clientsRes.ok) {
-          const clientsData = await clientsRes.json();
-          if (clientsData.success) {
-            setClientes(clientsData.clientes);
-          }
+        const clientsData = await clientsRes.json();
+        if (clientsRes.ok && clientsData.success) {
+          setClientes(clientsData.clientes);
+        } else {
+          console.error('[CRM] Error cargando clientes:', clientsData);
+          alert(`Error cargando clientes: ${clientsData.error || clientsRes.status} (rol: ${clientsData.rol_detectado || 'desconocido'})`);
         }
       } catch (err) {
         console.error(err);

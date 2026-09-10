@@ -36,9 +36,11 @@ export async function GET(request: Request) {
     }
 
     if (all) {
-      // Solo admin puede listar todos
-      if (session.rol !== 'admin' && session.rol !== 'supervisor') {
-        return NextResponse.json({ error: 'Permisos insuficientes' }, { status: 403 });
+      // Normalizar rol a minúsculas para evitar bugs de case-sensitivity
+      const rol = String(session.rol || '').toLowerCase();
+      const rolesPermitidos = ['admin', 'supervisor', 'recepcion', 'cobranzas'];
+      if (!rolesPermitidos.includes(rol)) {
+        return NextResponse.json({ error: 'Permisos insuficientes', rol_detectado: session.rol }, { status: 403 });
       }
       const clientes = await getAllClientes();
       return NextResponse.json({ success: true, total: clientes.length, clientes });
