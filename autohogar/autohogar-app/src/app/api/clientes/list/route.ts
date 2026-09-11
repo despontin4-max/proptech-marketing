@@ -78,23 +78,27 @@ export async function GET() {
       return NextResponse.json({ success: true, clientes: [], headers: rows[0] || [] });
     }
 
-    // Col 0-10 ya mapeados. Col 11 (L) = VERIFICADO (checkbox puesto por admin en 1_CLIENTES)
-    // GViz devuelve "TRUE"/"FALSE" para checkboxes independientemente del idioma del sheet
+    // Columnas esperadas:
+    // A(0): COD_CUENTA | B(1): SOLICITUD | C(2): CLIENTE | D(3): DNI
+    // E(4): TELEFONO | F(5): LOCALIDAD | G(6): DIRECCION | H(7): PLAN
+    // I(8): N° DE ANTICIPO | J(9): VALOR_CUOTA | K(10): ESTADO
+    // L(11): CUOTAS_PACTADAS | M(12): VERIFICADO
     const clientes = rows.slice(1)
       .filter(row => row[0] && row[0].trim() !== '')
       .map(row => ({
-        cod:          row[0] || '',
-        soli:         row[1] || '',
-        name:         row[2] || '',
-        dni:          row[3] || '',
-        phone:        row[4] || '',
-        city:         row[5] || '',
-        address:      row[6] || '',
-        plan:         row[7] || '',
-        cuotaNum:     row[8] || '1',
-        amount:       parseAmount(row[9]),
-        estado:       row[10] || 'ACTIVO',
-        verificado:   String(row[11] || '').toUpperCase() === 'TRUE',
+        cod:            row[0] || '',
+        soli:           row[1] || '',
+        name:           row[2] || '',
+        dni:            row[3] || '',
+        phone:          row[4] || '',
+        city:           row[5] || '',
+        address:        row[6] || '',
+        plan:           row[7] || '',
+        cuotaNum:       row[8] || '1',
+        amount:         parseAmount(row[9]),
+        estado:         row[10] || 'ACTIVO',
+        cuotasPactadas: row[11] || '',
+        verificado:     String(row[12] || row[11] || '').toUpperCase() === 'TRUE',
       }));
 
     return NextResponse.json({

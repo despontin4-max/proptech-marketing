@@ -161,6 +161,7 @@ export async function POST(request: Request) {
         fecha_vencimiento: clientData.dueDate || fechaPagoStr,
         fecha_pago: fechaPagoStr,
         cod_cuenta: clientData.cod,
+        cliente_nombre: clientData.name,
         concepto: conceptoStr,
         medio_pago: 'Efectivo', // O leer si existiera de record.medio_pago
         verificacion_admin: '✅',

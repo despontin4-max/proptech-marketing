@@ -404,7 +404,7 @@ export interface AuditLogEntry {
  */
 export async function appendAuditLog(entry: AuditLogEntry): Promise<void> {
   try {
-    const spreadsheetId = process.env.GOOGLE_SHEET_ID;
+    const spreadsheetId = process.env.GOOGLE_SHEET_ID || '1MH8X7HaAjPgi6C1PUBg1Ll4QjB0sHQXmGb4ISXHsVEY';
 
     if (!spreadsheetId) {
       // Sin Sheets: log a consola solamente
@@ -433,6 +433,7 @@ export interface CuentaCorrienteEntry {
   fecha_vencimiento: string;
   fecha_pago: string;
   cod_cuenta: string;
+  cliente_nombre: string;
   concepto: string;
   medio_pago: string;
   verificacion_admin: string;
@@ -447,7 +448,7 @@ export interface CuentaCorrienteEntry {
  */
 export async function appendPagoCuentaCorriente(entry: CuentaCorrienteEntry): Promise<void> {
   try {
-    const spreadsheetId = process.env.GOOGLE_SHEET_ID;
+    const spreadsheetId = process.env.GOOGLE_SHEET_ID || '1MH8X7HaAjPgi6C1PUBg1Ll4QjB0sHQXmGb4ISXHsVEY';
 
     if (!spreadsheetId) {
       console.log('[CUENTA CORRIENTE LOCAL]', entry);
@@ -459,13 +460,14 @@ export async function appendPagoCuentaCorriente(entry: CuentaCorrienteEntry): Pr
 
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: '2_CUENTA_CORRIENTE!A:J',
+      range: '2_CUENTA_CORRIENTE!A:K',
       valueInputOption: 'USER_ENTERED',
       requestBody: {
         values: [[
           entry.fecha_vencimiento,
           entry.fecha_pago,
           entry.cod_cuenta,
+          entry.cliente_nombre,
           entry.concepto,
           entry.medio_pago,
           entry.verificacion_admin,
