@@ -85,7 +85,7 @@ export async function GET() {
     // L(11): CUOTAS_PACTADAS | M(12): VERIFICADO
     const clientes = rows.slice(1)
       .filter(row => row[0] && row[0].trim() !== '')
-      .map(row => ({
+      .map((row, index) => ({
         cod:            row[0] || '',
         soli:           row[1] || '',
         name:           row[2] || '',
@@ -99,6 +99,7 @@ export async function GET() {
         estado:         row[10] || 'ACTIVO',
         cuotasPactadas: row[11] || '',
         verificado:     String(row[12] || row[11] || '').toUpperCase() === 'TRUE',
+        sheetRowIndex:  index + 2, // Para actualizar 1_CLIENTES después
       }));
 
     return NextResponse.json({

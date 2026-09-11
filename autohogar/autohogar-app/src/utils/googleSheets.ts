@@ -486,3 +486,37 @@ export async function appendPagosBatch(entries: CuentaCorrienteEntry[]): Promise
     throw error; // No silenciar errores de BD
   }
 }
+
+/**
+ * Actualiza la columna N (RECIBO EMITIDO) en 1_CLIENTES
+ * Recibe un array de números de fila (sheetRowIndex) y el texto a escribir
+ */
+export async function markReceiptsAsEmitted(rowIndices: number[]): Promise<void> {
+  if (rowIndices.length === 0) return;
+  try {
+    const spreadsheetId = process.env.GOOGLE_SHEET_ID || '1MH8X7HaAjPgi6C1PUBg1Ll4QjB0sHQXmGb4ISXHsVEY';
+    if (!spreadsheetId) return;
+
+    const auth = getAuth();
+    const sheets = google.sheets({ version: 'v4', auth });
+    
+    const fechaEmision = new Date().toLocaleString('es-AR', { dateStyle: 'short', timeStyle: 'short' });
+
+    // Preparar peticiones de actualización en lote (BatchUpdateValues)
+    const data = rowIndices.map(row => ({
+      range: `1_CLIENTES!N${row}`,
+      values: [[`✅ Emitido: ${fechaEmision}`]]
+    }));
+
+    await sheets.spreadsheets.values.batchUpdate({
+      spreadsheetId,
+      requestBody: {
+        valueInputOption: 'USER_ENTERED',
+        data
+      }
+    });
+  } catch (error) {
+    console.error('Error marcando recibos como emitidos en 1_CLIENTES:', error);
+  }
+}
+

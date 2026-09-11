@@ -76,6 +76,7 @@ export async function POST(request: Request) {
 
     const generatedFiles = [];
     const pagosToInsert = [];
+    const rowIndicesToMark: number[] = [];
 
     for (const record of records) {
       const masterClient = masterMapByCod.get(String(record.cod)) || 
@@ -163,11 +164,20 @@ export async function POST(request: Request) {
         nro_anticipo: cuotaNumeroStr,
         operador: operadorVerificador
       });
+
+      // Recolectar fila para marcar como emitido
+      const targetRow = record.sheetRowIndex || masterClient.sheetRowIndex;
+      if (targetRow) {
+        rowIndicesToMark.push(targetRow);
+      }
     }
 
     // Insertar todos los pagos en 1 sola llamada (Evita cuellos de botella y silent failures)
-    const { appendPagosBatch } = require('@/utils/googleSheets');
+    const { appendPagosBatch, markReceiptsAsEmitted } = require('@/utils/googleSheets');
     await appendPagosBatch(pagosToInsert);
+    
+    // Marcar los recibos como emitidos en 1_CLIENTES (Fire and forget no bloqueante)
+    markReceiptsAsEmitted(rowIndicesToMark).catch(() => {});
 
     // ── Audit Log (fire-and-forget) ────────────────────────────────────────
     const fechaStr = new Date().toLocaleString('es-AR', { dateStyle: 'short', timeStyle: 'short' });
