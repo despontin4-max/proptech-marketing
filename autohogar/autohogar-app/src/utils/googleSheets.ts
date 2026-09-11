@@ -404,13 +404,7 @@ export interface AuditLogEntry {
  */
 export async function appendAuditLog(entry: AuditLogEntry): Promise<void> {
   try {
-    const spreadsheetId = process.env.GOOGLE_SHEET_ID || '1MH8X7HaAjPgi6C1PUBg1Ll4QjB0sHQXmGb4ISXHsVEY';
-
-    if (!spreadsheetId) {
-      // Sin Sheets: log a consola solamente
-      console.log('[AUDIT]', entry);
-      return;
-    }
+    const spreadsheetId = '1MH8X7HaAjPgi6C1PUBg1Ll4QjB0sHQXmGb4ISXHsVEY';
 
     const auth = getAuth();
     const sheets = google.sheets({ version: 'v4', auth });
@@ -449,13 +443,9 @@ export interface CuentaCorrienteEntry {
  */
 export async function appendPagosBatch(entries: CuentaCorrienteEntry[]): Promise<void> {
   if (entries.length === 0) return;
-  
   try {
-    const spreadsheetId = process.env.GOOGLE_SHEET_ID || '1MH8X7HaAjPgi6C1PUBg1Ll4QjB0sHQXmGb4ISXHsVEY';
-    if (!spreadsheetId) {
-      console.log('[CUENTA CORRIENTE BATCH LOCAL]', entries);
-      return;
-    }
+    const spreadsheetId = '1MH8X7HaAjPgi6C1PUBg1Ll4QjB0sHQXmGb4ISXHsVEY';
+
 
     const auth = getAuth();
     const sheets = google.sheets({ version: 'v4', auth });
@@ -494,9 +484,7 @@ export async function appendPagosBatch(entries: CuentaCorrienteEntry[]): Promise
 export async function markReceiptsAsEmitted(rowIndices: number[]): Promise<void> {
   if (rowIndices.length === 0) return;
   try {
-    const spreadsheetId = process.env.GOOGLE_SHEET_ID || '1MH8X7HaAjPgi6C1PUBg1Ll4QjB0sHQXmGb4ISXHsVEY';
-    if (!spreadsheetId) return;
-
+    const spreadsheetId = '1MH8X7HaAjPgi6C1PUBg1Ll4QjB0sHQXmGb4ISXHsVEY';
     const auth = getAuth();
     const sheets = google.sheets({ version: 'v4', auth });
     
