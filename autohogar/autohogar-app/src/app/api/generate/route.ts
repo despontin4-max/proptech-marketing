@@ -146,7 +146,7 @@ export async function POST(request: Request) {
         }
       }
 
-      generatedFiles.push({ id: record.id, pdfUrl: `/recibos/${fileName}`, waLink });
+      generatedFiles.push({ id: record.id, pdfUrl: `/recibos/${fileName}?t=${Date.now()}`, waLink });
 
       // LOG EN 2_CUENTA_CORRIENTE
       // Fecha de hoy para FECHA_PAGO_REAL
