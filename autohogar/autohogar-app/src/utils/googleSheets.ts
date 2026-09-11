@@ -27,6 +27,27 @@ export function normalizeName(name: string | undefined | null) {
 }
 
 /**
+ * Parsea un monto numérico lidiando con distintos formatos locales de miles y decimales
+ * Ejemplos: "70,000" -> "70000", "70.000,00" -> "70000.00"
+ */
+export function parseAmount(val: any): string {
+  if (!val) return '0';
+  let s = String(val).replace(/[$A-Za-z\s]/g, '');
+  if (s.includes(',') && s.includes('.')) {
+     const lastComma = s.lastIndexOf(',');
+     const lastDot = s.lastIndexOf('.');
+     if (lastComma > lastDot) s = s.replace(/\./g, '').replace(',', '.');
+     else s = s.replace(/,/g, '');
+  } else if (s.includes(',')) {
+     if (s.split(',').pop()?.length === 3) s = s.replace(/,/g, '');
+     else s = s.replace(',', '.');
+  } else if (s.includes('.')) {
+     if (s.split('.').pop()?.length === 3) s = s.replace(/\./g, '');
+  }
+  return s;
+}
+
+/**
  * Obtiene el cliente autenticado de Google a partir de las credenciales (Service Account).
  * Requiere las siguientes variables de entorno:
  * GOOGLE_CLIENT_EMAIL
@@ -161,7 +182,7 @@ export async function getMasterClients(): Promise<ClientRecord[]> {
                 address:  r['DIRECCION'] || r.address || '',
                 plan:     r['PLAN / PRODUCTO'] || r.plan || '',
                 cuotaNum: String(r['CUOTAS_TOTALES'] || '1'),
-                amount:   String(r['VALOR_CUOTA'] || '0').replace(/[$.\s]/g, '').replace(',', '.'),
+                amount:   parseAmount(r['VALOR_CUOTA']),
                 province: 'SAN JUAN',
                 dueDate:  '',
                 history:  '',
@@ -204,7 +225,7 @@ export async function getMasterClients(): Promise<ClientRecord[]> {
               address: getVal('DIRECCION') || row[6] || '',
               plan: getVal('PLAN') || row[7] || '',
               cuotaNum: '1', // Default for now
-              amount: String(getVal('VALOR_CUOTA') || row[9] || '0,00').replace(/^\$\s*/, ''),
+              amount: parseAmount(getVal('VALOR_CUOTA') || row[9]),
               province: 'SAN JUAN',
               dueDate: '',
               history: '',
@@ -232,7 +253,7 @@ export async function getMasterClients(): Promise<ClientRecord[]> {
         province: r['PROVINCIA'] || r.province || 'SAN JUAN',
         plan: r['PLAN / PRODUCTO'] || r.PLAN || r.PRODUCTO_SOLICITADO || r.plan || '',
         phone: String(r['TELEFONO'] || r.TELEFONO_1 || r.phone || ''),
-        amount: String(r['IMPORTE ABONADO'] || r['VALOR CUOTA ACTUAL ($)'] || r.VALOR_CUOTA_ESTIMADA || r.amount || '0,00').replace(/^\$\s*/, ''),
+        amount: parseAmount(r['IMPORTE ABONADO'] || r['VALOR CUOTA ACTUAL ($)'] || r.VALOR_CUOTA_ESTIMADA || r.amount),
         cuotaNum: String(r['CUOTA ACTUAL (PDF)'] || r['CUOTAS PAGADAS'] || (r.CANTIDAD_CUOTAS_PLAN ? '1' : '0')),
         dueDate: formatExcelDate(r['FECHA DE VENCIMIENTO'] || r.VENCIMIENTO || r.dueDate || ''),
         history: String(r['HISTORIAL ULTIMOS 5 PAGOS'] || r['HISTORIAL DE PAGOS'] || r.history || ''),
