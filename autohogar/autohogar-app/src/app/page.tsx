@@ -79,7 +79,10 @@ export default function Dashboard() {
 
   const openModal = (c: Cliente) => {
     setModalCliente(c);
-    setModalMonto(c.amount || '');
+    // Normalizar importe: "300,000" → "300000" para mostrarlo limpio
+    const rawAmount = String(c.amount || '0').replace(/\./g, '').replace(',', '.');
+    const numAmount = parseFloat(rawAmount) || 0;
+    setModalMonto(String(numAmount));
     setModalMedio('Efectivo');
   };
 
@@ -267,17 +270,12 @@ export default function Dashboard() {
             </p>
 
             <div className="space-y-4">
-              <div>
-                <label className="text-xs font-semibold text-slate-600 uppercase mb-1 block">
-                  Importe a Cobrar ($)
-                </label>
-                <input
-                  type="number"
-                  value={modalMonto}
-                  onChange={e => setModalMonto(e.target.value)}
-                  className="w-full border border-slate-300 rounded-lg px-3 py-2 text-slate-800 text-lg font-bold focus:outline-none focus:ring-2 focus:ring-orange-400"
-                  placeholder="0"
-                />
+              <div className="bg-slate-50 rounded-xl p-4 border border-slate-200">
+                <p className="text-xs font-semibold text-slate-500 uppercase mb-1">Importe de la cuota</p>
+                <p className="text-3xl font-bold text-emerald-700">
+                  ${Number(modalMonto).toLocaleString('es-AR')}
+                </p>
+                <p className="text-xs text-slate-400 mt-1">Valor según planilla · no editable</p>
               </div>
 
               <div>
