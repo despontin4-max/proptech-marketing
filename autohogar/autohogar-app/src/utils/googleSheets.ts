@@ -409,16 +409,21 @@ export async function appendAuditLog(entry: AuditLogEntry): Promise<void> {
     const auth = getAuth();
     const sheets = google.sheets({ version: 'v4', auth });
 
+    // Edge case: La pestaña "Usuarios" no existe en la planilla actual del CRM.
+    // Escribir aquí causaría un 400 Bad Request silencioso.
+    // Se deshabilita hasta que el cliente cree una pestaña 'Usuarios' dedicada.
+    /*
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: 'Usuarios!G:J', // columnas libres para log de auditoría
+      range: 'Usuarios!G:J',
       valueInputOption: 'RAW',
       requestBody: {
         values: [[entry.fecha, entry.usuario, entry.accion, entry.detalle]],
       },
     });
+    */
+    console.log('[AUDIT LOGGED TO CONSOLE]', entry);
   } catch (error) {
-    // No romper la app si falla el log
     console.error('Error writing audit log:', error);
   }
 }
