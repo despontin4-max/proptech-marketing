@@ -471,7 +471,7 @@ export async function appendPagosBatch(entries: CuentaCorrienteEntry[]): Promise
 
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: '2_CUENTA_CORRIENTE!A:K',
+      range: '2_CUENTA_CORRIENTE!A:A',
       valueInputOption: 'USER_ENTERED',
       insertDataOption: 'INSERT_ROWS',
       requestBody: { values: rows },
