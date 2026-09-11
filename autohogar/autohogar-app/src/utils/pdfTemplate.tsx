@@ -17,7 +17,7 @@ Font.register({
 
 const styles = StyleSheet.create({
   page: {
-    padding: '30pt 42.5pt 20pt 42.5pt',
+    padding: '20pt 30pt 10pt 30pt', // Padding reducido para asegurar que entren los 3 cuerpos en 1 hoja
     fontFamily: 'Roboto',
   },
   pageContainer: {
@@ -29,16 +29,16 @@ const styles = StyleSheet.create({
     width: '100%',
     display: 'flex',
     flexDirection: 'column',
-    marginBottom: 14,
+    marginBottom: 8, // Reducido de 14
   },
   topHeaderBanner: {
     width: '100%',
-    height: 110,
+    height: 95, // Reducido de 110 para ahorrar espacio vertical
     marginBottom: 2,
   },
   separator: {
     borderBottom: '1pt dashed #aaaaaa',
-    marginVertical: 6,
+    marginVertical: 4, // Reducido de 6
     width: '100%',
   },
   orangeBanner: {
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
     borderBottom: '1.5pt solid #eb8226',
   },
   importVal: {
-    fontSize: 14.5,
+    fontSize: 13.5, // Reducido de 14.5
     fontWeight: 'bold',
     padding: '3pt 0',
     color: '#000000',
