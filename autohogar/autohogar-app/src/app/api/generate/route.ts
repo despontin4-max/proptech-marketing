@@ -177,17 +177,17 @@ export async function POST(request: Request) {
     const { appendPagosBatch, markReceiptsAsEmitted } = require('@/utils/googleSheets');
     await appendPagosBatch(pagosToInsert);
     
-    // Marcar los recibos como emitidos en 1_CLIENTES (Fire and forget no bloqueante)
-    markReceiptsAsEmitted(rowIndicesToMark).catch(() => {});
+    // Marcar los recibos como emitidos en 1_CLIENTES
+    await markReceiptsAsEmitted(rowIndicesToMark).catch(e => console.error('Error marking receipts:', e));
 
     // ── Audit Log (fire-and-forget) ────────────────────────────────────────
     const fechaStr = new Date().toLocaleString('es-AR', { dateStyle: 'short', timeStyle: 'short' });
-    appendAuditLog({
+    await appendAuditLog({
       fecha: fechaStr,
       usuario: operadorVerificador,
       accion: 'Generación de recibos PDF',
       detalle: `${records.length} recibo(s) generado(s)`,
-    }).catch(() => {}); // no bloquear la respuesta
+    }).catch(e => console.error('Error in audit log:', e));
 
     return NextResponse.json({ success: true, files: generatedFiles });
 
