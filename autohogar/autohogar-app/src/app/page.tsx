@@ -112,6 +112,9 @@ export default function Dashboard() {
         cuota: modalCliente.cuotaNum || '1',
         importe: modalMonto,
         medio_pago: modalMedio,
+        dueDate: modalCliente.dueDate,
+        paymentDate: modalCliente.paymentDate,
+        sheetRowIndex: modalCliente.sheetRowIndex,
       };
 
       const response = await fetch('/api/generate', {
