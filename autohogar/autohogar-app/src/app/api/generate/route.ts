@@ -178,7 +178,7 @@ export async function POST(request: Request) {
     await appendPagosBatch(pagosToInsert);
     
     // Marcar los recibos como emitidos en 1_CLIENTES
-    await markReceiptsAsEmitted(rowIndicesToMark).catch(e => console.error('Error marking receipts:', e));
+    await markReceiptsAsEmitted(rowIndicesToMark, operadorVerificador).catch(e => console.error('Error marking receipts:', e));
 
     // ── Audit Log (fire-and-forget) ────────────────────────────────────────
     const fechaStr = new Date().toLocaleString('es-AR', { dateStyle: 'short', timeStyle: 'short' });

@@ -486,7 +486,7 @@ export async function appendPagosBatch(entries: CuentaCorrienteEntry[]): Promise
  * Actualiza la columna N (RECIBO EMITIDO) en 1_CLIENTES
  * Recibe un array de números de fila (sheetRowIndex) y el texto a escribir
  */
-export async function markReceiptsAsEmitted(rowIndices: number[]): Promise<void> {
+export async function markReceiptsAsEmitted(rowIndices: number[], operador: string = 'Administrador'): Promise<void> {
   if (rowIndices.length === 0) return;
   try {
     const spreadsheetId = '1MH8X7HaAjPgi6C1PUBg1Ll4QjB0sHQXmGb4ISXHsVEY';
@@ -498,7 +498,7 @@ export async function markReceiptsAsEmitted(rowIndices: number[]): Promise<void>
     // Preparar peticiones de actualización en lote (BatchUpdateValues)
     const data = rowIndices.map(row => ({
       range: `1_CLIENTES!N${row}`,
-      values: [[`✅ Emitido: ${fechaEmision}`]]
+      values: [[`✅ Emitido: ${fechaEmision} por ${operador}`]]
     }));
 
     await sheets.spreadsheets.values.batchUpdate({
