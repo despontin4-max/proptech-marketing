@@ -44,7 +44,7 @@ export default function Dashboard() {
         if (!authData.authenticated) { router.push('/login'); return; }
         setCurrentUser(authData.user);
 
-        const clientsRes = await fetch('/api/clientes/list');
+        const clientsRes = await fetch('/api/clientes/list?t=' + Date.now());
         const clientsData = await clientsRes.json();
 
         if (!clientsRes.ok || !clientsData.success) {
