@@ -450,11 +450,30 @@ export async function appendPagosBatch(entries: CuentaCorrienteEntry[]): Promise
   if (entries.length === 0) return;
   try {
     const spreadsheetId = '1MH8X7HaAjPgi6C1PUBg1Ll4QjB0sHQXmGb4ISXHsVEY';
-
-
     const auth = getAuth();
     const sheets = google.sheets({ version: 'v4', auth });
 
+    // ── PASO 1: Leer Columna A para encontrar la primera fila REALMENTE vacía ──
+    // Esto ignora las casillas de verificación (checkboxes) en otras columnas
+    // que confundían al método 'append' y lo mandaban a la fila 1001+.
+    const readResponse = await sheets.spreadsheets.values.get({
+      spreadsheetId,
+      range: '2_CUENTA_CORRIENTE!A:A',
+    });
+
+    const existingColA = readResponse.data.values || [];
+    // La primera fila de datos reales es la fila 2 (index 1, porque la fila 1 es el header).
+    // Encontramos el último índice que NO está vacío en columna A.
+    let lastDataRow = 1; // Fila 1 = header
+    for (let i = 1; i < existingColA.length; i++) {
+      const cellVal = existingColA[i]?.[0];
+      if (cellVal !== undefined && cellVal !== null && String(cellVal).trim() !== '') {
+        lastDataRow = i + 1; // +1 porque los índices de sheets son 1-based
+      }
+    }
+    const firstEmptyRow = lastDataRow + 1;
+
+    // ── PASO 2: Construir las filas a insertar ────────────────────────────────
     const rows = entries.map(entry => [
       entry.fecha_vencimiento,
       entry.fecha_pago,
@@ -469,16 +488,23 @@ export async function appendPagosBatch(entries: CuentaCorrienteEntry[]): Promise
       entry.operador
     ]);
 
-    await sheets.spreadsheets.values.append({
+    // ── PASO 3: Escribir en la posición exacta con batchUpdate ────────────────
+    // batchUpdate NO detecta el fin de tabla; escribe exactamente donde se le dice.
+    await sheets.spreadsheets.values.batchUpdate({
       spreadsheetId,
-      range: '2_CUENTA_CORRIENTE!A:A',
-      valueInputOption: 'USER_ENTERED',
-      insertDataOption: 'INSERT_ROWS',
-      requestBody: { values: rows },
+      requestBody: {
+        valueInputOption: 'USER_ENTERED',
+        data: rows.map((row, idx) => ({
+          range: `2_CUENTA_CORRIENTE!A${firstEmptyRow + idx}:K${firstEmptyRow + idx}`,
+          values: [row],
+        })),
+      },
     });
+
+    console.log(`[CC] Wrote ${rows.length} row(s) starting at row ${firstEmptyRow}`);
   } catch (error) {
     console.error('Error crítico escribiendo batch en 2_CUENTA_CORRIENTE:', error);
-    throw error; // No silenciar errores de BD
+    throw error;
   }
 }
 
