@@ -109,10 +109,12 @@ export async function POST(request: Request) {
         titular_comprobante: String(record.titular_comprobante || '').trim(),
       };
 
-      const safeNombre = String(clientData.name || 'Cliente').replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ0-9]/g, '_');
+      const safeNombre = String(clientData.name || 'Cliente').replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 ]/g, '').trim().replace(/\s+/g, '_');
       const mesActual = new Date().toLocaleString('es-AR', { month: 'long' });
       const mesCap = mesActual.charAt(0).toUpperCase() + mesActual.slice(1);
-      const fileName = `Recibo_${safeNombre}_${mesCap}.pdf`;
+      // Formato: Recibo_COD_SOLI_Nombre_Mes.pdf
+      // El servidor usa COD y SOLI para regenerar el PDF si el archivo no está en disco.
+      const fileName = `Recibo_${clientData.cod}_${String(clientData.soli)}_${safeNombre}_${mesCap}.pdf`;
       const filePath = path.join(/*turbopackIgnore: true*/ outputDir, fileName);
 
       try {

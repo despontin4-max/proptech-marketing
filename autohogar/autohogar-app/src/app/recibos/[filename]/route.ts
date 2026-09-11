@@ -40,11 +40,11 @@ export async function GET(
       }
     }
 
-    // 2. Si no está en disco (ej. cold start de Vercel), generarlo en vivo a partir del nombre del archivo
-    // Formato estándar: Recibo_COD_SOLICITUD.pdf
-    const match = filename.match(/^Recibo_([^_]+)_([^_.]+)\.pdf$/i);
-    const searchCod = match ? match[1] : '';
-    const searchSoli = match ? match[2] : '';
+    // Formato estándar: Recibo_COD_SOLI_Nombre_Mes.pdf
+    // Extraemos COD (índice 1) y SOLI (índice 2), el resto es nombre+mes
+    const parts = filename.replace('.pdf', '').split('_');
+    const searchCod = parts.length >= 3 ? parts[1] : '';
+    const searchSoli = parts.length >= 3 ? parts[2] : '';
 
     const masterData = await getMasterClients();
     const client = masterData.find(
