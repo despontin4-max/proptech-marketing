@@ -17,12 +17,12 @@ interface Cliente {
   cuotaNum: string;
   amount: string;
   estado: string;
+  verificado: boolean;
 }
 
 export default function Dashboard() {
   const router = useRouter();
   const [clientes, setClientes] = useState<Cliente[]>([]);
-  const [codVerificados, setCodVerificados] = useState<Set<string>>(new Set());
   const [searchTerm, setSearchTerm] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [errorMsg, setErrorMsg] = useState('');
@@ -54,9 +54,6 @@ export default function Dashboard() {
         }
 
         setClientes(clientsData.clientes);
-        if (clientsData.codVerificados) {
-          setCodVerificados(new Set(clientsData.codVerificados));
-        }
       } catch (err: any) {
         setErrorMsg(err.message || 'Error de red');
       } finally {
@@ -210,8 +207,7 @@ export default function Dashboard() {
                     </thead>
                     <tbody className="divide-y divide-slate-100">
                       {filteredClientes.slice(0, 150).map(c => {
-                        const verificado = codVerificados.has(String(c.cod));
-                        const esAdmin = currentUser?.rol?.toUpperCase() === 'ADMIN';
+                        const verificado = Boolean(c.verificado);
                         return (
                         <tr key={c.cod + c.soli} className="hover:bg-orange-50 transition-colors">
                           <td className="px-4 py-2.5 font-mono text-slate-700">{c.cod}</td>

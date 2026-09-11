@@ -77,48 +77,29 @@ export async function GET() {
       return NextResponse.json({ success: true, clientes: [], headers: rows[0] || [] });
     }
 
-    // Headers confirmados por inspeccion directa del GViz (10/09/2026):
-    // [0] CODIGO CLIENTE  [1] CONTRATO (SOLI)  [2] NOMBRE_APELLIDO  [3] DNI
-    // [4] TELEFONO  [5] LOCALIDAD  [6] DIRECCION  [7] PLAN / PRODUCTO
-    // [8] CUOTAS_TOTALES  [9] VALOR_CUOTA  [10] ESTADO
+    // Col 0-10 ya mapeados. Col 11 (L) = VERIFICADO (checkbox puesto por admin en 1_CLIENTES)
+    // GViz devuelve "TRUE"/"FALSE" para checkboxes independientemente del idioma del sheet
     const clientes = rows.slice(1)
       .filter(row => row[0] && row[0].trim() !== '')
       .map(row => ({
-        cod:      row[0] || '',
-        soli:     row[1] || '',
-        name:     row[2] || '',
-        dni:      row[3] || '',
-        phone:    row[4] || '',
-        city:     row[5] || '',
-        address:  row[6] || '',
-        plan:     row[7] || '',
-        cuotaNum: row[8] || '1',
-        amount:   row[9] || '0',
-        estado:   row[10] || 'ACTIVO',
+        cod:          row[0] || '',
+        soli:         row[1] || '',
+        name:         row[2] || '',
+        dni:          row[3] || '',
+        phone:        row[4] || '',
+        city:         row[5] || '',
+        address:      row[6] || '',
+        plan:         row[7] || '',
+        cuotaNum:     row[8] || '1',
+        amount:       row[9] || '0',
+        estado:       row[10] || 'ACTIVO',
+        verificado:   String(row[11] || '').toUpperCase() === 'TRUE',
       }));
-
-    // Leer CUENTA_CORRIENTE para obtener los COD_CUENTA verificados
-    let codVerificados: Set<string> = new Set();
-    try {
-      const ccUrl = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${CUENTA_SHEET}`;
-      const ccRes = await fetch(ccUrl, { cache: 'no-store' });
-      if (ccRes.ok) {
-        const ccText = await ccRes.text();
-        const ccRows = parseCSV(ccText);
-        // [0]FECHA_VENCIMIENTO [1]FECHA_PAGO_REAL [2]COD_CUENTA [3]CONCEPTO [4]MEDIO_PAGO [5]VERIFICACION_ADMIN
-        ccRows.slice(1).forEach(row => {
-          if (row[2] && String(row[5]).toUpperCase() === 'TRUE') {
-            codVerificados.add(String(row[2]).trim());
-          }
-        });
-      }
-    } catch {}
 
     return NextResponse.json({
       success: true,
       total: clientes.length,
-      codVerificados: Array.from(codVerificados),
-      headers: rows[0], // debug
+      headers: rows[0],
       clientes,
     });
 
