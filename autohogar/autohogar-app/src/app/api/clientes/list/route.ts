@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { parseAmount } from '@/utils/googleSheets';
 import { cookies } from 'next/headers';
 import { verifySession } from '@/utils/session';
 
@@ -91,7 +92,7 @@ export async function GET() {
         address:      row[6] || '',
         plan:         row[7] || '',
         cuotaNum:     row[8] || '1',
-        amount:       row[9] || '0',
+        amount:       parseAmount(row[9]),
         estado:       row[10] || 'ACTIVO',
         verificado:   String(row[11] || '').toUpperCase() === 'TRUE',
       }));
