@@ -444,41 +444,45 @@ export interface CuentaCorrienteEntry {
 }
 
 /**
- * Registra un pago en la pestaña 2_CUENTA_CORRIENTE
+ * Registra múltiples pagos en lote en la pestaña 2_CUENTA_CORRIENTE
+ * Soluciona cuellos de botella de red (N+1 queries) y rate-limits de la API de Google.
  */
-export async function appendPagoCuentaCorriente(entry: CuentaCorrienteEntry): Promise<void> {
+export async function appendPagosBatch(entries: CuentaCorrienteEntry[]): Promise<void> {
+  if (entries.length === 0) return;
+  
   try {
     const spreadsheetId = process.env.GOOGLE_SHEET_ID || '1MH8X7HaAjPgi6C1PUBg1Ll4QjB0sHQXmGb4ISXHsVEY';
-
     if (!spreadsheetId) {
-      console.log('[CUENTA CORRIENTE LOCAL]', entry);
+      console.log('[CUENTA CORRIENTE BATCH LOCAL]', entries);
       return;
     }
 
     const auth = getAuth();
     const sheets = google.sheets({ version: 'v4', auth });
 
+    const rows = entries.map(entry => [
+      entry.fecha_vencimiento,
+      entry.fecha_pago,
+      entry.cod_cuenta,
+      entry.cliente_nombre,
+      entry.concepto,
+      entry.medio_pago,
+      entry.verificacion_admin,
+      entry.debe,
+      entry.haber,
+      entry.nro_anticipo,
+      entry.operador
+    ]);
+
     await sheets.spreadsheets.values.append({
       spreadsheetId,
       range: '2_CUENTA_CORRIENTE!A:K',
       valueInputOption: 'USER_ENTERED',
-      requestBody: {
-        values: [[
-          entry.fecha_vencimiento,
-          entry.fecha_pago,
-          entry.cod_cuenta,
-          entry.cliente_nombre,
-          entry.concepto,
-          entry.medio_pago,
-          entry.verificacion_admin,
-          entry.debe,
-          entry.haber,
-          entry.nro_anticipo,
-          entry.operador
-        ]],
-      },
+      insertDataOption: 'INSERT_ROWS',
+      requestBody: { values: rows },
     });
   } catch (error) {
-    console.error('Error writing to 2_CUENTA_CORRIENTE:', error);
+    console.error('Error crítico escribiendo batch en 2_CUENTA_CORRIENTE:', error);
+    throw error; // No silenciar errores de BD
   }
 }

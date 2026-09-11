@@ -62,24 +62,26 @@ export async function POST(request: Request) {
 
     // 1. Load Master Database from Google Sheets
     const masterData = await getMasterClients();
+    
+    // Performance Fix: Crear mapas O(1) en vez de hacer .find() O(N) en un bucle
+    const masterMapByCod = new Map(masterData.map(m => [String(m.cod), m]));
+    const masterMapByName = new Map(masterData.map(m => [normalizeName(m.name), m]));
 
     // 2. Header image base64
     const headerBase64 = HEADER_IMAGE_BASE64;
 
     const host = request.headers.get('host') || 'localhost:3000';
-    // For WhatsApp to render links properly, they must explicitly use http/https.
-    // In many modern deployments (Vercel, etc), x-forwarded-proto is https.
     const protocol = request.headers.get('x-forwarded-proto') || (host.includes('localhost') ? 'http' : 'https');
     const baseUrl = process.env.NEXT_PUBLIC_APP_URL || `${protocol}://${host}`;
 
     const generatedFiles = [];
+    const pagosToInsert = [];
 
     for (const record of records) {
-      // Get full client data from master data using cod or name
-      const masterClient = masterData.find(m => String(m.cod) === String(record.cod)) ||
-                           masterData.find(m => normalizeName(m.name) === normalizeName(record.cliente)) || ({} as any);
+      const masterClient = masterMapByCod.get(String(record.cod)) || 
+                           masterMapByName.get(normalizeName(record.cliente)) || ({} as any);
 
-      // Helper: limpiar número de teléfono (xlsx puede convertir a float: "351234567.0")
+      // Helper: limpiar número de teléfono
       const cleanPhone = (val: any): string => {
         if (!val) return '';
         return String(val).replace(/\.0+$/, '').trim();
@@ -97,7 +99,7 @@ export async function POST(request: Request) {
         city: record.city || record.localidad || masterClient.city || '',
         province: record.province || record.provincia || masterClient.province || 'SAN JUAN',
         plan: record.plan || masterClient.plan || '',
-        cuotaNum: record.cuota || record.cuotaNum || masterClient.cuotaNum || '0',
+        cuotaNum: record.cuota || record.cuotaNum || masterClient.cuotaNum || '1',
         dueDate: record.dueDate || masterClient.dueDate || '',
         amount: record.importe || record.amount || masterClient.amount || '0,00',
         phone: excelPhone || masterPhone,
@@ -106,12 +108,10 @@ export async function POST(request: Request) {
         titular_comprobante: String(record.titular_comprobante || '').trim(),
       };
 
-      // Filename: Recibo_COD_SOLI.pdf — simple para que el fallback lo pueda reconstruir
       const safeNombre = String(clientData.name || '').replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ0-9]/g, '_').slice(0, 30);
       const fileName = `Recibo_${clientData.cod}_${String(clientData.soli || safeNombre)}.pdf`;
       const filePath = path.join(/*turbopackIgnore: true*/ outputDir, fileName);
 
-      // Render PDF using @react-pdf/renderer renderToStream
       try {
         const pdfComponent = React.createElement(ReciboPDF, { clientData, headerBase64 }) as any;
         const stream = await renderToStream(pdfComponent);
@@ -125,21 +125,18 @@ export async function POST(request: Request) {
         console.warn(`Could not write PDF to ${filePath}:`, err);
       }
 
-      // WhatsApp Link with direct public PDF URL
       const pdfPublicUrl = `${baseUrl}/recibos/${fileName}`;
       const allPhones = String(clientData.phone || '').split('/').map(p => p.trim()).filter(Boolean);
       let waLink = null;
       if (allPhones.length > 0) {
         const rawPhone = allPhones[0].replace(/[^0-9]/g, '');
         let phone = rawPhone;
-        // Si el número tiene 10 dígitos y empieza con 15, asumimos código de San Juan 264
         if (rawPhone.length === 10 && rawPhone.startsWith('15')) {
           phone = `264${rawPhone.slice(2)}`;
         }
         
         if (phone.length >= 8) {
           const formattedAmount = String(clientData.amount).startsWith('$') ? clientData.amount : `$ ${clientData.amount}`;
-          // Espaciado adicional alrededor de la URL para evitar que WhatsApp no la reconozca como enlace
           const messageText = `Hola ${clientData.name}, te enviamos el comprobante de pago de tu cuota N° ${clientData.cuotaNum} por el monto de ${formattedAmount}.\n\n📄 Descargar recibo PDF:\n ${pdfPublicUrl} \n\n¡Gracias por confiar en AutoHogar!`;
           const message = encodeURIComponent(messageText);
           waLink = `https://wa.me/549${phone}?text=${message}`;
@@ -148,29 +145,29 @@ export async function POST(request: Request) {
 
       generatedFiles.push({ id: record.id, pdfUrl: `/recibos/${fileName}?t=${Date.now()}`, waLink });
 
-      // LOG EN 2_CUENTA_CORRIENTE
-      // Fecha de hoy para FECHA_PAGO_REAL
       const today = new Date();
       const fechaPagoStr = today.toLocaleDateString('es-AR');
-      
       const cuotaNumeroStr = String(clientData.cuotaNum || '1');
       const mesConcepto = today.toLocaleString('es-AR', { month: 'long', year: 'numeric' });
-      const conceptoStr = `Cuota N° ${cuotaNumeroStr} - ${mesConcepto}`;
       
-      appendPagoCuentaCorriente({
+      pagosToInsert.push({
         fecha_vencimiento: clientData.dueDate || fechaPagoStr,
         fecha_pago: fechaPagoStr,
         cod_cuenta: clientData.cod,
         cliente_nombre: clientData.name,
-        concepto: conceptoStr,
-        medio_pago: 'Efectivo', // O leer si existiera de record.medio_pago
+        concepto: `Cuota N° ${cuotaNumeroStr} - ${mesConcepto}`,
+        medio_pago: 'Efectivo',
         verificacion_admin: '✅',
         debe: String(clientData.amount),
         haber: String(clientData.amount),
         nro_anticipo: cuotaNumeroStr,
         operador: operadorVerificador
-      }).catch(() => {}); // Fire and forget para no demorar
+      });
     }
+
+    // Insertar todos los pagos en 1 sola llamada (Evita cuellos de botella y silent failures)
+    const { appendPagosBatch } = require('@/utils/googleSheets');
+    await appendPagosBatch(pagosToInsert);
 
     // ── Audit Log (fire-and-forget) ────────────────────────────────────────
     const fechaStr = new Date().toLocaleString('es-AR', { dateStyle: 'short', timeStyle: 'short' });
