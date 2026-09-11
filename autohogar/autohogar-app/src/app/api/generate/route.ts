@@ -5,7 +5,7 @@ import os from 'os';
 import { renderToStream } from '@react-pdf/renderer';
 import React from 'react';
 import { ReciboPDF } from '@/utils/pdfTemplate';
-import { getMasterClients, normalizeName, appendAuditLog } from '@/utils/googleSheets';
+import { getMasterClients, normalizeName, appendAuditLog, appendPagoCuentaCorriente } from '@/utils/googleSheets';
 import { HEADER_IMAGE_BASE64 } from '@/utils/headerAsset';
 import { cookies } from 'next/headers';
 import { verifySession } from '@/utils/session';
@@ -147,6 +147,28 @@ export async function POST(request: Request) {
       }
 
       generatedFiles.push({ id: record.id, pdfUrl: `/recibos/${fileName}`, waLink });
+
+      // LOG EN 2_CUENTA_CORRIENTE
+      // Fecha de hoy para FECHA_PAGO_REAL
+      const today = new Date();
+      const fechaPagoStr = today.toLocaleDateString('es-AR');
+      
+      const cuotaNumeroStr = String(clientData.cuotaNum || '1');
+      const mesConcepto = today.toLocaleString('es-AR', { month: 'long', year: 'numeric' });
+      const conceptoStr = `Cuota N° ${cuotaNumeroStr} - ${mesConcepto}`;
+      
+      appendPagoCuentaCorriente({
+        fecha_vencimiento: clientData.dueDate || fechaPagoStr,
+        fecha_pago: fechaPagoStr,
+        cod_cuenta: clientData.cod,
+        concepto: conceptoStr,
+        medio_pago: 'Efectivo', // O leer si existiera de record.medio_pago
+        verificacion_admin: '✅',
+        debe: String(clientData.amount),
+        haber: String(clientData.amount),
+        nro_anticipo: cuotaNumeroStr,
+        operador: operadorVerificador
+      }).catch(() => {}); // Fire and forget para no demorar
     }
 
     // ── Audit Log (fire-and-forget) ────────────────────────────────────────

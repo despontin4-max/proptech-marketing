@@ -408,4 +408,54 @@ export async function appendAuditLog(entry: AuditLogEntry): Promise<void> {
   }
 }
 
-// Trigger Vercel Build 09/03/2026 17:52:47
+export interface CuentaCorrienteEntry {
+  fecha_vencimiento: string;
+  fecha_pago: string;
+  cod_cuenta: string;
+  concepto: string;
+  medio_pago: string;
+  verificacion_admin: string;
+  debe: string;
+  haber: string;
+  nro_anticipo: string;
+  operador: string;
+}
+
+/**
+ * Registra un pago en la pestaña 2_CUENTA_CORRIENTE
+ */
+export async function appendPagoCuentaCorriente(entry: CuentaCorrienteEntry): Promise<void> {
+  try {
+    const spreadsheetId = process.env.GOOGLE_SHEET_ID;
+
+    if (!spreadsheetId) {
+      console.log('[CUENTA CORRIENTE LOCAL]', entry);
+      return;
+    }
+
+    const auth = getAuth();
+    const sheets = google.sheets({ version: 'v4', auth });
+
+    await sheets.spreadsheets.values.append({
+      spreadsheetId,
+      range: '2_CUENTA_CORRIENTE!A:J',
+      valueInputOption: 'USER_ENTERED',
+      requestBody: {
+        values: [[
+          entry.fecha_vencimiento,
+          entry.fecha_pago,
+          entry.cod_cuenta,
+          entry.concepto,
+          entry.medio_pago,
+          entry.verificacion_admin,
+          entry.debe,
+          entry.haber,
+          entry.nro_anticipo,
+          entry.operador
+        ]],
+      },
+    });
+  } catch (error) {
+    console.error('Error writing to 2_CUENTA_CORRIENTE:', error);
+  }
+}
