@@ -147,7 +147,8 @@ export async function POST(request: Request) {
       generatedFiles.push({ id: record.id, pdfUrl: `/recibos/${fileName}?t=${Date.now()}`, waLink });
 
       const today = new Date();
-      const fechaPagoStr = today.toLocaleDateString('es-AR');
+      // Si el cliente indicó una fecha de pago en la columna P, úsala; si no, la fecha actual.
+      const fechaPagoStr = record.paymentDate || masterClient.paymentDate || today.toLocaleDateString('es-AR');
       const cuotaNumeroStr = String(clientData.cuotaNum || '1');
       const mesConcepto = today.toLocaleString('es-AR', { month: 'long', year: 'numeric' });
       

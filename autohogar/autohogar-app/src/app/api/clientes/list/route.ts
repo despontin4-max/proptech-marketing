@@ -99,6 +99,8 @@ export async function GET() {
         estado:         row[10] || 'ACTIVO',
         cuotasPactadas: row[11] || '',
         verificado:     String(row[12] || row[11] || '').toUpperCase() === 'TRUE',
+        dueDate:        row[14] || '', // Columna O
+        paymentDate:    row[15] || '', // Columna P
         sheetRowIndex:  index + 2, // Para actualizar 1_CLIENTES después
       }));
 
