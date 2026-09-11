@@ -148,8 +148,8 @@ export const ReciboPDF = ({ clientData, headerBase64 }: { clientData: any, heade
   const rawPhone = String(clientData.phone || '').trim();
   const phoneLines = Array.from(new Set(rawPhone.split(/[\/\n]+/).map(p => p.trim()).filter(p => p.length > 0)));
   
-  const rawAmount = String(clientData.amount || '0,00').trim();
-  const formattedAmount = rawAmount.startsWith('$') ? rawAmount : `$ ${rawAmount}`;
+  const numAmount = parseFloat(String(clientData.amount || '0')) || 0;
+  const formattedAmount = `$ ${numAmount.toLocaleString('es-AR')}`;
 
   const renderCuerpo = (type: 'top' | 'middle' | 'bottom') => {
     const isTop = type === 'top';
