@@ -490,7 +490,7 @@ export async function appendPagosBatch(entries: CuentaCorrienteEntry[]): Promise
 
     // ── PASO 3: Escribir en la posición exacta con batchUpdate ────────────────
     // batchUpdate NO detecta el fin de tabla; escribe exactamente donde se le dice.
-    await sheets.spreadsheets.values.batchUpdate({
+    const batchUpdateRequest = {
       spreadsheetId,
       requestBody: {
         valueInputOption: 'USER_ENTERED',
@@ -499,7 +499,39 @@ export async function appendPagosBatch(entries: CuentaCorrienteEntry[]): Promise
           values: [row],
         })),
       },
-    });
+    };
+
+    try {
+      await sheets.spreadsheets.values.batchUpdate(batchUpdateRequest);
+    } catch (batchErr: any) {
+      // Si nos quedamos sin filas en la cuadrícula, agregamos más filas dinámicamente
+      if (batchErr.message && batchErr.message.includes('exceeds grid limits')) {
+        console.log('[CC] Grid limit exceeded. Adding more rows...');
+        const meta = await sheets.spreadsheets.get({ spreadsheetId });
+        const sheet = meta.data.sheets?.find(s => s.properties?.title === '2_CUENTA_CORRIENTE');
+        
+        if (sheet && sheet.properties?.sheetId !== undefined) {
+          await sheets.spreadsheets.batchUpdate({
+            spreadsheetId,
+            requestBody: {
+              requests: [{
+                appendDimension: {
+                  sheetId: sheet.properties.sheetId,
+                  dimension: 'ROWS',
+                  length: 100 // Agregamos 100 filas nuevas
+                }
+              }]
+            }
+          });
+          // Reintentamos la escritura
+          await sheets.spreadsheets.values.batchUpdate(batchUpdateRequest);
+        } else {
+          throw batchErr;
+        }
+      } else {
+        throw batchErr;
+      }
+    }
 
     console.log(`[CC] Wrote ${rows.length} row(s) starting at row ${firstEmptyRow}`);
   } catch (error) {
