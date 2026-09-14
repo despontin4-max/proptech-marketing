@@ -181,7 +181,10 @@ export default function Dashboard() {
                 {currentUser.nombre} · <span className="uppercase text-xs font-bold text-orange-600">{currentUser.rol}</span>
               </span>
             )}
-            <Link href="/historial" className="text-sm text-slate-500 hover:text-slate-900">Auditoría</Link>
+            <Link href="/resumen-mes" className="text-sm text-slate-500 hover:text-slate-900 flex items-center gap-1">
+                📊 Estado del Mes
+              </Link>
+              <Link href="/historial" className="text-sm text-slate-500 hover:text-slate-900">Auditoría</Link>
             <button onClick={handleLogout} className="text-red-600 text-sm font-semibold flex items-center gap-1">
               <LogOut className="w-4 h-4" /> Salir
             </button>

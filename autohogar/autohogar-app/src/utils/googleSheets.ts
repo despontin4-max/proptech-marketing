@@ -453,25 +453,34 @@ export async function appendPagosBatch(entries: CuentaCorrienteEntry[]): Promise
     const auth = getAuth();
     const sheets = google.sheets({ version: 'v4', auth });
 
-    // ── PASO 1: Leer Columna A para encontrar la primera fila REALMENTE vacía ──
-    // Esto ignora las casillas de verificación (checkboxes) en otras columnas
-    // que confundían al método 'append' y lo mandaban a la fila 1001+.
-    const readResponse = await sheets.spreadsheets.values.get({
-      spreadsheetId,
-      range: '2_CUENTA_CORRIENTE!A:A',
-    });
-
-    const existingColA = readResponse.data.values || [];
-    // La primera fila de datos reales es la fila 2 (index 1, porque la fila 1 es el header).
-    // Encontramos el último índice que NO está vacío en columna A.
-    let lastDataRow = 1; // Fila 1 = header
-    for (let i = 1; i < existingColA.length; i++) {
-      const cellVal = existingColA[i]?.[0];
-      if (cellVal !== undefined && cellVal !== null && String(cellVal).trim() !== '') {
-        lastDataRow = i + 1; // +1 porque los índices de sheets son 1-based
-      }
+    // ── Obtener el sheetId numérico de 2_CUENTA_CORRIENTE ─────────────────────
+    const meta = await sheets.spreadsheets.get({ spreadsheetId });
+    const sheetMeta = meta.data.sheets?.find(s => s.properties?.title === '2_CUENTA_CORRIENTE');
+    if (!sheetMeta || sheetMeta.properties?.sheetId === undefined) {
+      throw new Error('No se encontró la pestaña 2_CUENTA_CORRIENTE en el spreadsheet');
     }
-    const firstEmptyRow = lastDataRow + 1;
+    const sheetId = sheetMeta.properties.sheetId!;
+
+    // ── PASO 1: Insertar N filas vacías justo después del header (fila índice 1) ─
+    // ESTRATEGIA: siempre insertamos al tope de la tabla (debajo del header).
+    // Esto elimina para siempre el problema de "¿cuál es la última fila?".
+    // Las filas viejas de test o los checkboxes quedan empujados hacia abajo.
+    await sheets.spreadsheets.batchUpdate({
+      spreadsheetId,
+      requestBody: {
+        requests: [{
+          insertDimension: {
+            range: {
+              sheetId,
+              dimension: 'ROWS',
+              startIndex: 1,               // Índice 1 = después del header
+              endIndex: 1 + entries.length, // Insertar tantas filas como pagos
+            },
+            inheritFromBefore: false,
+          }
+        }]
+      }
+    });
 
     // ── PASO 2: Construir las filas a insertar ────────────────────────────────
     const rows = entries.map(entry => [
@@ -488,52 +497,20 @@ export async function appendPagosBatch(entries: CuentaCorrienteEntry[]): Promise
       entry.operador
     ]);
 
-    // ── PASO 3: Escribir en la posición exacta con batchUpdate ────────────────
-    // batchUpdate NO detecta el fin de tabla; escribe exactamente donde se le dice.
-    const batchUpdateRequest = {
+    // ── PASO 3: Escribir los datos en las filas recién creadas ─────────────────
+    // Siempre empezamos en la fila 2 (justo debajo del header).
+    await sheets.spreadsheets.values.batchUpdate({
       spreadsheetId,
       requestBody: {
         valueInputOption: 'USER_ENTERED',
         data: rows.map((row, idx) => ({
-          range: `2_CUENTA_CORRIENTE!A${firstEmptyRow + idx}:K${firstEmptyRow + idx}`,
+          range: `2_CUENTA_CORRIENTE!A${2 + idx}:K${2 + idx}`,
           values: [row],
         })),
       },
-    };
+    });
 
-    try {
-      await sheets.spreadsheets.values.batchUpdate(batchUpdateRequest);
-    } catch (batchErr: any) {
-      // Si nos quedamos sin filas en la cuadrícula, agregamos más filas dinámicamente
-      if (batchErr.message && batchErr.message.includes('exceeds grid limits')) {
-        console.log('[CC] Grid limit exceeded. Adding more rows...');
-        const meta = await sheets.spreadsheets.get({ spreadsheetId });
-        const sheet = meta.data.sheets?.find(s => s.properties?.title === '2_CUENTA_CORRIENTE');
-        
-        if (sheet && sheet.properties?.sheetId !== undefined) {
-          await sheets.spreadsheets.batchUpdate({
-            spreadsheetId,
-            requestBody: {
-              requests: [{
-                appendDimension: {
-                  sheetId: sheet.properties.sheetId,
-                  dimension: 'ROWS',
-                  length: 100 // Agregamos 100 filas nuevas
-                }
-              }]
-            }
-          });
-          // Reintentamos la escritura
-          await sheets.spreadsheets.values.batchUpdate(batchUpdateRequest);
-        } else {
-          throw batchErr;
-        }
-      } else {
-        throw batchErr;
-      }
-    }
-
-    console.log(`[CC] Wrote ${rows.length} row(s) starting at row ${firstEmptyRow}`);
+    console.log(`[CC] Inserted ${rows.length} row(s) at top of 2_CUENTA_CORRIENTE (row 2)`);
   } catch (error) {
     console.error('Error crítico escribiendo batch en 2_CUENTA_CORRIENTE:', error);
     throw error;
