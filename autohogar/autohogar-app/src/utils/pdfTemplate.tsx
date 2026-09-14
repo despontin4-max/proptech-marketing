@@ -222,13 +222,18 @@ export const ReciboPDF = ({ clientData, headerBase64 }: { clientData: any, heade
               <Text style={[styles.boxVal, { fontSize: 9.5, lineHeight: 1.15 }]}>{clientData.address || ''}</Text>
             </View>
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 4 }}>
-              {clientData.city && clientData.city.trim().toUpperCase() !== (clientData.province || 'SAN JUAN').trim().toUpperCase() ? (
-                <Text style={{ fontSize: 8, fontWeight: 'bold', color: '#000000', textTransform: 'uppercase' }}>
-                  {String(clientData.city || '').trim()}
-                </Text>
-              ) : (
-                <View />
-              )}
+              {(() => {
+                const prov = (clientData.province || 'SAN JUAN').trim().toUpperCase();
+                let city = String(clientData.city || '').trim().toUpperCase();
+                if (city.endsWith(prov) && city !== prov) {
+                  city = city.substring(0, city.length - prov.length).trim();
+                }
+                return city && city !== prov ? (
+                  <Text style={{ fontSize: 8, fontWeight: 'bold', color: '#000000', textTransform: 'uppercase' }}>
+                    {city}
+                  </Text>
+                ) : <View />;
+              })()}
               <Text style={{ fontSize: 8, fontWeight: 'bold', color: '#000000', textTransform: 'uppercase' }}>
                 {clientData.province || 'SAN JUAN'}
               </Text>
