@@ -91,6 +91,10 @@ export async function POST(request: Request) {
       const excelPhone = cleanPhone(record.telefono);
       const masterPhone = cleanPhone(masterClient.phone);
 
+      const today = new Date();
+      // Si el cliente indicó una fecha de pago en la columna P, úsala; si no, la fecha actual.
+      const fechaPagoStr = record.paymentDate || masterClient.paymentDate || today.toLocaleDateString('es-AR');
+
       const clientData = {
         cod: record.cod || masterClient.cod || '0',
         soli: record.contrato || record.solicitud || record.soli || masterClient.soli || '0',
@@ -101,7 +105,7 @@ export async function POST(request: Request) {
         province: record.province || record.provincia || masterClient.province || 'SAN JUAN',
         plan: record.plan || masterClient.plan || '',
         cuotaNum: record.cuota || record.cuotaNum || masterClient.cuotaNum || '1',
-        dueDate: record.dueDate || masterClient.dueDate || '',
+        dueDate: record.dueDate || masterClient.dueDate || fechaPagoStr,
         amount: record.importe || record.amount || masterClient.amount || '0,00',
         phone: excelPhone || masterPhone,
         history: record.history || masterClient.history || '',
@@ -150,9 +154,7 @@ export async function POST(request: Request) {
 
       generatedFiles.push({ id: record.id, pdfUrl: `/recibos/${fileName}?t=${Date.now()}`, waLink });
 
-      const today = new Date();
-      // Si el cliente indicó una fecha de pago en la columna P, úsala; si no, la fecha actual.
-      const fechaPagoStr = record.paymentDate || masterClient.paymentDate || today.toLocaleDateString('es-AR');
+      // fechaPagoStr y today ya están declarados arriba
       const cuotaNumeroStr = String(clientData.cuotaNum || '1');
       const mesConcepto = today.toLocaleString('es-AR', { month: 'long', year: 'numeric' });
       
