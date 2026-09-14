@@ -140,8 +140,9 @@ export default function Dashboard() {
         direccion: modalCliente.address,
         localidad: modalCliente.city,
         plan: modalCliente.plan,
-        // Usar la cuota auto-calculada del motor financiero si está disponible
-        cuota: estadoFin ? String(estadoFin.proximaCuota) : (modalCliente.cuotaNum || '1'),
+        // FUENTE DE VERDAD: N° DE ANTICIPO (Col I del CRM) = cuota a imprimir en el recibo
+        // estadoFin.proximaCuota solo se usa para mostrar info financiera/deuda en pantalla, NO para el PDF
+        cuota: modalCliente.cuotaNum || '1',
         importe: modalMonto,
         medio_pago: modalMedio,
         dueDate: modalCliente.dueDate,
@@ -317,9 +318,9 @@ export default function Dashboard() {
               <div className="bg-orange-50 rounded-xl p-4 border border-orange-200 mb-4">
                 <div className="flex justify-between items-start mb-3">
                   <div>
-                    <p className="text-xs font-semibold text-orange-600 uppercase">Próxima Cuota</p>
-                    <p className="text-2xl font-bold text-orange-700">N° {estadoFin.proximaCuota}</p>
-                    <p className="text-xs text-slate-500">{estadoFin.cuotasPagadas} cuota{estadoFin.cuotasPagadas !== 1 ? 's' : ''} registrada{estadoFin.cuotasPagadas !== 1 ? 's' : ''} en CC</p>
+                    <p className="text-xs font-semibold text-orange-600 uppercase">Cuota a Imprimir</p>
+                    <p className="text-2xl font-bold text-orange-700">N° {modalCliente?.cuotaNum || '1'}</p>
+                    <p className="text-xs text-slate-500">Según CRM · {estadoFin.cuotasPagadas} pago{estadoFin.cuotasPagadas !== 1 ? 's' : ''} registrado{estadoFin.cuotasPagadas !== 1 ? 's' : ''} en CC</p>
                   </div>
                   {estadoFin.deudaTotal !== null && (
                     <div className="text-right">
@@ -335,7 +336,13 @@ export default function Dashboard() {
                   <p className="text-xs text-slate-500">Último pago: <span className="font-semibold">{estadoFin.ultimoPago}</span></p>
                 )}
               </div>
-            ) : null}
+            ) : (
+              <div className="bg-orange-50 rounded-xl p-4 border border-orange-200 mb-4">
+                <p className="text-xs font-semibold text-orange-600 uppercase">Cuota a Imprimir</p>
+                <p className="text-2xl font-bold text-orange-700">N° {modalCliente?.cuotaNum || '1'}</p>
+                <p className="text-xs text-slate-500">Según CRM · sin registros en CC</p>
+              </div>
+            )}
 
             <div className="space-y-4">
               <div className="bg-slate-50 rounded-xl p-4 border border-slate-200">

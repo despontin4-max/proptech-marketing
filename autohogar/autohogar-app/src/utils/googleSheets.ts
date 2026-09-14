@@ -16,6 +16,10 @@ export interface ClientRecord {
   province?: string;
   history?: string;
   dueDate?: string;
+  estado?: string;
+  cuotasPactadas?: string | number;
+  verificado?: boolean;
+  paymentDate?: string;
 }
 
 /**
@@ -147,20 +151,55 @@ function formatExcelDate(val: any): string {
   return s;
 }
 
+// In-memory cache to prevent fetching the whole sheet per PDF
+let cachedClients: ClientRecord[] | null = null;
+let lastCacheTime = 0;
+const CACHE_TTL = 15 * 60 * 1000; // 15 minutos
+
+function mapClientRecord(r: any): ClientRecord {
+  const get = (keys: string[]) => {
+    for (const key of keys) {
+      if (r[key] !== undefined && r[key] !== null && r[key] !== '') return r[key];
+    }
+    return '';
+  };
+  return {
+    cod: get(['CODIGO CLIENTE', 'COD_CUENTA', 'CODIGO', 'cod', 'A']),
+    soli: get(['CONTRATO (SOLI)', 'CONTRATO', 'soli', 'B']),
+    name: get(['NOMBRE_APELLIDO', 'NOMBRE', 'name', 'C']),
+    dni: String(get(['DNI', 'dni', 'D'])),
+    phone: String(get(['TELEFONO', 'phone', 'E'])),
+    city: get(['LOCALIDAD', 'city', 'F']),
+    address: get(['DIRECCION', 'address', 'G']),
+    plan: get(['PLAN / PRODUCTO', 'PLAN', 'plan', 'H']),
+    cuotaNum: String(get(['N° DE ANTICIPO', 'ANTICIPO', 'CUOTAS_TOTALES', 'cuotaNum', 'I']) || '1'),
+    amount: parseAmount(get(['VALOR_CUOTA', 'VALOR', 'J'])),
+    province: 'SAN JUAN',
+    dueDate: get(['FECHA VTO', 'VTO', 'dueDate', 'O']),
+    paymentDate: get(['FECHA PAGO REAL', 'PAGO', 'P']),
+    estado: get(['ESTADO', 'K']) || 'ACTIVO',
+    cuotasPactadas: get(['CUOTA PACTADA', 'CUOTAS', 'L']),
+    verificado: String(get(['VERIFICADO', 'M'])).toUpperCase() === 'TRUE',
+    history: '', // Se podría integrar de otra pestaña si es necesario
+  };
+}
+
 /**
  * Lee la base maestra de clientes desde Google Sheets o desde el archivo maestro relacional local.
  */
 export async function getMasterClients(): Promise<ClientRecord[]> {
   try {
+    if (cachedClients && Date.now() - lastCacheTime < CACHE_TTL) {
+      return cachedClients;
+    }
+
     const spreadsheetId = '1MH8X7HaAjPgi6C1PUBg1Ll4QjB0sHQXmGb4ISXHsVEY';
 
     // 1. Intentar lectura en vivo vía Google Sheets GViz API
     if (spreadsheetId) {
       try {
         const xlsx = require('xlsx');
-        // Usar nombre de pestaña (más robusto que gid que puede cambiar)
         const gvizUrl = `https://docs.google.com/spreadsheets/d/${spreadsheetId}/gviz/tq?tqx=out:csv&sheet=1_CLIENTES`;
-        // Cachear 60 segundos para evitar Rate Limits y acelerar carga
         const res = await fetch(gvizUrl, { next: { revalidate: 60 } });
         if (res.ok) {
           const csvText = await res.text();
@@ -169,24 +208,10 @@ export async function getMasterClients(): Promise<ClientRecord[]> {
             const sheetName = wb.SheetNames[0];
             const raw = xlsx.utils.sheet_to_json(wb.Sheets[sheetName]);
             if (raw && raw.length > 0) {
-              // Mapeo con headers REALES confirmados del GViz de 1_CLIENTES:
-              // CODIGO CLIENTE, CONTRATO (SOLI), NOMBRE_APELLIDO, DNI, TELEFONO,
-              // LOCALIDAD, DIRECCION, PLAN / PRODUCTO, CUOTAS_TOTALES, VALOR_CUOTA, ESTADO
-              return raw.map((r: any) => ({
-                cod:      r['CODIGO CLIENTE'] || r['COD_CUENTA'] || r.cod || '',
-                soli:     r['CONTRATO (SOLI)'] || r.soli || '',
-                name:     r['NOMBRE_APELLIDO'] || r.name || '',
-                dni:      String(r['DNI'] || r.dni || ''),
-                phone:    String(r['TELEFONO'] || r.phone || ''),
-                city:     r['LOCALIDAD'] || r.city || '',
-                address:  r['DIRECCION'] || r.address || '',
-                plan:     r['PLAN / PRODUCTO'] || r.plan || '',
-                cuotaNum: String(r['CUOTAS_TOTALES'] || '1'),
-                amount:   parseAmount(r['VALOR_CUOTA']),
-                province: 'SAN JUAN',
-                dueDate:  '',
-                history:  '',
-              }));
+              const clients = raw.map(mapClientRecord);
+              cachedClients = clients;
+              lastCacheTime = Date.now();
+              return clients;
             }
           }
         }
@@ -200,7 +225,7 @@ export async function getMasterClients(): Promise<ClientRecord[]> {
       try {
         const auth = getAuth();
         const sheets = google.sheets({ version: 'v4', auth });
-        const range = process.env.GOOGLE_SHEET_RANGE || '1_CLIENTES!A:K'; // Nueva pestaña
+        const range = process.env.GOOGLE_SHEET_RANGE || '1_CLIENTES!A:P'; // Fetch until Col P
 
         const response = await sheets.spreadsheets.values.get({
           spreadsheetId,
@@ -209,28 +234,18 @@ export async function getMasterClients(): Promise<ClientRecord[]> {
 
         const rows = response.data.values;
         if (rows && rows.length > 1) {
-          const headers = rows[0];
-          return rows.slice(1).map(row => {
-            const getVal = (colName: string) => {
-              const idx = headers.findIndex(h => h.toUpperCase().includes(colName));
-              return idx >= 0 ? (row[idx] || '') : '';
-            };
-            return {
-              cod: getVal('COD_CUENTA') || row[0] || '',
-              soli: getVal('CONTRATO') || row[1] || '',
-              name: getVal('NOMBRE') || row[2] || '',
-              dni: String(getVal('DNI') || row[3] || ''),
-              phone: String(getVal('TELEFONO') || row[4] || ''),
-              city: getVal('LOCALIDAD') || row[5] || '',
-              address: getVal('DIRECCION') || row[6] || '',
-              plan: getVal('PLAN') || row[7] || '',
-              cuotaNum: '1', // Default for now
-              amount: parseAmount(getVal('VALOR_CUOTA') || row[9]),
-              province: 'SAN JUAN',
-              dueDate: '',
-              history: '',
-            };
+          const headers = rows[0].map((h: any) => h ? String(h).trim() : '');
+          const mappedObjects = rows.slice(1).map(row => {
+            const obj: any = {};
+            headers.forEach((h: string, i: number) => {
+              if (h) obj[h] = row[i];
+            });
+            return obj;
           });
+          const clients = mappedObjects.map(mapClientRecord);
+          cachedClients = clients;
+          lastCacheTime = Date.now();
+          return clients;
         }
       } catch (apiErr) {
         console.warn('Google Sheets API failed:', apiErr);

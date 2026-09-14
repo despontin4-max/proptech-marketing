@@ -57,6 +57,11 @@ export async function GET(
       return new NextResponse('Recibo no encontrado en la base de datos', { status: 404 });
     }
 
+    const { searchParams } = new URL(request.url);
+    const qCuota = searchParams.get('c');
+    const qAmount = searchParams.get('m');
+    const qDue = searchParams.get('d');
+
     const clientData = {
       cod: client.cod || '0',
       soli: client.soli || '0',
@@ -66,9 +71,9 @@ export async function GET(
       city: client.city || '',
       province: client.province || 'SAN JUAN',
       plan: client.plan || '',
-      cuotaNum: client.cuotaNum || '0',
-      dueDate: client.dueDate || '',
-      amount: client.amount || '0,00',
+      cuotaNum: qCuota || client.cuotaNum || '0',
+      dueDate: qDue || client.dueDate || '',
+      amount: qAmount || client.amount || '0,00',
       phone: client.phone || '',
       history: client.history || '',
       operadorVerificador: 'AutoHogar Oficial',

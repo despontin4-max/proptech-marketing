@@ -134,7 +134,8 @@ export async function POST(request: Request) {
         console.warn(`Could not write PDF to ${filePath}:`, err);
       }
 
-      const pdfPublicUrl = `${baseUrl}/recibos/${fileName}`;
+      const qs = `c=${encodeURIComponent(clientData.cuotaNum)}&m=${encodeURIComponent(clientData.amount)}&d=${encodeURIComponent(clientData.dueDate)}`;
+      const pdfPublicUrl = `${baseUrl}/recibos/${fileName}?${qs}`;
       const allPhones = String(clientData.phone || '').split('/').map(p => p.trim()).filter(Boolean);
       let waLink = null;
       if (allPhones.length > 0) {
@@ -152,7 +153,7 @@ export async function POST(request: Request) {
         }
       }
 
-      generatedFiles.push({ id: record.id, pdfUrl: `/recibos/${fileName}?t=${Date.now()}`, waLink });
+      generatedFiles.push({ id: record.id, pdfUrl: `/recibos/${fileName}?${qs}&t=${Date.now()}`, waLink });
 
       // fechaPagoStr y today ya están declarados arriba
       const cuotaNumeroStr = String(clientData.cuotaNum || '1');
