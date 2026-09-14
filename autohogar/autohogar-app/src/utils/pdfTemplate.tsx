@@ -224,7 +224,7 @@ export const ReciboPDF = ({ clientData, headerBase64 }: { clientData: any, heade
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 4 }}>
               {clientData.city && clientData.city.trim().toUpperCase() !== (clientData.province || 'SAN JUAN').trim().toUpperCase() ? (
                 <Text style={{ fontSize: 8, fontWeight: 'bold', color: '#000000', textTransform: 'uppercase' }}>
-                  {String(clientData.city || '').split(' ')[0]}
+                  {String(clientData.city || '').trim()}
                 </Text>
               ) : (
                 <View />
