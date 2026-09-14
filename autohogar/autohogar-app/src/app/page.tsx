@@ -15,9 +15,22 @@ interface Cliente {
   address: string;
   plan: string;
   cuotaNum: string;
+  cuotasPactadas: string;
   amount: string;
   estado: string;
   verificado: boolean;
+  dueDate: string;
+  paymentDate: string;
+  sheetRowIndex: number;
+}
+
+interface EstadoFinanciero {
+  proximaCuota: number;
+  cuotasPagadas: number;
+  totalPagado: number;
+  deudaTotal: number | null;
+  ultimoPago: string | null;
+  historial: { fecha: string; haber: number; cuota: string }[];
 }
 
 export default function Dashboard() {
@@ -34,6 +47,8 @@ export default function Dashboard() {
   const [modalMonto, setModalMonto] = useState('');
   const [modalMedio, setModalMedio] = useState('Efectivo');
   const [isGenerating, setIsGenerating] = useState(false);
+  const [estadoFin, setEstadoFin] = useState<EstadoFinanciero | null>(null);
+  const [isLoadingEstado, setIsLoadingEstado] = useState(false);
 
   useEffect(() => {
     async function init() {
@@ -77,13 +92,29 @@ export default function Dashboard() {
     return norm(searchTerm).split(/\s+/).filter(Boolean).every(w => haystack.includes(w));
   });
 
-  const openModal = (c: Cliente) => {
+  const openModal = async (c: Cliente) => {
     setModalCliente(c);
-    // Normalizar importe: "300,000" → "300000" para mostrarlo limpio
     const rawAmount = String(c.amount || '0').replace(/\./g, '').replace(',', '.');
     const numAmount = parseFloat(rawAmount) || 0;
     setModalMonto(String(numAmount));
     setModalMedio('Efectivo');
+    setEstadoFin(null);
+    // Cargar el estado financiero en background
+    setIsLoadingEstado(true);
+    try {
+      const params = new URLSearchParams({
+        cod: c.cod,
+        cuotasPactadas: c.cuotasPactadas || '0',
+        valorCuota: c.amount || '0',
+      });
+      const r = await fetch(`/api/clientes/estado?${params}`);
+      const data = await r.json();
+      if (data.success) setEstadoFin(data);
+    } catch (e) {
+      console.warn('No se pudo cargar estado financiero:', e);
+    } finally {
+      setIsLoadingEstado(false);
+    }
   };
 
   const handleGeneratePDF = async () => {
@@ -109,7 +140,8 @@ export default function Dashboard() {
         direccion: modalCliente.address,
         localidad: modalCliente.city,
         plan: modalCliente.plan,
-        cuota: modalCliente.cuotaNum || '1',
+        // Usar la cuota auto-calculada del motor financiero si está disponible
+        cuota: estadoFin ? String(estadoFin.proximaCuota) : (modalCliente.cuotaNum || '1'),
         importe: modalMonto,
         medio_pago: modalMedio,
         dueDate: modalCliente.dueDate,
@@ -271,6 +303,36 @@ export default function Dashboard() {
               <span className="font-semibold text-slate-800">{modalCliente.name}</span>
               {' · '}{modalCliente.plan}
             </p>
+
+            {/* Tarjeta de Estado Financiero */}
+            {isLoadingEstado ? (
+              <div className="bg-slate-50 rounded-xl p-4 border border-slate-200 mb-4 flex items-center gap-2 text-slate-400">
+                <Loader2 className="w-4 h-4 animate-spin" />
+                <span className="text-sm">Calculando estado de cuenta...</span>
+              </div>
+            ) : estadoFin ? (
+              <div className="bg-orange-50 rounded-xl p-4 border border-orange-200 mb-4">
+                <div className="flex justify-between items-start mb-3">
+                  <div>
+                    <p className="text-xs font-semibold text-orange-600 uppercase">Próxima Cuota</p>
+                    <p className="text-2xl font-bold text-orange-700">N° {estadoFin.proximaCuota}</p>
+                    <p className="text-xs text-slate-500">{estadoFin.cuotasPagadas} cuota{estadoFin.cuotasPagadas !== 1 ? 's' : ''} registrada{estadoFin.cuotasPagadas !== 1 ? 's' : ''} en CC</p>
+                  </div>
+                  {estadoFin.deudaTotal !== null && (
+                    <div className="text-right">
+                      <p className="text-xs font-semibold text-slate-500 uppercase">Saldo Deudor</p>
+                      <p className={`text-lg font-bold ${estadoFin.deudaTotal <= 0 ? 'text-emerald-600' : 'text-red-600'}`}>
+                        ${estadoFin.deudaTotal <= 0 ? '0' : estadoFin.deudaTotal.toLocaleString('es-AR')}
+                      </p>
+                      {estadoFin.deudaTotal <= 0 && <p className="text-xs text-emerald-600">Al día ✅</p>}
+                    </div>
+                  )}
+                </div>
+                {estadoFin.ultimoPago && (
+                  <p className="text-xs text-slate-500">Último pago: <span className="font-semibold">{estadoFin.ultimoPago}</span></p>
+                )}
+              </div>
+            ) : null}
 
             <div className="space-y-4">
               <div className="bg-slate-50 rounded-xl p-4 border border-slate-200">
