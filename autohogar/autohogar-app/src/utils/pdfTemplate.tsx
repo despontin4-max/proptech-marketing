@@ -221,22 +221,53 @@ export const ReciboPDF = ({ clientData, headerBase64 }: { clientData: any, heade
               <Text style={styles.boxLabel}>DIRECCIÓN</Text>
               <Text style={[styles.boxVal, { fontSize: 9.5, lineHeight: 1.15 }]}>{clientData.address || ''}</Text>
             </View>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 4 }}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end', marginTop: 4 }}>
               {(() => {
-                const prov = (clientData.province || 'SAN JUAN').trim().toUpperCase();
-                let city = String(clientData.city || '').trim().toUpperCase();
-                if (city.endsWith(prov) && city !== prov) {
-                  city = city.substring(0, city.length - prov.length).trim();
+                const PROVINCIAS_CONOCIDAS = [
+                  'SAN JUAN', 'MENDOZA', 'SAN LUIS', 'LA RIOJA', 'CATAMARCA',
+                  'CORDOBA', 'SANTA FE', 'BUENOS AIRES', 'TUCUMAN', 'SALTA',
+                  'JUJUY', 'SANTIAGO DEL ESTERO', 'ENTRE RIOS', 'CORRIENTES',
+                  'MISIONES', 'CHACO', 'FORMOSA', 'NEUQUEN', 'LA PAMPA',
+                  'RIO NEGRO', 'CHUBUT', 'SANTA CRUZ', 'TIERRA DEL FUEGO'
+                ];
+
+                const rawCity = String(clientData.city || '').trim().toUpperCase();
+                let detectedProv = (clientData.province || '').trim().toUpperCase();
+                let displayCity = rawCity;
+
+                for (const prov of PROVINCIAS_CONOCIDAS) {
+                  if (displayCity.endsWith(prov)) {
+                    detectedProv = prov;
+                    const withoutProv = displayCity.substring(0, displayCity.length - prov.length).trim();
+                    if (withoutProv) {
+                      displayCity = withoutProv;
+                    }
+                    break;
+                  }
                 }
-                return city && city !== prov ? (
-                  <Text style={{ fontSize: 8, fontWeight: 'bold', color: '#000000', textTransform: 'uppercase' }}>
-                    {city}
-                  </Text>
-                ) : <View />;
+
+                if (!detectedProv) {
+                  detectedProv = 'SAN JUAN';
+                }
+
+                // Si la localidad es San Juan (o quedó vacía siendo de San Juan), mostrar SAN JUAN CAPITAL
+                if (displayCity === 'SAN JUAN' || (!displayCity && detectedProv === 'SAN JUAN')) {
+                  displayCity = 'SAN JUAN CAPITAL';
+                } else if (!displayCity) {
+                  displayCity = detectedProv;
+                }
+
+                return (
+                  <>
+                    <Text style={{ fontSize: 8, fontWeight: 'bold', color: '#000000', textTransform: 'uppercase', maxWidth: '65%' }}>
+                      {displayCity}
+                    </Text>
+                    <Text style={{ fontSize: 8, fontWeight: 'bold', color: '#000000', textTransform: 'uppercase', textAlign: 'right' }}>
+                      {detectedProv}
+                    </Text>
+                  </>
+                );
               })()}
-              <Text style={{ fontSize: 8, fontWeight: 'bold', color: '#000000', textTransform: 'uppercase' }}>
-                {clientData.province || 'SAN JUAN'}
-              </Text>
             </View>
           </View>
         </View>

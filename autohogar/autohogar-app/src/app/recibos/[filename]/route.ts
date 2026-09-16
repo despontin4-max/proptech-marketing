@@ -20,25 +20,8 @@ export async function GET(
       return new NextResponse('Archivo no válido', { status: 400 });
     }
 
-    // 1. Buscar en disco (public/recibos o os.tmpdir()/recibos)
-    const possiblePaths = [
-      path.join(process.cwd(), 'public', 'recibos', filename),
-      path.join(os.tmpdir(), 'recibos', filename),
-      path.join('/tmp', 'recibos', filename),
-    ];
-
-    for (const p of possiblePaths) {
-      if (fs.existsSync(/*turbopackIgnore: true*/ p)) {
-        const fileBuffer = fs.readFileSync(/*turbopackIgnore: true*/ p);
-        return new NextResponse(fileBuffer, {
-          headers: {
-            'Content-Type': 'application/pdf',
-            'Content-Disposition': `inline; filename="${filename}"`,
-            'Cache-Control': 'public, max-age=86400, s-maxage=86400',
-          },
-        });
-      }
-    }
+    // En Vercel / serverless siempre generamos el PDF dinámicamente con los datos más recientes
+    // para evitar servir recibos desactualizados o en caché.
 
     // Formato estándar: Recibo_COD_SOLI_Nombre_Mes.pdf
     // Extraemos COD (índice 1) y SOLI (índice 2), el resto es nombre+mes
@@ -106,7 +89,7 @@ export async function GET(
       headers: {
         'Content-Type': 'application/pdf',
         'Content-Disposition': `inline; filename="${filename}"`,
-        'Cache-Control': 'public, max-age=86400, s-maxage=86400',
+        'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
       },
     });
   } catch (error: any) {

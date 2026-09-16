@@ -5,7 +5,7 @@ import os from 'os';
 import { renderToStream } from '@react-pdf/renderer';
 import React from 'react';
 import { ReciboPDF } from '@/utils/pdfTemplate';
-import { getMasterClients, normalizeName, appendAuditLog, appendPagoCuentaCorriente } from '@/utils/googleSheets';
+import { getMasterClients, normalizeName, appendAuditLog, appendPagoCuentaCorriente, parseLocation } from '@/utils/googleSheets';
 import { HEADER_IMAGE_BASE64 } from '@/utils/headerAsset';
 import { cookies } from 'next/headers';
 import { verifySession } from '@/utils/session';
@@ -101,8 +101,8 @@ export async function POST(request: Request) {
         name: record.cliente || record.name || masterClient.name || '',
         dni: record.dni || masterClient.dni || '',
         address: record.address || record.direccion || masterClient.address || '',
-        city: record.city || record.localidad || masterClient.city || '',
-        province: record.province || record.provincia || masterClient.province || 'SAN JUAN',
+        city: parseLocation(record.city || record.localidad || masterClient.city || '').city,
+        province: parseLocation(record.city || record.localidad || masterClient.city || record.province || record.provincia || masterClient.province || 'SAN JUAN').province,
         plan: record.plan || masterClient.plan || '',
         cuotaNum: record.cuota || record.cuotaNum || masterClient.cuotaNum || '1',
         dueDate: record.dueDate || masterClient.dueDate || fechaPagoStr,

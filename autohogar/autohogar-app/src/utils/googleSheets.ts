@@ -156,6 +156,45 @@ let cachedClients: ClientRecord[] | null = null;
 let lastCacheTime = 0;
 const CACHE_TTL = 15 * 60 * 1000; // 15 minutos
 
+const PROVINCIAS_ARGENTINAS = [
+  'SAN JUAN', 'MENDOZA', 'SAN LUIS', 'LA RIOJA', 'CATAMARCA',
+  'CORDOBA', 'SANTA FE', 'BUENOS AIRES', 'TUCUMAN', 'SALTA',
+  'JUJUY', 'SANTIAGO DEL ESTERO', 'ENTRE RIOS', 'CORRIENTES',
+  'MISIONES', 'CHACO', 'FORMOSA', 'NEUQUEN', 'LA PAMPA',
+  'RIO NEGRO', 'CHUBUT', 'SANTA CRUZ', 'TIERRA DEL FUEGO'
+];
+
+export function parseLocation(raw: string): { city: string; province: string } {
+  const clean = String(raw || '').trim().toUpperCase();
+  if (!clean) {
+    return { city: 'SAN JUAN CAPITAL', province: 'SAN JUAN' };
+  }
+
+  let foundProv = '';
+  let foundCity = clean;
+
+  for (const prov of PROVINCIAS_ARGENTINAS) {
+    if (clean.endsWith(prov)) {
+      foundProv = prov;
+      const remainder = clean.substring(0, clean.length - prov.length).trim();
+      if (remainder) {
+        foundCity = remainder;
+      }
+      break;
+    }
+  }
+
+  if (!foundProv) {
+    foundProv = 'SAN JUAN';
+  }
+
+  if (foundCity === 'SAN JUAN' || foundCity === 'SAN JUAN CAPITAL' || !foundCity) {
+    foundCity = 'SAN JUAN CAPITAL';
+  }
+
+  return { city: foundCity, province: foundProv };
+}
+
 function mapClientRecord(r: any): ClientRecord {
   const get = (keys: string[]) => {
     for (const key of keys) {
@@ -163,18 +202,22 @@ function mapClientRecord(r: any): ClientRecord {
     }
     return '';
   };
+
+  const rawLocalidad = get(['LOCALIDAD', 'city', 'F']);
+  const parsedLoc = parseLocation(rawLocalidad);
+
   return {
     cod: get(['CODIGO CLIENTE', 'COD_CUENTA', 'CODIGO', 'cod', 'A']),
     soli: get(['CONTRATO (SOLI)', 'CONTRATO', 'soli', 'B']),
     name: get(['NOMBRE_APELLIDO', 'NOMBRE', 'name', 'C']),
     dni: String(get(['DNI', 'dni', 'D'])),
     phone: String(get(['TELEFONO', 'phone', 'E'])),
-    city: get(['LOCALIDAD', 'city', 'F']),
+    city: parsedLoc.city,
     address: get(['DIRECCION', 'address', 'G']),
     plan: get(['PLAN / PRODUCTO', 'PLAN', 'plan', 'H']),
     cuotaNum: String(get(['N° DE ANTICIPO', 'ANTICIPO', 'CUOTAS_TOTALES', 'cuotaNum', 'I']) || '1'),
     amount: parseAmount(get(['VALOR_CUOTA', 'VALOR', 'J'])),
-    province: 'SAN JUAN',
+    province: parsedLoc.province,
     dueDate: formatExcelDate(get(['FECHA VTO', 'VTO', 'dueDate', 'O'])),
     paymentDate: formatExcelDate(get(['FECHA PAGO REAL', 'PAGO', 'P'])),
     estado: get(['ESTADO', 'K']) || 'ACTIVO',
@@ -258,21 +301,24 @@ export async function getMasterClients(): Promise<ClientRecord[]> {
       const xlsx = require('xlsx');
       const sheetName = wb.SheetNames.includes('CLIENTES ACTIVOS') ? 'CLIENTES ACTIVOS' : (wb.SheetNames.includes('Clientes_Planes') ? 'Clientes_Planes' : wb.SheetNames[0]);
       const raw = xlsx.utils.sheet_to_json(wb.Sheets[sheetName]);
-      return raw.map((r: any) => ({
-        cod: r['CODIGO CLIENTE'] || r.COD || r.ID_CLIENTE || r.cod || '',
-        soli: r['CONTRATO (SOLI)'] || r.NRO_SOLICITUD || r.soli || '',
-        name: r['NOMBRE Y APELLIDO'] || r.CLIENTE || r.name || '',
-        dni: String(r['DNI'] || r.dni || ''),
-        address: r['DIRECCION'] || r.address || '',
-        city: r['LOCALIDAD'] || r.city || '',
-        province: r['PROVINCIA'] || r.province || 'SAN JUAN',
-        plan: r['PLAN / PRODUCTO'] || r.PLAN || r.PRODUCTO_SOLICITADO || r.plan || '',
-        phone: String(r['TELEFONO'] || r.TELEFONO_1 || r.phone || ''),
-        amount: parseAmount(r['IMPORTE ABONADO'] || r['VALOR CUOTA ACTUAL ($)'] || r.VALOR_CUOTA_ESTIMADA || r.amount),
-        cuotaNum: String(r['CUOTA ACTUAL (PDF)'] || r['CUOTAS PAGADAS'] || (r.CANTIDAD_CUOTAS_PLAN ? '1' : '0')),
-        dueDate: formatExcelDate(r['FECHA DE VENCIMIENTO'] || r.VENCIMIENTO || r.dueDate || ''),
-        history: String(r['HISTORIAL ULTIMOS 5 PAGOS'] || r['HISTORIAL DE PAGOS'] || r.history || ''),
-      }));
+      return raw.map((r: any) => {
+        const parsed = parseLocation(r['LOCALIDAD'] || r.city || '');
+        return {
+          cod: r['CODIGO CLIENTE'] || r.COD || r.ID_CLIENTE || r.cod || '',
+          soli: r['CONTRATO (SOLI)'] || r.NRO_SOLICITUD || r.soli || '',
+          name: r['NOMBRE Y APELLIDO'] || r.CLIENTE || r.name || '',
+          dni: String(r['DNI'] || r.dni || ''),
+          address: r['DIRECCION'] || r.address || '',
+          city: parsed.city,
+          province: parsed.province,
+          plan: r['PLAN / PRODUCTO'] || r.PLAN || r.PRODUCTO_SOLICITADO || r.plan || '',
+          phone: String(r['TELEFONO'] || r.TELEFONO_1 || r.phone || ''),
+          amount: parseAmount(r['IMPORTE ABONADO'] || r['VALOR CUOTA ACTUAL ($)'] || r.VALOR_CUOTA_ESTIMADA || r.amount),
+          cuotaNum: String(r['CUOTA ACTUAL (PDF)'] || r['CUOTAS PAGADAS'] || (r.CANTIDAD_CUOTAS_PLAN ? '1' : '0')),
+          dueDate: formatExcelDate(r['FECHA DE VENCIMIENTO'] || r.VENCIMIENTO || r.dueDate || ''),
+          history: String(r['HISTORIAL ULTIMOS 5 PAGOS'] || r['HISTORIAL DE PAGOS'] || r.history || ''),
+        };
+      });
     }
 
     return [];
