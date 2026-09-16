@@ -196,15 +196,33 @@ export function parseLocation(raw: string): { city: string; province: string } {
 }
 
 function mapClientRecord(r: any): ClientRecord {
-  const get = (keys: string[]) => {
+  const get = (keys: (string | RegExp)[]) => {
     for (const key of keys) {
-      if (r[key] !== undefined && r[key] !== null && r[key] !== '') return r[key];
+      if (typeof key === 'string') {
+        if (r[key] !== undefined && r[key] !== null && r[key] !== '') return r[key];
+      } else if (key instanceof RegExp) {
+        const foundKey = Object.keys(r).find(k => key.test(k));
+        if (foundKey && r[foundKey] !== undefined && r[foundKey] !== null && r[foundKey] !== '') {
+          return r[foundKey];
+        }
+      }
     }
     return '';
   };
 
   const rawLocalidad = get(['LOCALIDAD', 'city', 'F']);
   const parsedLoc = parseLocation(rawLocalidad);
+
+  const rawCuota = get([
+    /^N[°o]?\s*DE\s*ANTICIPO/i,
+    /ANTICIPO/i,
+    'N° DE ANTICIPO',
+    'CUOTAS_TOTALES',
+    'CUOTA ACTUAL (PDF)',
+    'CUOTAS PAGADAS',
+    'cuotaNum',
+    'I'
+  ]);
 
   return {
     cod: get(['CODIGO CLIENTE', 'COD_CUENTA', 'CODIGO', 'cod', 'A']),
@@ -215,7 +233,7 @@ function mapClientRecord(r: any): ClientRecord {
     city: parsedLoc.city,
     address: get(['DIRECCION', 'address', 'G']),
     plan: get(['PLAN / PRODUCTO', 'PLAN', 'plan', 'H']),
-    cuotaNum: String(get(['N° DE ANTICIPO', 'ANTICIPO', 'CUOTAS_TOTALES', 'cuotaNum', 'I']) || '1'),
+    cuotaNum: String(rawCuota || '1'),
     amount: parseAmount(get(['VALOR_CUOTA', 'VALOR', 'J'])),
     province: parsedLoc.province,
     dueDate: formatExcelDate(get(['FECHA VTO', 'VTO', 'dueDate', 'O'])),
