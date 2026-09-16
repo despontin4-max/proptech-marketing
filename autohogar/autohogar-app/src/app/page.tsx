@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Search, FileText, LogOut, Loader2, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { Search, FileText, LogOut, Loader2, AlertCircle, CheckCircle2, RefreshCw } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
@@ -38,6 +38,7 @@ export default function Dashboard() {
   const [clientes, setClientes] = useState<Cliente[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [isLoading, setIsLoading] = useState(true);
+  const [isRefreshing, setIsRefreshing] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
   const [debugInfo, setDebugInfo] = useState('');
   const [currentUser, setCurrentUser] = useState<{ nombre: string; rol: string } | null>(null);
@@ -50,6 +51,29 @@ export default function Dashboard() {
   const [estadoFin, setEstadoFin] = useState<EstadoFinanciero | null>(null);
   const [isLoadingEstado, setIsLoadingEstado] = useState(false);
 
+  const fetchClients = async (force = false) => {
+    if (force) setIsRefreshing(true);
+    else setIsLoading(true);
+    try {
+      const clientsRes = await fetch(`/api/clientes/list?${force ? 'refresh=true&' : ''}t=${Date.now()}`);
+      const clientsData = await clientsRes.json();
+
+      if (!clientsRes.ok || !clientsData.success) {
+        setErrorMsg(clientsData.error || `Error HTTP ${clientsRes.status}`);
+        setDebugInfo(JSON.stringify(clientsData, null, 2));
+        return;
+      }
+
+      setClientes(clientsData.clientes || []);
+      setErrorMsg('');
+    } catch (err: any) {
+      setErrorMsg(err.message || 'Error de red');
+    } finally {
+      setIsLoading(false);
+      setIsRefreshing(false);
+    }
+  };
+
   useEffect(() => {
     async function init() {
       try {
@@ -59,19 +83,9 @@ export default function Dashboard() {
         if (!authData.authenticated) { router.push('/login'); return; }
         setCurrentUser(authData.user);
 
-        const clientsRes = await fetch('/api/clientes/list?t=' + Date.now());
-        const clientsData = await clientsRes.json();
-
-        if (!clientsRes.ok || !clientsData.success) {
-          setErrorMsg(clientsData.error || `Error HTTP ${clientsRes.status}`);
-          setDebugInfo(JSON.stringify(clientsData, null, 2));
-          return;
-        }
-
-        setClientes(clientsData.clientes);
+        await fetchClients(false);
       } catch (err: any) {
         setErrorMsg(err.message || 'Error de red');
-      } finally {
         setIsLoading(false);
       }
     }
@@ -160,6 +174,7 @@ export default function Dashboard() {
       if (data.success && data.files?.length > 0) {
         window.open(data.files[0].pdfUrl, '_blank');
         setModalCliente(null);
+        fetchClients(true);
       } else {
         alert('Error generando PDF: ' + (data.error || 'desconocido'));
       }
@@ -195,9 +210,20 @@ export default function Dashboard() {
 
       <main className="flex-1 max-w-6xl mx-auto w-full px-4 py-8">
         <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-8">
-          <div className="mb-6">
-            <h2 className="text-2xl font-bold text-slate-900">Buscador de Clientes</h2>
-            <p className="text-slate-500 text-sm mt-1">Busca por Nombre, DNI, N° Solicitud o Teléfono.</p>
+          <div className="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div>
+              <h2 className="text-2xl font-bold text-slate-900">Buscador de Clientes</h2>
+              <p className="text-slate-500 text-sm mt-1">Busca por Nombre, DNI, N° Solicitud o Teléfono.</p>
+            </div>
+            <button
+              onClick={() => fetchClients(true)}
+              disabled={isRefreshing || isLoading}
+              className="flex items-center gap-2 px-4 py-2 bg-orange-50 hover:bg-orange-100 text-orange-700 border border-orange-200 rounded-xl text-sm font-semibold transition-all shadow-sm active:scale-95 disabled:opacity-50 self-start sm:self-auto"
+              title="Forzar sincronización inmediata con Google Sheets"
+            >
+              <RefreshCw className={`w-4 h-4 ${isRefreshing ? 'animate-spin text-orange-600' : ''}`} />
+              <span>{isRefreshing ? 'Sincronizando...' : 'Sincronizar Planilla'}</span>
+            </button>
           </div>
 
           {/* Barra de búsqueda */}
@@ -251,7 +277,7 @@ export default function Dashboard() {
                       {filteredClientes.slice(0, 150).map(c => {
                         const verificado = Boolean(c.verificado);
                         return (
-                        <tr key={c.cod + c.soli} className="hover:bg-orange-50 transition-colors">
+                        <tr key={`client-${c.cod}-${c.soli}-${c.dni}`} className="hover:bg-orange-50 transition-colors">
                           <td className="px-4 py-2.5 font-mono text-slate-700">{c.cod}</td>
                           <td className="px-4 py-2.5 text-slate-600">{c.soli}</td>
                           <td className="px-4 py-2.5 font-semibold text-slate-900">{c.name}</td>

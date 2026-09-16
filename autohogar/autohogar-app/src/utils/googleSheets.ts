@@ -154,7 +154,18 @@ function formatExcelDate(val: any): string {
 // In-memory cache to prevent fetching the whole sheet per PDF
 let cachedClients: ClientRecord[] | null = null;
 let lastCacheTime = 0;
-const CACHE_TTL = 15 * 60 * 1000; // 15 minutos
+const CACHE_TTL = 15 * 1000; // 15 segundos (máximo para absorber ráfagas sin bloquear sincronizaciones en vivo)
+
+export function invalidateClientsCache() {
+  cachedClients = null;
+  lastCacheTime = 0;
+}
+
+export function parseVerified(val: any): boolean {
+  if (val === true || val === 1) return true;
+  const s = String(val ?? '').trim().toUpperCase();
+  return s === 'TRUE' || s === 'SI' || s === 'SÍ' || s === 'VERIFICADO' || s === '1' || s === 'OK';
+}
 
 const PROVINCIAS_ARGENTINAS = [
   'SAN JUAN', 'MENDOZA', 'SAN LUIS', 'LA RIOJA', 'CATAMARCA',
@@ -240,7 +251,7 @@ function mapClientRecord(r: any): ClientRecord {
     paymentDate: formatExcelDate(get(['FECHA PAGO REAL', 'PAGO', 'P'])),
     estado: get(['ESTADO', 'K']) || 'ACTIVO',
     cuotasPactadas: get(['CUOTA PACTADA', 'CUOTAS', 'L']),
-    verificado: String(get(['VERIFICADO', 'M'])).toUpperCase() === 'TRUE',
+    verificado: parseVerified(get(['VERIFICADO', 'M'])),
     history: '', // Se podría integrar de otra pestaña si es necesario
   };
 }
@@ -248,20 +259,22 @@ function mapClientRecord(r: any): ClientRecord {
 /**
  * Lee la base maestra de clientes desde Google Sheets o desde el archivo maestro relacional local.
  */
-export async function getMasterClients(): Promise<ClientRecord[]> {
+export async function getMasterClients(forceRefresh: boolean = false): Promise<ClientRecord[]> {
   try {
-    if (cachedClients && Date.now() - lastCacheTime < CACHE_TTL) {
+    if (forceRefresh) {
+      invalidateClientsCache();
+    } else if (cachedClients && Date.now() - lastCacheTime < CACHE_TTL) {
       return cachedClients;
     }
 
     const spreadsheetId = '1MH8X7HaAjPgi6C1PUBg1Ll4QjB0sHQXmGb4ISXHsVEY';
 
-    // 1. Intentar lectura en vivo vía Google Sheets GViz API
+    // 1. Intentar lectura en vivo vía Google Sheets GViz API con no-store y cache-buster
     if (spreadsheetId) {
       try {
         const xlsx = require('xlsx');
-        const gvizUrl = `https://docs.google.com/spreadsheets/d/${spreadsheetId}/gviz/tq?tqx=out:csv&sheet=1_CLIENTES`;
-        const res = await fetch(gvizUrl, { next: { revalidate: 60 } });
+        const gvizUrl = `https://docs.google.com/spreadsheets/d/${spreadsheetId}/gviz/tq?tqx=out:csv&sheet=1_CLIENTES&_t=${Date.now()}`;
+        const res = await fetch(gvizUrl, { cache: 'no-store' });
         if (res.ok) {
           const csvText = await res.text();
           if (csvText && csvText.length > 50) {
@@ -269,7 +282,13 @@ export async function getMasterClients(): Promise<ClientRecord[]> {
             const sheetName = wb.SheetNames[0];
             const raw = xlsx.utils.sheet_to_json(wb.Sheets[sheetName]);
             if (raw && raw.length > 0) {
-              const clients = raw.map(mapClientRecord);
+              const clients = raw
+                .map((r: any, idx: number) => ({
+                  ...mapClientRecord(r),
+                  sheetRowIndex: idx + 2, // Fila física en Google Sheets (1-based, fila 1 = encabezados)
+                }))
+                .filter(c => Boolean(c.cod || c.name || c.soli)); // Filtrar filas vacías / fantasmas
+
               cachedClients = clients;
               lastCacheTime = Date.now();
               return clients;
@@ -296,17 +315,20 @@ export async function getMasterClients(): Promise<ClientRecord[]> {
         const rows = response.data.values;
         if (rows && rows.length > 1) {
           const headers = rows[0].map((h: any) => h ? String(h).trim() : '');
-          const mappedObjects = rows.slice(1).map(row => {
+          const mappedObjects = rows.slice(1).map((row, idx) => {
             const obj: any = {};
             headers.forEach((h: string, i: number) => {
               if (h) obj[h] = row[i];
             });
-            return obj;
-          });
-          const clients = mappedObjects.map(mapClientRecord);
-          cachedClients = clients;
+            return {
+              ...mapClientRecord(obj),
+              sheetRowIndex: idx + 2,
+            };
+          }).filter(c => Boolean(c.cod || c.name || c.soli));
+
+          cachedClients = mappedObjects;
           lastCacheTime = Date.now();
-          return clients;
+          return mappedObjects;
         }
       } catch (apiErr) {
         console.warn('Google Sheets API failed:', apiErr);

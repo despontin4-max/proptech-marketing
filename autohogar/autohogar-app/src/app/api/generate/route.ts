@@ -181,11 +181,12 @@ export async function POST(request: Request) {
     }
 
     // Insertar todos los pagos en 1 sola llamada (Evita cuellos de botella y silent failures)
-    const { appendPagosBatch, markReceiptsAsEmitted } = require('@/utils/googleSheets');
+    const { appendPagosBatch, markReceiptsAsEmitted, invalidateClientsCache } = require('@/utils/googleSheets');
     await appendPagosBatch(pagosToInsert);
     
     // Marcar los recibos como emitidos en 1_CLIENTES
     await markReceiptsAsEmitted(rowIndicesToMark, operadorVerificador).catch(e => console.error('Error marking receipts:', e));
+    invalidateClientsCache();
 
     // ── Audit Log (fire-and-forget) ────────────────────────────────────────
     const fechaStr = new Date().toLocaleString('es-AR', { dateStyle: 'short', timeStyle: 'short' });
