@@ -33,6 +33,8 @@ for (const htmlFile of htmlFiles) {
   content = content.replace(/src="public\//g, 'src="/public/');
   // Fix href="public/ → href="/public/
   content = content.replace(/href="public\//g, 'href="/public/');
+  // Fix poster="public/ → poster="/public/
+  content = content.replace(/poster="public\//g, 'poster="/public/');
   // Fix url(public/ → url(/public/
   content = content.replace(/url\(public\//g, 'url(/public/');
   // Fix url('public/ → url('/public/
