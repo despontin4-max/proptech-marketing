@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="900" height="620" viewBox="0 0 900 620" xmlns="http://www.w3.org/2000/svg" font-family="'Inter', 'Montserrat', sans-serif">
+  <defs>
+    <pattern id="grid3" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#f0f2f3" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow3" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#537179"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="620" fill="#ffffff"/>
+  <rect width="900" height="620" fill="url(#grid3)"/>
+
+  <!-- Border Blueprint Frame -->
+  <rect x="25" y="25" width="850" height="570" fill="none" stroke="#262626" stroke-width="2"/>
+  <rect x="29" y="29" width="842" height="562" fill="none" stroke="#e5e4e4" stroke-width="1"/>
+
+  <!-- Title Block (Aker Architectural Style) -->
+  <g transform="translate(45, 45)">
+    <rect width="340" height="75" fill="#070707" rx="4"/>
+    <text x="18" y="26" fill="#537179" font-size="10" font-weight="700" letter-spacing="2">PLANO TÉCNICO &#8226; LÍNEA TRADICIONAL</text>
+    <text x="18" y="48" fill="#ffffff" font-size="17" font-weight="600">Tipología Master (3 Dormitorios)</text>
+    <text x="18" y="66" fill="#e5e4e4" font-size="11">Cubierta: 73 m² | Cochera/Quincho: 30 m² | Total: 103 m²</text>
+  </g>
+
+  <!-- Dimension Lines Top & Right -->
+  <g stroke="#537179" stroke-width="1.2">
+    <!-- Top Width Carport -->
+    <line x1="50" y1="95" x2="230" y2="95"/>
+    <line x1="50" y1="88" x2="50" y2="102"/>
+    <text x="140" y="88" fill="#537179" font-size="11" font-weight="600" text-anchor="middle">COCHERA/QUINCHO 3.80 m</text>
+
+    <!-- Top Width House (10.20 m Gran Fachada) -->
+    <line x1="230" y1="95" x2="820" y2="95"/>
+    <line x1="230" y1="88" x2="230" y2="102"/>
+    <line x1="820" y1="88" x2="820" y2="102"/>
+    <text x="525" y="88" fill="#537179" font-size="11" font-weight="600" text-anchor="middle">VIVIENDA 10.20 m (Gran Fachada 3 Dormitorios)</text>
+
+    <!-- Total Depth (7.20 m Gran Fondo) -->
+    <line x1="845" y1="125" x2="845" y2="520"/>
+    <line x1="838" y1="125" x2="852" y2="125"/>
+    <line x1="838" y1="520" x2="852" y2="520"/>
+    <text x="862" y="325" fill="#537179" font-size="11" font-weight="600" transform="rotate(90, 862, 325)" text-anchor="middle">FONDO 7.20 m</text>
+  </g>
+
+  <!-- CARPORT / COCHERA PASANTE QUINCHO (3.80 x 7.80 m = 30 m²) -->
+  <g transform="translate(50, 125)">
+    <!-- Floor Slab -->
+    <rect width="180" height="395" fill="#f8f9f9" stroke="#537179" stroke-width="1.5" stroke-dasharray="6,4"/>
+    <!-- Structural Posts -->
+    <rect x="5" y="5" width="14" height="14" fill="#1c1c1c" stroke="#537179" stroke-width="1"/>
+    <rect x="5" y="190" width="14" height="14" fill="#1c1c1c" stroke="#537179" stroke-width="1"/>
+    <rect x="5" y="375" width="14" height="14" fill="#1c1c1c" stroke="#537179" stroke-width="1"/>
+    
+    <!-- Vehicle Silhouette (Camioneta / SUV Familiar Grande) -->
+    <g transform="translate(14, 60)" opacity="0.65">
+      <rect width="152" height="275" rx="26" fill="#e2e5e7" stroke="#537179" stroke-width="1.5"/>
+      <rect x="15" y="55" width="122" height="36" rx="6" fill="#ffffff" stroke="#537179" stroke-width="1"/>
+      <rect x="15" y="195" width="122" height="28" rx="4" fill="#ffffff" stroke="#537179" stroke-width="1"/>
+      <line x1="26" y1="100" x2="26" y2="185" stroke="#537179" stroke-width="1"/>
+      <line x1="126" y1="100" x2="126" y2="185" stroke="#537179" stroke-width="1"/>
+      <!-- Bed/Trunk division -->
+      <line x1="20" y1="235" x2="132" y2="235" stroke="#537179" stroke-width="1"/>
+      <text x="76" y="145" fill="#537179" font-size="10" font-weight="600" text-anchor="middle">CAMIONETA / SUV</text>
+    </g>
+    <text x="90" y="375" fill="#537179" font-size="10" font-weight="600" text-anchor="middle">COCHERA-QUINCHO 30 m²</text>
+  </g>
+
+  <!-- HOUSE STRUCTURE (10.20 x 7.20 m = 73 m² Cubiertos) -->
+  <g transform="translate(230, 125)">
+    <!-- House Floor Fill -->
+    <rect width="590" height="395" fill="#ffffff"/>
+
+    <!-- Perimeter Exterior Walls (10px = 20cm) -->
+    <rect width="590" height="395" fill="none" stroke="#1c1c1c" stroke-width="10"/>
+
+    <!-- INTERIOR DIVIDING WALLS (8px = 12cm) -->
+    <!-- Horizontal Main Dividing Wall separating Day Area (Front) from Night Area (Rear) -->
+    <line x1="0" y1="195" x2="590" y2="195" stroke="#1c1c1c" stroke-width="8"/>
+
+    <!-- Front Separation: Living (Left) vs Cocina-Comedor (Center) vs Lavadero (Right) -->
+    <line x1="310" y1="0" x2="310" y2="195" stroke="#1c1c1c" stroke-width="8"/>
+    <line x1="490" y1="0" x2="490" y2="195" stroke="#1c1c1c" stroke-width="8"/>
+
+    <!-- Rear Separation: 3 Bedrooms + Bathrooms -->
+    <!-- Bedroom 1 Suite (Left): 0 to 200 -->
+    <line x1="200" y1="195" x2="200" y2="395" stroke="#1c1c1c" stroke-width="8"/>
+    <!-- Bathroom Core (Center-Left): 200 to 320 -->
+    <line x1="320" y1="195" x2="320" y2="395" stroke="#1c1c1c" stroke-width="8"/>
+    <!-- Horizontal split inside bathroom core: Antebaño/Baño (top) and Toilette (bottom) -->
+    <line x1="200" y1="305" x2="320" y2="305" stroke="#1c1c1c" stroke-width="8"/>
+    <!-- Bedroom 2 (Center-Right): 320 to 450 -->
+    <line x1="450" y1="195" x2="450" y2="395" stroke="#1c1c1c" stroke-width="8"/>
+    <!-- Bedroom 3 (Right): 450 to 590 -->
+
+    <!-- WINDOW OPENINGS -->
+    <!-- Living Front Windows (Double) -->
+    <rect x="70" y="-5" width="160" height="10" fill="#ffffff" stroke="#537179" stroke-width="1.5"/>
+    <line x1="70" y1="0" x2="230" y2="0" stroke="#537179" stroke-width="2"/>
+    <text x="150" y="-10" fill="#537179" font-size="9" text-anchor="middle">V1 (2.40x1.20 Ventanal)</text>
+
+    <!-- Cocina-Comedor Window (Front) -->
+    <rect x="350" y="-5" width="100" height="10" fill="#ffffff" stroke="#537179" stroke-width="1.5"/>
+    <line x1="350" y1="0" x2="450" y2="0" stroke="#537179" stroke-width="2"/>
+
+    <!-- Lavadero Window -->
+    <rect x="520" y="-5" width="45" height="10" fill="#ffffff" stroke="#537179" stroke-width="1.5"/>
+    <line x1="520" y1="0" x2="565" y2="0" stroke="#537179" stroke-width="2"/>
+
+    <!-- Bedroom 1 Window (Rear Left) -->
+    <rect x="45" y="390" width="110" height="10" fill="#ffffff" stroke="#537179" stroke-width="1.5"/>
+    <line x1="45" y1="395" x2="155" y2="395" stroke="#537179" stroke-width="2"/>
+    <text x="100" y="414" fill="#537179" font-size="9" text-anchor="middle">V3 (1.60x1.20)</text>
+
+    <!-- Bathroom Ventiluz (Rear Center) -->
+    <rect x="235" y="390" width="50" height="10" fill="#ffffff" stroke="#537179" stroke-width="1.5"/>
+    <line x1="235" y1="395" x2="285" y2="395" stroke="#537179" stroke-width="2"/>
+
+    <!-- Bedroom 2 Window (Rear Center-Right) -->
+    <rect x="350" y="390" width="80" height="10" fill="#ffffff" stroke="#537179" stroke-width="1.5"/>
+    <line x1="350" y1="395" x2="430" y2="395" stroke="#537179" stroke-width="2"/>
+    <text x="390" y="414" fill="#537179" font-size="9" text-anchor="middle">V4 (1.40x1.20)</text>
+
+    <!-- Bedroom 3 Window (Rear Right) -->
+    <rect x="480" y="390" width="80" height="10" fill="#ffffff" stroke="#537179" stroke-width="1.5"/>
+    <line x1="480" y1="395" x2="560" y2="395" stroke="#537179" stroke-width="2"/>
+    <text x="520" y="414" fill="#537179" font-size="9" text-anchor="middle">V5 (1.40x1.20)</text>
+
+    <!-- FURNITURE & FIXTURES -->
+    <!-- 1. Gran Living (Front Left) -->
+    <!-- L-Shaped Sectional Sofa -->
+    <rect x="20" y="40" width="48" height="130" rx="4" fill="#f0f2f3" stroke="#8d8d8d" stroke-width="1"/>
+    <rect x="68" y="122" width="70" height="48" rx="4" fill="#f0f2f3" stroke="#8d8d8d" stroke-width="1"/>
+    <rect x="85" y="55" width="55" height="45" rx="3" fill="#fafafa" stroke="#8d8d8d" stroke-width="1"/>
+    <!-- TV Unit -->
+    <rect x="260" y="40" width="28" height="110" rx="2" fill="#e5e4e4" stroke="#537179" stroke-width="1"/>
+    <text x="274" y="95" fill="#537179" font-size="8" transform="rotate(90, 274, 95)" text-anchor="middle">MUEBLE TV</text>
+
+    <!-- 2. Cocina-Comedor (Front Center) -->
+    <!-- Dining Table for 6 People -->
+    <rect x="330" y="50" width="135" height="60" rx="4" fill="#fafafa" stroke="#8d8d8d" stroke-width="1.2"/>
+    <rect x="345" y="34" width="22" height="12" rx="2" fill="#e5e4e4" stroke="#8d8d8d" stroke-width="1"/>
+    <rect x="385" y="34" width="22" height="12" rx="2" fill="#e5e4e4" stroke="#8d8d8d" stroke-width="1"/>
+    <rect x="425" y="34" width="22" height="12" rx="2" fill="#e5e4e4" stroke="#8d8d8d" stroke-width="1"/>
+    <rect x="345" y="114" width="22" height="12" rx="2" fill="#e5e4e4" stroke="#8d8d8d" stroke-width="1"/>
+    <rect x="385" y="114" width="22" height="12" rx="2" fill="#e5e4e4" stroke="#8d8d8d" stroke-width="1"/>
+    <rect x="425" y="114" width="22" height="12" rx="2" fill="#e5e4e4" stroke="#8d8d8d" stroke-width="1"/>
+    <!-- Kitchen Countertop with Sink and Cooktop -->
+    <rect x="320" y="145" width="160" height="42" fill="#f0f2f3" stroke="#8d8d8d" stroke-width="1"/>
+    <!-- Sink -->
+    <rect x="340" y="152" width="40" height="26" rx="3" fill="#ffffff" stroke="#537179" stroke-width="1"/>
+    <circle cx="360" cy="165" r="3" fill="#537179"/>
+    <!-- Cooktop -->
+    <rect x="410" y="152" width="38" height="26" rx="2" fill="#e5e4e4" stroke="#1c1c1c" stroke-width="1"/>
+    <circle cx="420" cy="160" r="3.5" fill="#1c1c1c"/>
+    <circle cx="438" cy="160" r="3.5" fill="#1c1c1c"/>
+    <circle cx="420" cy="170" r="3.5" fill="#1c1c1c"/>
+    <circle cx="438" cy="170" r="3.5" fill="#1c1c1c"/>
+
+    <!-- 3. Lavadero Cubierto Independiente (Front Right) -->
+    <rect x="500" y="20" width="80" height="45" fill="#f0f2f3" stroke="#8d8d8d" stroke-width="1"/>
+    <rect x="510" y="26" width="30" height="32" rx="2" fill="#ffffff" stroke="#537179" stroke-width="1"/>
+    <circle cx="525" cy="42" r="10" fill="#f0f2f3" stroke="#537179" stroke-width="1"/>
+    <text x="525" y="45" fill="#537179" font-size="7" text-anchor="middle">LAVAR</text>
+    <rect x="548" y="26" width="26" height="32" rx="2" fill="#ffffff" stroke="#537179" stroke-width="1"/>
+
+    <!-- 4. DORMITORIO 1 (Suite Principal Matrimonial - Rear Left, 13.7 m²) -->
+    <rect x="25" y="225" width="125" height="120" rx="4" fill="#fafafa" stroke="#537179" stroke-width="1.5"/>
+    <rect x="35" y="232" width="46" height="28" rx="3" fill="#ffffff" stroke="#8d8d8d" stroke-width="1"/>
+    <rect x="94" y="232" width="46" height="28" rx="3" fill="#ffffff" stroke="#8d8d8d" stroke-width="1"/>
+    <line x1="25" y1="272" x2="150" y2="272" stroke="#537179" stroke-width="1"/>
+    <!-- Nightstands -->
+    <rect x="156" y="232" width="22" height="26" rx="2" fill="#e5e4e4" stroke="#8d8d8d" stroke-width="1"/>
+    <!-- Grand Placard Pared a Pared -->
+    <rect x="10" y="355" width="180" height="30" fill="#e5e4e4" stroke="#537179" stroke-width="1"/>
+    <text x="100" y="374" fill="#537179" font-size="9" text-anchor="middle">PLACARD PARED A PARED</text>
+
+    <!-- 5. BAÑO PRINCIPAL & TOILETTE (Rear Center) -->
+    <!-- Main Bathroom (Top) -->
+    <rect x="208" y="202" width="105" height="96" fill="#eef2f3" stroke="#537179" stroke-width="0.8"/>
+    <!-- Vanity Antebaño -->
+    <rect x="215" y="208" width="45" height="24" rx="2" fill="#ffffff" stroke="#537179" stroke-width="1"/>
+    <circle cx="237" cy="220" r="6" fill="#f0f2f3" stroke="#537179" stroke-width="1"/>
+    <!-- Tub/Shower -->
+    <rect x="268" y="208" width="40" height="84" fill="#ffffff" stroke="#537179" stroke-width="1"/>
+    <circle cx="288" cy="225" r="4" fill="#537179"/>
+    <!-- Inodoro & Bidet -->
+    <rect x="215" y="265" width="18" height="24" rx="5" fill="#ffffff" stroke="#537179" stroke-width="1"/>
+    <rect x="240" y="265" width="18" height="24" rx="5" fill="#ffffff" stroke="#537179" stroke-width="1"/>
+
+    <!-- Toilette / Baño Social (Bottom) -->
+    <rect x="208" y="312" width="105" height="76" fill="#fafafa" stroke="#537179" stroke-width="0.8"/>
+    <rect x="220" y="350" width="18" height="24" rx="5" fill="#ffffff" stroke="#537179" stroke-width="1"/>
+    <rect x="255" y="350" width="28" height="20" rx="2" fill="#ffffff" stroke="#537179" stroke-width="1"/>
+    <circle cx="269" cy="360" r="5" fill="#f0f2f3" stroke="#537179" stroke-width="1"/>
+
+    <!-- 6. DORMITORIO 2 (Rear Center-Right, 10.2 m² - 2 Camas) -->
+    <!-- Bed 1 -->
+    <rect x="330" y="225" width="52" height="110" rx="3" fill="#fafafa" stroke="#537179" stroke-width="1.2"/>
+    <rect x="336" y="230" width="40" height="20" rx="2" fill="#ffffff" stroke="#8d8d8d" stroke-width="1"/>
+    <line x1="330" y1="260" x2="382" y2="260" stroke="#537179" stroke-width="1"/>
+    <!-- Bed 2 -->
+    <rect x="392" y="225" width="52" height="110" rx="3" fill="#fafafa" stroke="#537179" stroke-width="1.2"/>
+    <rect x="398" y="230" width="40" height="20" rx="2" fill="#ffffff" stroke="#8d8d8d" stroke-width="1"/>
+    <line x1="392" y1="260" x2="444" y2="260" stroke="#537179" stroke-width="1"/>
+    <!-- Placard -->
+    <rect x="330" y="355" width="112" height="28" fill="#e5e4e4" stroke="#537179" stroke-width="1"/>
+    <text x="386" y="372" fill="#537179" font-size="8" text-anchor="middle">PLACARD</text>
+
+    <!-- 7. DORMITORIO 3 (Rear Right, 9.3 m² - Cama + Escritorio Home Office) -->
+    <!-- Bed Single -->
+    <rect x="460" y="225" width="56" height="115" rx="3" fill="#fafafa" stroke="#537179" stroke-width="1.2"/>
+    <rect x="466" y="230" width="44" height="22" rx="2" fill="#ffffff" stroke="#8d8d8d" stroke-width="1"/>
+    <line x1="460" y1="265" x2="516" y2="265" stroke="#537179" stroke-width="1"/>
+    <!-- Study Desk with Chair -->
+    <rect x="528" y="225" width="52" height="40" rx="2" fill="#f0f2f3" stroke="#537179" stroke-width="1"/>
+    <circle cx="554" cy="280" r="10" fill="#e5e4e4" stroke="#8d8d8d" stroke-width="1"/>
+    <text x="554" y="248" fill="#537179" font-size="7" font-weight="600" text-anchor="middle">ESCRITORIO</text>
+    <!-- Placard -->
+    <rect x="460" y="355" width="120" height="28" fill="#e5e4e4" stroke="#537179" stroke-width="1"/>
+    <text x="520" y="372" fill="#537179" font-size="8" text-anchor="middle">PLACARD</text>
+
+    <!-- DOORS & SWING ARCS -->
+    <!-- Main Entrance Door (From Carport to Living) -->
+    <path d="M 0 130 A 44 44 0 0 1 44 174" fill="none" stroke="#537179" stroke-width="1.5" stroke-dasharray="3,3"/>
+    <line x1="0" y1="130" x2="0" y2="174" stroke="#1c1c1c" stroke-width="3.5"/>
+
+    <!-- Corridor Access Door -->
+    <path d="M 230 195 A 38 38 0 0 1 268 233" fill="none" stroke="#537179" stroke-width="1.5" stroke-dasharray="3,3"/>
+    <line x1="230" y1="195" x2="268" y2="195" stroke="#1c1c1c" stroke-width="3"/>
+
+    <!-- Bedroom 1 Door -->
+    <path d="M 200 240 A 35 35 0 0 1 165 275" fill="none" stroke="#537179" stroke-width="1.5" stroke-dasharray="3,3"/>
+    <line x1="200" y1="240" x2="200" y2="275" stroke="#1c1c1c" stroke-width="3"/>
+
+    <!-- Bedroom 2 Door -->
+    <path d="M 320 230 A 35 35 0 0 1 355 265" fill="none" stroke="#537179" stroke-width="1.5" stroke-dasharray="3,3"/>
+    <line x1="320" y1="230" x2="320" y2="265" stroke="#1c1c1c" stroke-width="3"/>
+
+    <!-- Bedroom 3 Door -->
+    <path d="M 450 230 A 35 35 0 0 1 485 265" fill="none" stroke="#537179" stroke-width="1.5" stroke-dasharray="3,3"/>
+    <line x1="450" y1="230" x2="450" y2="265" stroke="#1c1c1c" stroke-width="3"/>
+
+    <!-- Main Bath Door -->
+    <path d="M 200 210 A 30 30 0 0 1 230 240" fill="none" stroke="#537179" stroke-width="1.5" stroke-dasharray="3,3"/>
+    <line x1="200" y1="210" x2="230" y2="210" stroke="#1c1c1c" stroke-width="3"/>
+
+    <!-- Lavadero Door -->
+    <path d="M 490 80 A 30 30 0 0 1 520 110" fill="none" stroke="#537179" stroke-width="1.5" stroke-dasharray="3,3"/>
+    <line x1="490" y1="80" x2="490" y2="110" stroke="#1c1c1c" stroke-width="3"/>
+
+    <!-- ROOM LABELS -->
+    <g text-anchor="middle">
+      <text x="150" y="160" fill="#1c1c1c" font-size="13" font-weight="700">GRAN LIVING</text>
+      <text x="150" y="174" fill="#537179" font-size="11" font-weight="600">17.50 m²</text>
+
+      <text x="400" y="130" fill="#1c1c1c" font-size="13" font-weight="700">COCINA &#8226; COMEDOR</text>
+      <text x="400" y="144" fill="#537179" font-size="11" font-weight="600">14.30 m²</text>
+
+      <text x="540" y="100" fill="#1c1c1c" font-size="10" font-weight="700">LAVADERO</text>
+      <text x="540" y="112" fill="#537179" font-size="9" font-weight="600">3.20 m²</text>
+
+      <text x="100" y="215" fill="#1c1c1c" font-size="11" font-weight="700">DORMITORIO 1</text>
+      <text x="100" y="226" fill="#537179" font-size="9" font-weight="600">13.70 m² (Suite)</text>
+
+      <text x="260" y="240" fill="#1c1c1c" font-size="10" font-weight="700">BAÑO PPAL</text>
+      <text x="260" y="250" fill="#537179" font-size="8" font-weight="600">4.70 m²</text>
+
+      <text x="260" y="340" fill="#1c1c1c" font-size="10" font-weight="700">TOILETTE</text>
+      <text x="260" y="350" fill="#537179" font-size="8" font-weight="600">2.40 m²</text>
+
+      <text x="386" y="215" fill="#1c1c1c" font-size="11" font-weight="700">DORMITORIO 2</text>
+      <text x="386" y="226" fill="#537179" font-size="9" font-weight="600">10.20 m² (2 Camas)</text>
+
+      <text x="520" y="215" fill="#1c1c1c" font-size="11" font-weight="700">DORMITORIO 3</text>
+      <text x="520" y="226" fill="#537179" font-size="9" font-weight="600">9.30 m² (Home Office)</text>
+    </g>
+
+    <!-- Main Entrance Arrow -->
+    <g transform="translate(-28, 152)">
+      <line x1="0" y1="0" x2="22" y2="0" stroke="#537179" stroke-width="3" marker-end="url(#arrow3)"/>
+      <text x="-8" y="-6" fill="#537179" font-size="10" font-weight="700">ACCESO</text>
+    </g>
+  </g>
+
+  <!-- Technical Specs Summary Box (Bottom Right) -->
+  <g transform="translate(500, 532)">
+    <text x="0" y="14" fill="#262626" font-size="10" font-weight="700">SISTEMA CONSTRUCTIVO:</text>
+    <text x="0" y="28" fill="#666666" font-size="10">Industrializado tradicional &#8226; 3 Dormitorios + 2 Baños + Lavadero &#8226; 73 m² cubiertos + 30 m² cochera</text>
+    <text x="0" y="42" fill="#8d8d8d" font-size="9">* Plano esquemático ilustrativo correspondiente al contrato individual de compraventa Autohogar.</text>
+  </g>
+</svg>

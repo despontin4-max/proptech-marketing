@@ -1,0 +1,30 @@
+<svg viewBox="0 0 460 100" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .brand-title { font-family: 'Montserrat', 'Arial Black', sans-serif; font-weight: 900; font-size: 42px; fill: #0B192C; letter-spacing: 2px; }
+      .stroke-navy { stroke: #0B192C; stroke-width: 4.5; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+      .stroke-orange { stroke: #FF6B00; stroke-width: 4.5; stroke-linecap: round; fill: none; }
+      .fill-navy { fill: #0B192C; }
+      .fill-orange { fill: #FF6B00; }
+    </style>
+  </defs>
+
+  <g id="isologo" transform="translate(10, 5)">
+    <path d="M 10 70 A 55 55 0 0 1 50 10 A 50 50 0 0 0 16 65 Z" class="fill-orange" />
+    <polygon points="18,48 50,22 88,54 75,54 50,34 26,54" class="fill-navy" />
+    <polygon points="24,44 48,24 48,44" class="fill-navy" />
+    <rect x="54" y="36" width="7" height="7" class="fill-navy" />
+    <rect x="63" y="36" width="7" height="7" class="fill-navy" />
+    <rect x="54" y="45" width="7" height="7" class="fill-navy" />
+    <rect x="63" y="45" width="7" height="7" class="fill-navy" />
+
+    <path d="M 22 55 Q 35 48 55 48 Q 72 48 82 56 L 94 58 Q 102 61 98 70" class="stroke-navy" />
+    <path d="M 32 72 A 10 10 0 1 1 52 72" class="stroke-navy" />
+    <path d="M 74 72 A 10 10 0 1 1 94 72" class="stroke-navy" />
+    <line x1="52" y1="72" x2="74" y2="72" class="stroke-navy" />
+
+    <path d="M 10 82 Q 55 76 102 82" class="stroke-orange" />
+  </g>
+
+  <text x="135" y="62" class="brand-title">AUTOHOGAR</text>
+</svg>

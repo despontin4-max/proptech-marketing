@@ -1,0 +1,61 @@
+{
+  "tipologias": [
+    {
+      "id": "principiante",
+      "nombre": "Tipología Principiante",
+      "tag": "1 Dormitorio",
+      "superficie_cubierta": 38,
+      "superficie_galeria": 23,
+      "superficie_total": 61,
+      "dormitorios": 1,
+      "ambientes": [
+        "1 Dormitorio principal",
+        "Cocina-comedor integrada",
+        "Baño completo",
+        "Galería / Cochera cubierta (23 m²)"
+      ],
+      "sistema_constructivo": "Construcción industrializada tradicional, techo a dos aguas de chapa negra trapezoidal antigranizo, aberturas de aluminio blanco, aislación termoacústica y placas cementicias.",
+      "imagen_render": "public/images/tipologias/render_principiante_1dor.jpg",
+      "cuotas_plan": "18 a 84 cuotas fijas"
+    },
+    {
+      "id": "hogar",
+      "nombre": "Tipología Hogar",
+      "tag": "2 Dormitorios",
+      "superficie_cubierta": 48,
+      "superficie_galeria": 25,
+      "superficie_total": 73,
+      "dormitorios": 2,
+      "ambientes": [
+        "2 Dormitorios independientes",
+        "Living-comedor integrado",
+        "Cocina funcional",
+        "Baño completo",
+        "Galería / Cochera cubierta (25 m²)"
+      ],
+      "sistema_constructivo": "Construcción industrializada tradicional, techo a dos aguas de chapa negra trapezoidal antigranizo, aberturas de aluminio blanco, aislación termoacústica y placas cementicias.",
+      "imagen_render": "public/images/tipologias/render_hogar_2dor.jpg",
+      "cuotas_plan": "18 a 84 cuotas fijas"
+    },
+    {
+      "id": "master",
+      "nombre": "Tipología Master",
+      "tag": "3 Dormitorios",
+      "superficie_cubierta": 73,
+      "superficie_galeria": 30,
+      "superficie_total": 103,
+      "dormitorios": 3,
+      "ambientes": [
+        "3 Dormitorios (principal + 2 secundarios)",
+        "Estar-comedor familiar amplio",
+        "Cocina con sector lavadero",
+        "Baño completo zonificado",
+        "Galería / Cochera cubierta (30 m²)"
+      ],
+      "sistema_constructivo": "Construcción industrializada tradicional, techo a dos aguas de chapa negra trapezoidal antigranizo, aberturas de aluminio blanco, aislación termoacústica y placas cementicias.",
+      "imagen_render": "public/images/tipologias/render_master_3dor.jpg",
+      "cuotas_plan": "18 a 84 cuotas fijas"
+    }
+  ],
+  "disclaimer_legal": "* Las imágenes, renders y planos son de carácter meramente ilustrativo y no constituyen parte integrante de una oferta vinculante contractual. Las características técnicas, dimensiones y terminaciones definitivas corresponden a las estipuladas en cada contrato individual y su correspondiente anexo técnico."
+}

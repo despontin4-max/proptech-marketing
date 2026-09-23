@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Autohogar - Logo Oficial Horizontal (Mismo Isologo y Tipografía de Recibos)</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #0d1117;
+    color: #e6edf3;
+    padding: 30px 20px 80px;
+  }
+  .container { max-width: 1200px; margin: 0 auto; }
+  header { text-align: center; margin-bottom: 35px; border-bottom: 1px solid #30363d; padding-bottom: 25px; }
+  h1 { font-size: 2.2rem; font-weight: 800; color: #fff; margin-bottom: 10px; }
+  p.subtitle { color: #8b949e; font-size: 1.05rem; }
+  .badge { background: rgba(0, 153, 216, 0.15); color: #0099d8; padding: 4px 14px; border-radius: 20px; font-weight: 600; font-size: 0.85rem; display: inline-block; margin-bottom: 12px; border: 1px solid rgba(0, 153, 216, 0.3); }
+
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 24px; margin-bottom: 40px; }
+  .card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .card-header { padding: 16px 20px; border-bottom: 1px solid #21262d; background: #1c2128; }
+  .card-title { font-size: 1.15rem; font-weight: 700; color: #f0f6fc; }
+  .card-desc { font-size: 0.85rem; color: #8b949e; margin-top: 4px; }
+  
+  .preview-box {
+    padding: 40px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 180px;
+  }
+  .bg-white { background: #ffffff; }
+  .bg-navy { background: #0a192f; }
+
+  .header-sim {
+    margin-top: 40px;
+    background: #161b22;
+    border-radius: 12px;
+    border: 1px solid #30363d;
+    padding: 24px;
+  }
+  .header-sim h2 { font-size: 1.3rem; margin-bottom: 16px; color: #fff; }
+  .mock-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 28px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  .nav-links { display: flex; gap: 24px; list-style: none; font-size: 0.9rem; font-weight: 600; }
+  .nav-links a { text-decoration: none; color: inherit; opacity: 0.85; }
+  .nav-btn {
+    padding: 9px 20px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    border: none;
+    cursor: pointer;
+    background: #eb8226;
+    color: #fff;
+  }
+
+  .cartel-section {
+    margin-top: 40px;
+    background: #161b22;
+    border-radius: 12px;
+    border: 1px solid #30363d;
+    padding: 24px;
+  }
+  .cartel-section h2 { font-size: 1.3rem; margin-bottom: 8px; color: #fff; }
+  .cartel-preview {
+    border: 4px solid #444c56;
+    border-radius: 8px;
+    padding: 45px 30px;
+    text-align: center;
+    background: #ffffff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    max-width: 900px;
+    margin: 20px auto 0;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge">AUTOHOGAR • IDENTIDAD EXACTA OFICIAL</div>
+    <h1>Logo Oficial Horizontal: Isologo y Tipografía Idénticos</h1>
+    <p class="subtitle">Extraído directamente de la matriz de la app de recibos • Formato horizontal (Isologo a la izquierda, palabra al costado) con fondo transparente</p>
+  </header>
+
+  <div class="card-grid">
+    <!-- FONDO BLANCO -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">1. Versión Oficial Subida (Fondo Transparente - Alta Resolución)</div>
+        <div class="card-desc">Recortado y optimizado sin fondo blanco. Nitidez vectorial 100% limpia.</div>
+      </div>
+      <div class="preview-box bg-white">
+        <img src="logo_autohogar_header_transparente.png" alt="Logo Autohogar Horizontal" style="height: 60px; max-width: 90%; object-fit: contain;">
+      </div>
+    </div>
+
+    <!-- FONDO AZUL MARINO / INSTITUCIONAL -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">2. Versión Fondo Corporativo (Navy #0A192F)</div>
+        <div class="card-desc">Visualización sobre fondo contrastado para cartelería o banners.</div>
+      </div>
+      <div class="preview-box bg-navy">
+        <img src="logo_autohogar_horizontal_original.png" alt="Logo Autohogar Horizontal" style="height: 65px; max-width: 90%; object-fit: contain; filter: drop-shadow(0 0 1px rgba(255,255,255,0.8));">
+      </div>
+    </div>
+  </div>
+
+  <!-- SIMULACION EN HEADER WEB (UX/UI REAL) -->
+  <div class="header-sim">
+    <h2>Integración Real en Header Web (Navbar de 75px de alto - Altura logo 44px)</h2>
+
+    <!-- Header Claro Web -->
+    <div class="mock-navbar" style="background: #ffffff; color: #1e293b;">
+      <div style="height: 46px; display: flex; align-items: center;">
+        <img src="logo_autohogar_header_transparente.png" alt="Logo Autohogar Horizontal" style="height: 42px; object-fit: contain;">
+      </div>
+      <ul class="nav-links">
+        <li><a href="#" style="color: #0099d8; font-weight: 700;">Inicio</a></li>
+        <li><a href="#">Planes Adjudicados</a></li>
+        <li><a href="#">Autos</a></li>
+        <li><a href="#">Viviendas</a></li>
+        <li><a href="#">Nuevo Local</a></li>
+      </ul>
+      <div>
+        <button class="nav-btn">Consultar Mi Plan</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIMULACION EN CARTEL PARA VIDRIERA / IMPRESION -->
+  <div class="cartel-section">
+    <h2>Simulación de Cartel de Vidriera (Nuevo Local Comercial)</h2>
+    <p style="color: #8b949e; margin-bottom: 20px;">Isologo a la izquierda, tipografía exacta al costado. Listo para enviar al plotteador o imprenta en alta resolución.</p>
+    <div class="cartel-preview">
+      <img src="logo_autohogar_horizontal_original.png" alt="Cartel Autohogar" style="width: 100%; max-width: 650px; height: auto; object-fit: contain;">
+      <div style="margin-top: 15px; font-weight: 700; font-size: 1.1rem; color: #eb8226; letter-spacing: 5px; text-transform: uppercase;">
+        Planes de Auto y Vivienda
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

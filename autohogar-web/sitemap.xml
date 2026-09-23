@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://autohogar.com.ar/</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://autohogar.com.ar/public/images/hero_autohogar.jpg</image:loc>
+      <image:title>Planes de Viviendas y Autos en Cuotas Fijas - Autohogar</image:title>
+      <image:caption>Viviendas tradicionales, casas modulares en 90 días y automotores en cuotas fijas en pesos sin bancos en San Juan y Argentina.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://autohogar.com.ar/public/images/tipologias/render_principiante_1dor.jpg</image:loc>
+      <image:title>Tipología Principiante 1 Dormitorio - Autohogar</image:title>
+      <image:caption>Vivienda unifamiliar tradicional de 38 m2 cubiertos y 61 m2 totales con cochera.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://autohogar.com.ar/public/images/tipologias/render_hogar_2dor.jpg</image:loc>
+      <image:title>Tipología Hogar 2 Dormitorios - Autohogar</image:title>
+      <image:caption>Vivienda unifamiliar tradicional de 48 m2 cubiertos y 73 m2 totales con cochera.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://autohogar.com.ar/public/images/tipologias/render_master_3dor.jpg</image:loc>
+      <image:title>Tipología Master 3 Dormitorios - Autohogar</image:title>
+      <image:caption>Vivienda unifamiliar tradicional de 73 m2 cubiertos y 103 m2 totales con cochera-quincho.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://autohogar.com.ar/public/images/modulares/modular_interior_panoramica.jpeg</image:loc>
+      <image:title>Casas Modulares Steel Framing en 90 Días - Autohogar</image:title>
+      <image:caption>Módulo habitacional llave en mano transportable con aislación termoacústica y aberturas DVH.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://autohogar.com.ar/politicas-de-privacidad.html</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>

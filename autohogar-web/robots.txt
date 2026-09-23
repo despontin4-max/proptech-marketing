@@ -1,0 +1,70 @@
+# Robots.txt - Autohogar (autohogar.com.ar)
+# Optimizado para Motores de Búsqueda (SEO), Respuestas IA (AEO) y Modelos Generativos (GEO)
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /scratch/
+Disallow: /admin/
+
+# Search Engine Crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /public/images/
+
+User-agent: Bingbot
+Allow: /
+
+# Generative AI & Answer Engine Bots (AEO & GEO Optimization)
+# Google AI Overviews & Gemini
+User-agent: Google-Extended
+Allow: /
+
+# OpenAI ChatGPT
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic Claude
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+
+# Meta AI
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Common Crawl & Research
+User-agent: CCBot
+Allow: /
+
+# Amazon AI
+User-agent: Amazonbot
+Allow: /
+
+# ByteDance / TikTok AI
+User-agent: Bytespider
+Allow: /
+
+# Sitemap Location
+Sitemap: https://autohogar.com.ar/sitemap.xml
