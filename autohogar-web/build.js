@@ -23,6 +23,26 @@ for (const file of filesToCopy) {
   }
 }
 
+// Normalize relative asset paths in HTML files → absolute paths (add leading /)
+const htmlFiles = ['index.html', 'politicas-de-privacidad.html'];
+for (const htmlFile of htmlFiles) {
+  const htmlPath = path.join(dist, htmlFile);
+  if (!fs.existsSync(htmlPath)) continue;
+  let content = fs.readFileSync(htmlPath, 'utf8');
+  // Fix src="public/ → src="/public/
+  content = content.replace(/src="public\//g, 'src="/public/');
+  // Fix href="public/ → href="/public/
+  content = content.replace(/href="public\//g, 'href="/public/');
+  // Fix url(public/ → url(/public/
+  content = content.replace(/url\(public\//g, 'url(/public/');
+  // Fix url('public/ → url('/public/
+  content = content.replace(/url\('public\//g, "url('/public/");
+  // Fix url("public/ → url("/public/
+  content = content.replace(/url\("public\//g, 'url("/public/');
+  fs.writeFileSync(htmlPath, content, 'utf8');
+  console.log(`Normalized paths in: ${htmlFile}`);
+}
+
 function copyDir(src, dest) {
   fs.mkdirSync(dest, { recursive: true });
   for (const entry of fs.readdirSync(src, { withFileTypes: true })) {
