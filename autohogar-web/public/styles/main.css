@@ -324,7 +324,7 @@ button, input, select, textarea { font: inherit; }
   height: 100%;
   object-fit: cover;
   object-position: center 35%;
-  filter: brightness(0.38) contrast(1.08);
+  filter: brightness(0.48) contrast(1.05);
 }
 
 .hero-media-overlay,
@@ -333,9 +333,9 @@ button, input, select, textarea { font: inherit; }
   inset: 0;
   background: linear-gradient(
     135deg,
-    rgba(7, 7, 7, 0.92) 0%,
-    rgba(7, 7, 7, 0.65) 55%,
-    rgba(7, 7, 7, 0.95) 100%
+    rgba(7, 7, 7, 0.84) 0%,
+    rgba(7, 7, 7, 0.52) 55%,
+    rgba(7, 7, 7, 0.88) 100%
   );
 }
 
@@ -1193,16 +1193,17 @@ button, input, select, textarea { font: inherit; }
   position: absolute;
   top: 14px;
   right: 14px;
-  background: rgba(7, 7, 7, 0.85);
+  background: rgba(12, 12, 12, 0.82);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: var(--color-driftwood);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #d2dcde;
   font-family: var(--font-display);
-  font-size: 10px;
+  font-size: 10.5px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
-  padding: 6px 12px;
+  letter-spacing: 1.2px;
+  padding: 6px 13px;
   border-radius: var(--radius-pill);
   z-index: 5;
 }
@@ -1276,14 +1277,19 @@ button, input, select, textarea { font: inherit; }
 
 .tipologia-btn {
   width: 100%;
-  padding: 12px;
+  padding: 12px 16px;
   font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--color-paper);
   background: var(--color-iron);
-  border: 1px solid var(--color-iron);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  letter-spacing: 0.2px;
+  transition: all var(--t-fast);
 }
 .tipologia-btn:hover {
   background: var(--color-driftwood);
   border-color: var(--color-driftwood);
+  color: #ffffff;
 }
 
 /* ---------------------------------------------------------------------------
@@ -2472,4 +2478,235 @@ button, input, select, textarea { font: inherit; }
   color: var(--color-smoke);
   margin-top: 12px;
   text-align: center;
+}
+
+/* ---------------------------------------------------------------------------
+   SXO: BARRA MÓVIL FLOTANTE (STICKY BOTTOM CTA BAR)
+   --------------------------------------------------------------------------- */
+.sticky-bottom-bar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background: rgba(7, 7, 7, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 10px 16px;
+  padding-bottom: max(10px, env(safe-area-inset-bottom));
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.sticky-bar-content {
+  display: flex;
+  gap: 12px;
+  max-width: 480px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.sticky-btn-wa {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #25D366;
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  height: 46px;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  transition: transform var(--t-fast), opacity var(--t-fast);
+}
+
+.sticky-btn-wa:active {
+  transform: scale(0.97);
+  opacity: 0.9;
+}
+
+.sticky-btn-wa svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.sticky-btn-quote {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-driftwood);
+  color: var(--color-paper);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  height: 46px;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: background var(--t-fast), transform var(--t-fast);
+}
+
+.sticky-btn-quote:active {
+  background: var(--color-driftwood-hover);
+  transform: scale(0.97);
+}
+
+@media (max-width: 768px) {
+  .sticky-bottom-bar {
+    display: block;
+  }
+  body {
+    padding-bottom: 74px;
+  }
+  /* Ajustar botón flotante de WhatsApp existente en móvil para que no colisione */
+  .whatsapp-float {
+    bottom: 84px !important;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   GEO & CITABILIDAD: TABLA COMPARATIVA ESTRUCTURADA
+   --------------------------------------------------------------------------- */
+.section-comparison-table {
+  padding: var(--section-pad) 0;
+  background: var(--color-paper);
+  border-top: 1px solid var(--color-mist);
+}
+
+.comparison-header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 56px auto;
+}
+
+.comparison-header h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 400;
+  color: var(--color-ink);
+  margin-top: 16px;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+.comparison-header p {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: var(--color-pewter);
+  line-height: 1.6;
+}
+
+.table-responsive-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--color-mist);
+  background: var(--color-paper);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.aker-comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  min-width: 720px;
+  font-family: var(--font-body);
+}
+
+.aker-comparison-table th,
+.aker-comparison-table td {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--color-mist);
+  vertical-align: top;
+}
+
+.aker-comparison-table th {
+  background: var(--color-mist);
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-ink);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.aker-comparison-table th.col-feature {
+  width: 22%;
+  background: #f0f0f0;
+}
+
+.aker-comparison-table th.col-autohogar {
+  width: 32%;
+  background: var(--color-midnight);
+  color: var(--color-paper);
+  position: relative;
+  border-top-left-radius: var(--radius-card);
+  border-top-right-radius: var(--radius-card);
+}
+
+.aker-comparison-table th.col-autohogar .badge-recommended {
+  display: inline-block;
+  background: var(--color-driftwood);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.aker-comparison-table th.col-tradicional {
+  width: 23%;
+}
+
+.aker-comparison-table th.col-banco {
+  width: 23%;
+}
+
+.aker-comparison-table td.cell-feature {
+  font-weight: 600;
+  color: var(--color-ink);
+  font-size: 0.95rem;
+  background: rgba(245, 245, 245, 0.5);
+}
+
+.aker-comparison-table td.cell-autohogar {
+  background: rgba(83, 113, 121, 0.05);
+  border-left: 2px solid var(--color-driftwood);
+  border-right: 2px solid var(--color-driftwood);
+  color: var(--color-char);
+  font-weight: 500;
+}
+
+.aker-comparison-table td.cell-autohogar strong {
+  color: var(--color-tide);
+  font-weight: 700;
+}
+
+.aker-comparison-table td.cell-tradicional,
+.aker-comparison-table td.cell-banco {
+  color: var(--color-pewter);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.aker-comparison-table tr:last-child td {
+  border-bottom: none;
+}
+
+.comparison-note {
+  margin-top: 24px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--color-pewter);
+  line-height: 1.5;
 }

@@ -1,1 +1,9 @@
 .vercel
+.env
+.env.*
+.env.local
+node_modules/
+*.log
+Base_Leads_Web.csv
+*.csv
+.DS_Store

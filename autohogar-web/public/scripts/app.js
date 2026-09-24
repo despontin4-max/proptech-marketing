@@ -14,8 +14,8 @@
   // --------------------------------------------------------------------------
   const CONFIG = Object.freeze({
     WHATSAPP: {
-      PRIMARY_PHONE: '5492643171848',
-      SECONDARY_PHONE: '5492646032870',
+      PRIMARY_PHONE: '5492646032870', // Oficina Central / Ventas
+      SECONDARY_PHONE: '5492643171848', // Administración
       BASE_URL: 'https://wa.me/'
     },
     DOMAINS: {

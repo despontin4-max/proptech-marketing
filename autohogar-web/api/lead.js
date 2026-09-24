@@ -71,11 +71,16 @@ function sanitizeInput(str, maxLength = 120) {
   return sanitized;
 }
 
-// Validación de Turnstile con Cloudflare (API segura HTTPS)
+// Validación estricta de Turnstile con Cloudflare (Previene bypass por ausencia de token)
 async function verifyTurnstileToken(token, ip) {
-  // Solo omitir en entornos no productivos (nunca aceptar token de prueba en prod)
-  if (!token || process.env.NODE_ENV !== 'production') {
+  // En desarrollo local sin clave secreta configurada, permitir bypass para pruebas
+  if (process.env.NODE_ENV === 'development' && !process.env.CLOUDFLARE_TURNSTILE_SECRET_KEY) {
     return { success: true };
+  }
+
+  // En producción o con clave configurada, el token es estrictamente obligatorio
+  if (!token || typeof token !== 'string' || token.trim() === '') {
+    return { success: false, error: 'Token anti-bot faltante o inválido.' };
   }
 
   return new Promise((resolve) => {
@@ -101,32 +106,75 @@ async function verifyTurnstileToken(token, ip) {
       res.on('data', chunk => data += chunk);
       res.on('end', () => {
         try {
-          resolve(JSON.parse(data));
+          const parsed = JSON.parse(data);
+          resolve({ success: Boolean(parsed.success), error: parsed['error-codes'] });
         } catch {
-          resolve({ success: false, error: 'JSON parse error' });
+          resolve({ success: false, error: 'JSON parse error en validación anti-bot' });
         }
       });
     });
 
     req.on('error', (err) => resolve({ success: false, error: err.message }));
+    req.setTimeout(5000, () => {
+      req.destroy();
+      resolve({ success: false, error: 'Timeout al validar token con Cloudflare' });
+    });
     req.write(postData);
     req.end();
   });
 }
 
-// Guardado asíncrono no bloqueante en archivo CSV
-async function appendLeadToCsv(leadData) {
-  const csvPath = path.join(__dirname, '..', CONFIG.CSV_FILENAME);
+// Persistencia de alta resiliencia: Webhook externo prioritario + fallback seguro a disco
+async function persistLead(leadData) {
   const { timestamp, name, phone, interest, ip } = leadData;
-  const line = `"${timestamp}","${name}","${phone}","${interest}","${ip}"\n`;
 
+  // 1. Despacho a Webhook externo (n8n, Zapier, Make, CRM, Google Sheets) si está configurado
+  const webhookUrl = process.env.LEAD_WEBHOOK_URL || process.env.WEBHOOK_URL;
+  if (webhookUrl) {
+    try {
+      const urlObj = new URL(webhookUrl);
+      const postBody = JSON.stringify(leadData);
+      await new Promise((resolve, reject) => {
+        const isHttps = urlObj.protocol === 'https:';
+        const client = isHttps ? https : require('http');
+        const req = client.request(urlObj, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Content-Length': Buffer.byteLength(postBody)
+          }
+        }, (res) => {
+          res.resume();
+          resolve();
+        });
+        req.on('error', reject);
+        req.setTimeout(4000, () => { req.destroy(); resolve(); });
+        req.write(postBody);
+        req.end();
+      });
+    } catch (e) {
+      console.warn('[AutoHogar API] Alerta: No se pudo enviar el lead al webhook externo:', e.message);
+    }
+  }
+
+  // 2. Persistencia en CSV (Usa /tmp en Vercel Serverless para evitar error EROFS)
   try {
-    await fs.access(csvPath);
-    await fs.appendFile(csvPath, line, 'utf8');
-  } catch {
-    // Si no existe, crear con cabecera
-    const header = '"Fecha","Nombre","Telefono","Interes","IP"\n';
-    await fs.writeFile(csvPath, header + line, 'utf8');
+    const isServerless = Boolean(process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME);
+    const targetDir = isServerless ? '/tmp' : path.join(__dirname, '..');
+    const csvPath = path.join(targetDir, CONFIG.CSV_FILENAME);
+    const line = `"${timestamp}","${name}","${phone}","${interest}","${ip}"\n`;
+
+    try {
+      await fs.access(csvPath);
+      await fs.appendFile(csvPath, line, 'utf8');
+    } catch {
+      // Si no existe, crear con cabecera
+      const header = '"Fecha","Nombre","Telefono","Interes","IP"\n';
+      await fs.writeFile(csvPath, header + line, 'utf8');
+    }
+  } catch (fsErr) {
+    // Si el filesystem es de solo lectura (EROFS), registrar en consola sin interrumpir la respuesta
+    console.warn('[AutoHogar API] Filesystem de solo lectura detectado. Lead registrado en memoria/logs:', { name, phone, interest });
   }
 }
 
@@ -186,6 +234,16 @@ module.exports = async function handler(req, res) {
   req.on('end', async () => {
     try {
       const payload = JSON.parse(body || '{}');
+
+      // 2.1 Trampa Honeypot para Bots (Campos señuelo ocultos para humanos)
+      if (payload._hp || payload.website || payload.company_fax) {
+        // Respuesta exitosa simulada para engañar y frenar bots automatizados
+        return sendResponse(res, 200, {
+          success: true,
+          message: 'Consulta recibida y procesada correctamente.'
+        });
+      }
+
       const name = sanitizeInput(payload.name, 100);
       const phone = sanitizeInput(payload.phone, 40);
       const interest = sanitizeInput(payload.interest || 'Vivienda Modular', 100);
@@ -206,9 +264,9 @@ module.exports = async function handler(req, res) {
         });
       }
 
-      // 4. Persistencia Asíncrona en CSV
+      // 4. Persistencia Resiliente (Webhook prioritario + almacenamiento seguro)
       const timestamp = new Date().toISOString();
-      await appendLeadToCsv({ timestamp, name, phone, interest, ip: clientIp });
+      await persistLead({ timestamp, name, phone, interest, ip: clientIp });
 
       return sendResponse(res, 200, {
         success: true,
