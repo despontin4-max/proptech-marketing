@@ -382,11 +382,9 @@
                 const progress = Math.min(elapsed / duration, 1);
                 // Curva de desaceleración cuartica suave
                 const ease = 1 - Math.pow(1 - progress, 4);
-                const current = Math.floor(ease * target);
-
-                el.textContent = target >= 1000
-                  ? `+${current.toLocaleString('es-AR')}`
-                  : `+${current}`;
+                const prefix = el.getAttribute('data-prefix') !== null ? el.getAttribute('data-prefix') : (target >= 1000 ? '+' : '+');
+                const suffix = el.getAttribute('data-suffix') || '';
+                el.textContent = `${prefix}${current.toLocaleString('es-AR')}${suffix}`;
 
                 if (progress < 1) {
                   requestAnimationFrame(updateNumber);

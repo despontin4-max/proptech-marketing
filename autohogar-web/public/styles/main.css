@@ -3,7 +3,7 @@
    Dominio Oficial: autohogar.com.ar
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@200;300;400;500;600;700;800&display=swap');
+/* Fuentes cargadas de forma óptima vía <link rel="preload"> en el HTML */
 
 /* ---------------------------------------------------------------------------
    1. DESIGN TOKENS (Aker / DESIGN.md)
@@ -2442,6 +2442,34 @@ button, input, select, textarea { font: inherit; }
     height: 52px;
   }
 }
+ 
+/* ---------------------------------------------------------------------------
+   AJUSTE NORMATIVO & CUMPLIMIENTO LEGAL
+   --------------------------------------------------------------------------- */
+.footer-legal-notice {
+  padding: 24px 0 10px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: 30px;
+}
 
+.footer-legal-notice p {
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: var(--color-pewter);
+  max-width: 980px;
+  margin: 0 auto;
+  text-align: center;
+}
 
+.footer-legal-notice strong {
+  color: var(--color-mist);
+  font-weight: 600;
+}
 
+.form-legal-microcopy {
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--color-smoke);
+  margin-top: 12px;
+  text-align: center;
+}

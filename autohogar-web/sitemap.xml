@@ -3,13 +3,13 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://autohogar.com.ar/</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://autohogar.com.ar/public/images/hero_autohogar.jpg</image:loc>
-      <image:title>Planes de Viviendas y Autos en Cuotas Fijas - Autohogar</image:title>
-      <image:caption>Viviendas tradicionales, casas modulares en 90 días y automotores en cuotas fijas en pesos sin bancos en San Juan y Argentina.</image:caption>
+      <image:title>Planes de Viviendas y Autos con Cuotas Pactadas - Autohogar</image:title>
+      <image:caption>Viviendas tradicionales, casas modulares en 90 días hábiles y automotores con cuotas pactadas por contrato sin bancos en San Juan y Argentina.</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://autohogar.com.ar/public/images/tipologias/render_principiante_1dor.jpg</image:loc>
