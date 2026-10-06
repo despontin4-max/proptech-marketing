@@ -1,0 +1,99 @@
+import { NextResponse } from 'next/server';
+import fs from 'fs';
+import path from 'path';
+import os from 'os';
+import React from 'react';
+import { renderToStream } from '@react-pdf/renderer';
+import { ReciboPDF } from '@/utils/pdfTemplate';
+import { getMasterClients } from '@/utils/googleSheets';
+import { HEADER_IMAGE_BASE64 } from '@/utils/headerAsset';
+
+export const dynamic = 'force-dynamic';
+
+export async function GET(
+  request: Request,
+  { params }: { params: Promise<{ filename: string }> }
+) {
+  try {
+    const { filename } = await params;
+    if (!filename || !filename.endsWith('.pdf')) {
+      return new NextResponse('Archivo no válido', { status: 400 });
+    }
+
+    // En Vercel / serverless siempre generamos el PDF dinámicamente con los datos más recientes
+    // para evitar servir recibos desactualizados o en caché.
+
+    // Formato estándar: Recibo_COD_SOLI_Nombre_Mes.pdf
+    // Extraemos COD (índice 1) y SOLI (índice 2), el resto es nombre+mes
+    const parts = filename.replace('.pdf', '').split('_');
+    const searchCod = parts.length >= 3 ? parts[1] : '';
+    const searchSoli = parts.length >= 3 ? parts[2] : '';
+
+    const masterData = await getMasterClients();
+    const client = masterData.find(
+      m =>
+        (searchCod && String(m.cod) === searchCod) ||
+        (searchSoli && String(m.soli) === searchSoli)
+    );
+
+    if (!client) {
+      return new NextResponse('Recibo no encontrado en la base de datos', { status: 404 });
+    }
+
+    const { searchParams } = new URL(request.url);
+    const qCuota = searchParams.get('c');
+    const qAmount = searchParams.get('m');
+    const qDue = searchParams.get('d');
+
+    const clientData = {
+      cod: client.cod || '0',
+      soli: client.soli || '0',
+      name: client.name || '',
+      dni: client.dni || '',
+      address: client.address || '',
+      city: client.city || '',
+      province: client.province || 'SAN JUAN',
+      plan: client.plan || '',
+      cuotaNum: qCuota || client.cuotaNum || '0',
+      dueDate: qDue || client.dueDate || '',
+      amount: qAmount || client.amount || '0,00',
+      phone: client.phone || '',
+      history: client.history || '',
+      operadorVerificador: 'AutoHogar Oficial',
+      titular_comprobante: '',
+    };
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const pdfComponent = React.createElement(ReciboPDF, {
+      clientData,
+      headerBase64: HEADER_IMAGE_BASE64,
+    }) as any;
+
+    const stream = await renderToStream(pdfComponent);
+    const chunks: Buffer[] = [];
+    for await (const chunk of stream) {
+      chunks.push(typeof chunk === 'string' ? Buffer.from(chunk) : chunk);
+    }
+    const pdfBuffer = Buffer.concat(chunks);
+
+    // Intentar guardar en /tmp para responder más rápido la próxima vez
+    try {
+      const tmpRecibos = path.join(os.tmpdir(), 'recibos');
+      if (!fs.existsSync(/*turbopackIgnore: true*/ tmpRecibos)) {
+        fs.mkdirSync(tmpRecibos, { recursive: true });
+      }
+      fs.writeFileSync(path.join(tmpRecibos, filename), pdfBuffer);
+    } catch {}
+
+    return new NextResponse(pdfBuffer, {
+      headers: {
+        'Content-Type': 'application/pdf',
+        'Content-Disposition': `inline; filename="${filename}"`,
+        'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+      },
+    });
+  } catch (error: any) {
+    console.error('Error sirviendo PDF:', error);
+    return new NextResponse('Error generando PDF: ' + (error.message || ''), { status: 500 });
+  }
+}
