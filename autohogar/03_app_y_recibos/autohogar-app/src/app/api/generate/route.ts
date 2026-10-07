@@ -83,13 +83,6 @@ export async function POST(request: Request) {
     const markDataToUpdate: any[] = [];
 
     for (const record of records) {
-      // ── Control Estricto: Si está en Baja Automática, exige PIN de Maximiliano ──
-      if (record.esBajaAutomatica && String(record.adminPin || '').trim() !== '2026') {
-        return NextResponse.json({
-          error: '🚨 ACCESO DENEGADO: El cliente está en BAJA AUTOMÁTICA (2+ cuotas adeudadas). Se requiere PIN de autorización válido de Maximiliano Despontin para cobrar.'
-        }, { status: 403 });
-      }
-
       const masterClient = masterMapByCod.get(String(record.cod)) || 
                            masterMapByName.get(normalizeName(record.cliente)) || ({} as any);
 
