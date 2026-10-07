@@ -28,6 +28,7 @@ export function ReceiptModal({
   const [titular, setTitular] = useState(cliente.name || '');
   const [isGenerating, setIsGenerating] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
+  const [generatedFiles, setGeneratedFiles] = useState<Array<{ id: string; pdfUrl: string; waLink?: string | null }>>([]);
 
   // Identificar el padrón de origen para calcular las cuotas con precisión matemática:
   // Si proviene del padrón de Septiembre, cliente.cuotaNum es la cuota de Septiembre (ej: 70) y Octubre es +1 (71).
@@ -45,15 +46,6 @@ export function ReceiptModal({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMsg('');
-
-    const esMercadoPago = medioPago.toLowerCase().includes('mercado') || medioPago.toLowerCase().includes('mp');
-    if (esMercadoPago) {
-      const ok = confirm(
-        '⚠️ Recordatorio: Los pagos por MercadoPago deben ser verificados en cuenta bancaria/billetera antes de emitir el comprobante.\n\n¿Deseas confirmar la emisión?'
-      );
-      if (!ok) return;
-    }
-
     setIsGenerating(true);
 
     try {
@@ -137,10 +129,14 @@ export function ReceiptModal({
 
       const data = await res.json();
       if (data.success && data.files?.length > 0) {
-        data.files.forEach((f: any) => {
-          if (f.pdfUrl) window.open(f.pdfUrl, '_blank');
-        });
-        onSuccess();
+        setGeneratedFiles(data.files);
+        try {
+          if (data.files[0]?.pdfUrl) {
+            window.open(data.files[0].pdfUrl, '_blank');
+          }
+        } catch {
+          // Si el bloqueador de popups interceptó la apertura, el usuario tiene la interfaz de descarga en el modal
+        }
       } else {
         setErrorMsg(data.error || 'No se pudo generar el comprobante.');
       }
@@ -150,6 +146,73 @@ export function ReceiptModal({
       setIsGenerating(false);
     }
   };
+
+  if (generatedFiles.length > 0) {
+    return (
+      <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-in fade-in duration-200">
+        <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 relative border border-slate-100 text-center">
+          <button
+            onClick={onSuccess}
+            className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-1 rounded-lg transition-colors"
+          >
+            <X className="w-5 h-5" />
+          </button>
+
+          <div className="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-3 ring-8 ring-emerald-50">
+            <CheckCircle2 className="w-8 h-8" />
+          </div>
+
+          <h3 className="text-xl font-bold text-slate-900 mb-1">¡Recibo Emitido con Éxito!</h3>
+          <p className="text-sm text-slate-600 mb-4">
+            <span className="font-semibold text-slate-800">{cliente.name}</span>
+            <br />
+            <span className="text-xs text-slate-500">
+              Medio de pago: <strong className="text-slate-700">{medioPago}</strong> · Total: <strong className="text-emerald-600">{formatCurrency(montoTotal)}</strong>
+            </span>
+          </p>
+
+          <div className="space-y-2.5 mb-5 text-left">
+            {generatedFiles.map((f, i) => (
+              <div key={f.id || i} className="p-3 bg-slate-50 rounded-xl border border-slate-200 flex flex-col gap-2">
+                <div className="text-xs font-bold text-slate-700 flex justify-between items-center">
+                  <span>Comprobante Oficial #{i + 1}</span>
+                  <span className="text-[10px] text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full font-bold">Generado</span>
+                </div>
+                <div className="flex gap-2">
+                  <a
+                    href={f.pdfUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 py-2 px-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold text-center flex items-center justify-center gap-1.5 shadow-sm transition-colors"
+                  >
+                    <span>📄 Abrir Recibo PDF</span>
+                  </a>
+                  {f.waLink && (
+                    <a
+                      href={f.waLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="py-2 px-3 bg-green-600 hover:bg-green-700 text-white rounded-lg text-xs font-bold text-center flex items-center justify-center gap-1.5 shadow-sm transition-colors"
+                    >
+                      <span>💬 WhatsApp</span>
+                    </a>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <button
+            type="button"
+            onClick={onSuccess}
+            className="w-full py-2.5 bg-slate-900 hover:bg-slate-800 text-white rounded-xl font-bold text-sm shadow-md transition-colors"
+          >
+            Finalizar y Volver al Listado
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-in fade-in duration-200">
@@ -254,6 +317,14 @@ export function ReceiptModal({
               <option value="MERCADOPAGO">📱 Mercado Pago</option>
               <option value="COBRADOR">🛵 Cobrador a Domicilio</option>
             </select>
+            {medioPago === 'MERCADOPAGO' && (
+              <div className="bg-amber-50 border border-amber-200 rounded-xl p-3 flex items-start gap-2.5 mt-2 animate-in fade-in duration-200">
+                <AlertCircle className="w-4 h-4 text-amber-600 mt-0.5 shrink-0" />
+                <div className="text-xs text-amber-900 leading-snug">
+                  <span className="font-bold">Aviso Mercado Pago:</span> Recuerda verificar la acreditación en la cuenta o app de Mercado Pago antes de entregar el comprobante.
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Titular del Comprobante */}

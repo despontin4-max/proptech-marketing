@@ -692,7 +692,7 @@ export async function markReceiptsAsEmitted(
           values: [[fPago]]
         });
         data.push({
-          range: `OCTUBRE_2026!P${row}`,
+          range: `${targetSheet}!P${row}`,
           values: [[fPago]]
         });
       }
@@ -702,7 +702,7 @@ export async function markReceiptsAsEmitted(
           values: [[canal]]
         });
         data.push({
-          range: `OCTUBRE_2026!Q${row}`,
+          range: `${targetSheet}!Q${row}`,
           values: [[canal]]
         });
       }
@@ -712,7 +712,7 @@ export async function markReceiptsAsEmitted(
           values: [[titular]]
         });
         data.push({
-          range: `OCTUBRE_2026!R${row}`,
+          range: `${targetSheet}!R${row}`,
           values: [[titular]]
         });
       }
