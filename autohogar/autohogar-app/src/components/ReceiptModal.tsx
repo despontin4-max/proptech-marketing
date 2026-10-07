@@ -9,6 +9,7 @@ import { formatCurrency, parseNumericAmount } from '@/core/formatters/formatters
 interface ReceiptModalProps {
   cliente: Cliente;
   initialPeriodo?: PeriodoCobro;
+  padronMes?: 'OCTUBRE' | 'SEPTIEMBRE';
   onClose: () => void;
   onSuccess: () => void;
   getAuthHeaders: () => Record<string, string>;
@@ -17,6 +18,7 @@ interface ReceiptModalProps {
 export function ReceiptModal({
   cliente,
   initialPeriodo = 'OCTUBRE',
+  padronMes,
   onClose,
   onSuccess,
   getAuthHeaders,
@@ -27,8 +29,16 @@ export function ReceiptModal({
   const [isGenerating, setIsGenerating] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
 
-  const cuotaOct = cliente.cuotaNum || '1';
-  const cuotaSep = String(Math.max(1, parseInt(cuotaOct, 10) - 1));
+  // Identificar el padrón de origen para calcular las cuotas con precisión matemática:
+  // Si proviene del padrón de Septiembre, cliente.cuotaNum es la cuota de Septiembre (ej: 70) y Octubre es +1 (71).
+  // Si proviene del padrón de Octubre, cliente.cuotaNum es la cuota de Octubre (ej: 71) y Septiembre es -1 (70).
+  const esPadronSeptiembre = padronMes === 'SEPTIEMBRE' || initialPeriodo === 'SEPTIEMBRE';
+  const baseNum = parseInt(cliente.cuotaNum || '1', 10);
+  const baseCuota = isNaN(baseNum) || baseNum < 1 ? 1 : baseNum;
+
+  const cuotaSep = esPadronSeptiembre ? String(baseCuota) : String(Math.max(1, baseCuota - 1));
+  const cuotaOct = esPadronSeptiembre ? String(baseCuota + 1) : String(baseCuota);
+
   const valorUnitario = parseNumericAmount(cliente.amount);
   const montoTotal = modoPeriodo === 'AMBOS' ? valorUnitario * 2 : valorUnitario;
 

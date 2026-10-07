@@ -343,6 +343,7 @@ export default function Dashboard() {
         <ReceiptModal
           cliente={modalCliente}
           initialPeriodo={selectedPadrónMes}
+          padronMes={selectedPadrónMes}
           onClose={() => setModalCliente(null)}
           onSuccess={() => {
             setModalCliente(null);
