@@ -650,10 +650,11 @@ export interface ReceiptMarkData {
   fechaPago?: string;
   formaPago?: string;
   titularPagador?: string;
+  targetSheet?: string;
 }
 
 /**
- * Actualiza las columnas N (RECIBO EMITIDO), P (FECHA PAGO REAL), Q (CANAL_HABITUAL) y R (TITULAR_PAGADOR) en 1_CLIENTES
+ * Actualiza las columnas N (RECIBO EMITIDO), P (FECHA PAGO REAL), Q (CANAL_HABITUAL) y R (TITULAR_PAGADOR) en 1_CLIENTES y la pestaña del mes
  */
 export async function markReceiptsAsEmitted(
   marks: (number | ReceiptMarkData)[],
@@ -674,13 +675,14 @@ export async function markReceiptsAsEmitted(
       const fPago = typeof item === 'object' ? item.fechaPago : '';
       const canal = typeof item === 'object' ? item.formaPago : '';
       const titular = typeof item === 'object' ? item.titularPagador : '';
+      const targetSheet = (typeof item === 'object' && item.targetSheet) ? item.targetSheet : 'OCTUBRE_2026';
 
       data.push({
         range: `1_CLIENTES!N${row}`,
         values: [[`✅ Emitido: ${fechaEmision} por ${op}`]]
       });
       data.push({
-        range: `OCTUBRE_2026!N${row}`,
+        range: `${targetSheet}!N${row}`,
         values: [[`✅ Emitido: ${fechaEmision} por ${op}`]]
       });
 

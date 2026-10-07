@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getUsersFromSheet } from '@/utils/googleSheets';
-import { setSessionCookie } from '@/lib/auth/session';
+import { setSessionCookie, signSessionToken } from '@/lib/auth/session';
 
 // Rate limiter en memoria para prevenir ataques de fuerza bruta
 const loginAttempts = new Map<string, { count: number; lastAttempt: number }>();
@@ -82,10 +82,12 @@ export async function POST(request: Request) {
       rol: user.rol,
     };
 
+    const token = signSessionToken(sessionUser);
     await setSessionCookie(sessionUser);
 
     return NextResponse.json({
       success: true,
+      token,
       user: sessionUser,
     });
   } catch (error: any) {

@@ -32,10 +32,13 @@ function getOutputDir(): string {
 
 export async function POST(request: Request) {
   try {
-    // ── Autenticación ──────────────────────────────────────────────────────────
+    // ── Autenticación Resiliente ────────────────────────────────────────────────
     const cookieStore = await cookies();
-    const token = cookieStore.get('ah_session')?.value;
-    const session = verifySession(token || '');
+    const token =
+      cookieStore.get('ah_session')?.value ||
+      request.headers.get('authorization')?.replace(/Bearer\s+/i, '').trim() ||
+      request.headers.get('x-session-token')?.trim();
+    const session = token ? verifySession(token) : null;
     if (!session) {
       return NextResponse.json({ error: 'Sesión requerida' }, { status: 401 });
     }
@@ -208,12 +211,14 @@ export async function POST(request: Request) {
 
       const targetRow = record.sheetRowIndex || masterClient.sheetRowIndex;
       if (targetRow) {
+        const isSep = String(record.mes || '').toLowerCase().includes('sep') || String(record.dueDate || '').includes('/09/');
         markDataToUpdate.push({
           rowIndex: targetRow,
           operador: operadorVerificador,
           fechaPago: fechaPagoStr,
           formaPago: rawMedio,
           titularPagador: titularPagador,
+          targetSheet: isSep ? 'SEPTIEMBRE_2026' : 'OCTUBRE_2026',
         });
       }
     }

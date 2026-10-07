@@ -8,7 +8,10 @@ export const revalidate = 0;
 
 export async function GET(request: Request) {
   const cookieStore = await cookies();
-  const token = cookieStore.get('ah_session')?.value;
+  const token =
+    cookieStore.get('ah_session')?.value ||
+    request.headers.get('authorization')?.replace(/Bearer\s+/i, '').trim() ||
+    request.headers.get('x-session-token')?.trim();
   const session = token ? verifySession(token) : null;
   if (!session) return NextResponse.json({ error: 'No autorizado' }, { status: 401 });
 

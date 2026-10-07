@@ -55,9 +55,12 @@ export interface ClienteLibroMayor {
  * Auditoría completa del Libro Mayor de Cuotas Impagas y Cuentas Corrientes.
  * Cruza en tiempo real 1_CLIENTES y 2_CUENTA_CORRIENTE.
  */
-export async function GET() {
+export async function GET(request: Request) {
   const cookieStore = await cookies();
-  const token = cookieStore.get('ah_session')?.value;
+  const token =
+    cookieStore.get('ah_session')?.value ||
+    request.headers.get('authorization')?.replace(/Bearer\s+/i, '').trim() ||
+    request.headers.get('x-session-token')?.trim();
   const session = token ? verifySession(token) : null;
   if (!session) return NextResponse.json({ error: 'No autorizado' }, { status: 401 });
 

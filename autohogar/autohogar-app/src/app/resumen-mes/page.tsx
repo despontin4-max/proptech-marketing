@@ -54,7 +54,11 @@ export default function ResumenMesPage() {
     setIsLoading(true);
     setError('');
     try {
-      const r = await fetch(`/api/resumen-mes?mes=${mesKey}&_t=${Date.now()}`);
+      const token = typeof window !== 'undefined' ? localStorage.getItem('ah_session_token') : null;
+      const r = await fetch(`/api/resumen-mes?mes=${mesKey}&_t=${Date.now()}`, {
+        headers: token ? { 'Authorization': `Bearer ${token}` } : {},
+        credentials: 'include',
+      });
       const data = await r.json();
       if (!data.success) { 
         setError(data.error || 'Error al obtener estado del mes'); 

@@ -62,11 +62,20 @@ export default function Dashboard() {
   const [modoPeriodo, setModoPeriodo] = useState<'OCTUBRE' | 'SEPTIEMBRE' | 'AMBOS'>('OCTUBRE');
   const [selectedPadrónMes, setSelectedPadrónMes] = useState<'OCTUBRE' | 'SEPTIEMBRE'>('OCTUBRE');
 
+  const getAuthHeaders = (): Record<string, string> => {
+    if (typeof window === 'undefined') return {};
+    const token = localStorage.getItem('ah_session_token');
+    return token ? { 'Authorization': `Bearer ${token}` } : {};
+  };
+
   const fetchClients = async (force = false, mes: 'OCTUBRE' | 'SEPTIEMBRE' = selectedPadrónMes) => {
     if (force) setIsRefreshing(true);
     else setIsLoading(true);
     try {
-      const clientsRes = await fetch(`/api/clientes/list?mes=${mes}&${force ? 'refresh=true&' : ''}t=${Date.now()}`);
+      const clientsRes = await fetch(`/api/clientes/list?mes=${mes}&${force ? 'refresh=true&' : ''}t=${Date.now()}`, {
+        headers: getAuthHeaders(),
+        credentials: 'include',
+      });
       const clientsData = await clientsRes.json();
 
       if (!clientsRes.ok || !clientsData.success) {
@@ -93,7 +102,10 @@ export default function Dashboard() {
   useEffect(() => {
     async function init() {
       try {
-        const authRes = await fetch('/api/auth/me');
+        const authRes = await fetch('/api/auth/me', {
+          headers: getAuthHeaders(),
+          credentials: 'include',
+        });
         if (!authRes.ok) { router.push('/login'); return; }
         const authData = await authRes.json();
         if (!authData.authenticated) { router.push('/login'); return; }
@@ -149,8 +161,12 @@ export default function Dashboard() {
         cuotasPactadas: c.cuotasPactadas || '0',
         valorCuota: c.amount || '0',
         cuotaActual: c.cuotaNum || '1',
+        estado: c.estado || 'ACTIVO',
       });
-      const r = await fetch(`/api/clientes/estado?${params}`);
+      const r = await fetch(`/api/clientes/estado?${params}`, {
+        headers: getAuthHeaders(),
+        credentials: 'include',
+      });
       const data = await r.json();
       if (data.success) {
         setEstadoFin(data);
@@ -264,7 +280,11 @@ export default function Dashboard() {
 
       const response = await fetch('/api/generate', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          ...getAuthHeaders(),
+        },
+        credentials: 'include',
         body: JSON.stringify({ records: recordsToEmit }),
       });
 

@@ -13,7 +13,10 @@ import { getAllClientes, getClienteCompleto } from '@/lib/repositories/clienteRe
 export async function GET(request: Request) {
   // Verificar sesión
   const cookieStore = await cookies();
-  const token = cookieStore.get('ah_session')?.value;
+  const token =
+    cookieStore.get('ah_session')?.value ||
+    request.headers.get('authorization')?.replace(/Bearer\s+/i, '').trim() ||
+    request.headers.get('x-session-token')?.trim();
   const session = token ? verifySession(token) : null;
 
   if (!session) {

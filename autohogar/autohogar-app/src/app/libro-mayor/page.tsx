@@ -63,8 +63,14 @@ export default function LibroMayorPage() {
     else setIsLoading(true);
 
     try {
+      const token = typeof window !== 'undefined' ? localStorage.getItem('ah_session_token') : null;
+      const authHeaders = token ? { 'Authorization': `Bearer ${token}` } : {};
+
       // Verificar sesión
-      const authRes = await fetch('/api/auth/me');
+      const authRes = await fetch('/api/auth/me', {
+        headers: authHeaders,
+        credentials: 'include',
+      });
       if (!authRes.ok) {
         router.push('/login');
         return;
@@ -77,7 +83,10 @@ export default function LibroMayorPage() {
       setCurrentUser(authData.user);
 
       // Obtener datos del Libro Mayor
-      const res = await fetch('/api/libro-mayor');
+      const res = await fetch('/api/libro-mayor', {
+        headers: authHeaders,
+        credentials: 'include',
+      });
       if (res.ok) {
         const data = await res.json();
         if (data.success) {

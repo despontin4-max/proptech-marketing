@@ -21,7 +21,11 @@ export default function Historial() {
   useEffect(() => {
     async function checkAuth() {
       try {
-        const res = await fetch('/api/auth/me');
+        const token = typeof window !== 'undefined' ? localStorage.getItem('ah_session_token') : null;
+        const res = await fetch('/api/auth/me', {
+          headers: token ? { 'Authorization': `Bearer ${token}` } : {},
+          credentials: 'include',
+        });
         if (!res.ok) {
           router.push('/login');
           return;

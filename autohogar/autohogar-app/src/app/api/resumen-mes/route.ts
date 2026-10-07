@@ -48,7 +48,10 @@ function parseCSV(text: string): string[][] {
  */
 export async function GET(request: Request) {
   const cookieStore = await cookies();
-  const token = cookieStore.get('ah_session')?.value;
+  const token =
+    cookieStore.get('ah_session')?.value ||
+    request.headers.get('authorization')?.replace(/Bearer\s+/i, '').trim() ||
+    request.headers.get('x-session-token')?.trim();
   const session = token ? verifySession(token) : null;
   if (!session) return NextResponse.json({ error: 'No autorizado' }, { status: 401 });
 
@@ -61,7 +64,7 @@ export async function GET(request: Request) {
     if (paramMes === 'septiembre') {
       // ── CASO SEPTIEMBRE (HISTÓRICO OFICIAL CERRADO) ─────────────────────
       const resSep = await fetch(
-        `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=HISTORICO_SEPTIEMBRE_2026&_t=${Date.now()}`,
+        `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=SEPTIEMBRE_2026&_t=${Date.now()}`,
         { cache: 'no-store' }
       );
 

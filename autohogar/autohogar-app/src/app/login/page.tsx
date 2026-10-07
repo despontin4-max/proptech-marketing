@@ -32,7 +32,9 @@ export default function LoginPage() {
         return;
       }
 
-      // Guardar info no-sensible para renderizado UI rápido
+      if (data.token) {
+        localStorage.setItem('ah_session_token', data.token);
+      }
       if (data.user) {
         localStorage.setItem('ah_user', JSON.stringify({
           id: data.user.rol,

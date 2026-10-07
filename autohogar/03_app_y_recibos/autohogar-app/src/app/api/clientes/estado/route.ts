@@ -23,7 +23,10 @@ function parseAmount(val: any): number {
  */
 export async function GET(request: Request) {
   const cookieStore = await cookies();
-  const token = cookieStore.get('ah_session')?.value;
+  const token =
+    cookieStore.get('ah_session')?.value ||
+    request.headers.get('authorization')?.replace(/Bearer\s+/i, '').trim() ||
+    request.headers.get('x-session-token')?.trim();
   const session = token ? verifySession(token) : null;
   if (!session) return NextResponse.json({ error: 'No autorizado' }, { status: 401 });
 
@@ -31,6 +34,7 @@ export async function GET(request: Request) {
   const cod = searchParams.get('cod')?.trim();
   const cuotasPactadas = parseFloat(searchParams.get('cuotasPactadas') || '0');
   const valorCuota = parseAmount(searchParams.get('valorCuota') || '0');
+  const estadoCliente = (searchParams.get('estado') || '').toUpperCase().trim();
 
   if (!cod) return NextResponse.json({ error: 'cod requerido' }, { status: 400 });
 
@@ -38,7 +42,7 @@ export async function GET(request: Request) {
     // Leer 2_CUENTA_CORRIENTE via GViz (público, sin auth)
     // Columnas: A=FECHA_VTO, B=FECHA_PAGO, C=COD_CUENTA, D=CLIENTE, E=CONCEPTO,
     //           F=MEDIO_PAGO, G=VERIFICACION, H=DEBE, I=HABER, J=NRO_ANTICIPO, K=OPERADOR
-    const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=2_CUENTA_CORRIENTE`;
+    const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=2_CUENTA_CORRIENTE&_t=${Date.now()}`;
     const res = await fetch(url, { cache: 'no-store' });
 
     if (!res.ok) {
@@ -78,24 +82,28 @@ export async function GET(request: Request) {
       ? (cuotasPactadas * valorCuota) - totalPagado
       : null;
 
-    // Cuota contractual exigible (Columna I)
+    // Cuota contractual exigible del mes actual (Columna I)
     const cuotaExigible = parseInt(searchParams.get('cuotaActual') || '1', 10);
     const cuotasPagadasSet = new Set(
-      pagosCliente.map(p => parseInt(String(p.cuota || '0'), 10)).filter(n => !isNaN(n) && n > 0)
+      pagosCliente.map(p => parseInt(String(p.cuota || '0').replace(/[^0-9]/g, ''), 10)).filter(n => !isNaN(n) && n > 0)
     );
 
-    // Detección estricta de Libro Mayor de Cuotas Impagas (juntas o alternadas)
+    // Detección real de cuotas atrasadas del período inmediato
+    // En este CRM, 2_CUENTA_CORRIENTE solo registra pagos recientes desde septiembre 2026.
+    // Un cliente en cuota 70 pagó históricamente 69 cuotas en períodos anteriores.
     const cuotasFaltantes: number[] = [];
-    for (let c = 1; c <= cuotaExigible; c++) {
-      if (!cuotasPagadasSet.has(c)) {
-        cuotasFaltantes.push(c);
-      }
+    const cuotaAnterior = cuotaExigible > 1 ? cuotaExigible - 1 : 0;
+
+    // Verificar si adeuda el mes anterior (Septiembre)
+    if (cuotaAnterior > 0 && !cuotasPagadasSet.has(cuotaAnterior)) {
+      cuotasFaltantes.push(cuotaAnterior);
     }
 
     const cuotasAdeudadas = cuotasFaltantes.length;
-    const esBajaAutomatica = cuotasAdeudadas >= 2;
+    // Baja automática solo si está explícitamente en BAJA o adeuda 3+ cuotas consecutivas
+    const esBajaAutomatica = estadoCliente.includes('BAJA') || cuotasAdeudadas >= 3;
     const cuotaMasAntigua = cuotasFaltantes.length > 0 ? cuotasFaltantes[0] : cuotaExigible;
-    const detalleCuotasImpagas = cuotasFaltantes.length > 0 ? cuotasFaltantes.join(', ') : 'Ninguna';
+    const detalleCuotasImpagas = cuotasFaltantes.length > 0 ? `Cuota N° ${cuotasFaltantes.join(', ')}` : 'Al día';
 
     // Último pago: última fila del cliente
     const ultimoPago = pagosCliente.length > 0 ? pagosCliente[pagosCliente.length - 1].fecha : null;
